@@ -1,0 +1,8 @@
+# ignore output files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.synctex.gz
+*.lo?
+*.out
