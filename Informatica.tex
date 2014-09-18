@@ -9,26 +9,30 @@
 	10pt,
 	numbers=noenddot,
 	manychapters,
+	draft
 %	final
 ]{scrbook} %BCOR=5mm
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[english,german,italian]{babel}
-
-\usepackage{braket}
+\usepackage[english,italian]{babel}
 
 \usepackage[
 	table,
 	dvipsnames,
 	usenames
 ]{xcolor}
+%\definecolor{halfgray}{gray}{0.55} % chapter numbers will be semi transparent .5 .55 .6 .0
+\definecolor{webgreen}{rgb}{0,.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{Maroon}{cmyk}{0, 0.87, 0.68, 0.32}
+\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 \definecolor{mygreen}{rgb}{0,0.5,0}
 
 \usepackage[italian]{varioref}
 
-\input{./classicthesis-config}
-\usepackage{classicthesis}
-\usepackage{arsclassica}
+%\input{./classicthesis-config}
+%\usepackage{classicthesis}
+%\usepackage{arsclassica}
 
 \usepackage[%
 %	tracking=true,%
@@ -48,7 +52,7 @@
 
 \addto\captionsitalian{\renewcommand{\lstlistingname}{Codice}}
 \addto\captionsitalian{\renewcommand{\lstlistlistingname}{Elenco dei codici}}
-
+\usepackage{caption}
 \captionsetup[table]{skip=\medskipamount, position=top}
 \captionsetup[figure]{position=bottom}
 \usepackage{MyMathDef}
@@ -72,10 +76,33 @@
 
 
 \usepackage{tikz,fp,ifthen}
-\usetikzlibrary{calc, backgrounds,fit}
+\usetikzlibrary{
+	positioning,
+	shapes,
+	calc,
+	backgrounds,
+	fit
+}
 
-\newcommand{\parencite}{\cite}
-\renewcommand{\marginpar}{\graffito}
+
+%\newcommand{\parencite}{\cite}
+% Graffiti as in GKP's book "Concrete Mathematics"
+% thanks to Lorenzo Pantieri and Enrico Gregorio
+\def\graffito@setup{%
+   \slshape\footnotesize%
+   \parindent=0pt \lineskip=0pt \lineskiplimit=0pt %
+   \tolerance=2000 \hyphenpenalty=300 \exhyphenpenalty=300%
+   \doublehyphendemerits=100000%
+   \finalhyphendemerits=\doublehyphendemerits}
+%\DeclareRobustCommand{\graffito}[1]{\marginpar%
+% [\graffito@setup\raggedleft\hspace{0pt}{#1}]%
+% {\graffito@setup\raggedright\hspace{0pt}{#1}}}
+\let\oldmarginpar\marginpar
+\renewcommand{\marginpar}[1]{\oldmarginpar%
+ [\graffito@setup\raggedleft\hspace{0pt}{#1}]%
+ {\graffito@setup\raggedright\hspace{0pt}{#1}}}
+
+%\renewcommand{\marginpar}{\graffito}
 
 \usepackage{amsmath, amssymb,mathtools}
 \usepackage{bm} %bold math, per il neretto matematico: comando \bm
@@ -84,25 +111,204 @@
 \newcommand{\ext}[1]{\texttt{#1}}
 % sistemi operativi
 \newcommand{\os}[1]{\textsf{#1}}
+% nome algoritmi
+\newcommand{\algo}[1]{\textit{#1}}
 
 
 \newenvironment{sistema}{\left\lbrace\begin{array}{@{}l@{}}}{\end{array}\right.} %definisco l'ambiente "sistema"
 
 \usepackage{multirow}
-
+\usepackage{booktabs}
 \usepackage{wrapfig} %immagini incorniciate
+\usepackage{subfig}
 
 \usepackage{float}
 \floatstyle{ruled}
 \newfloat{code}{tbp}{loc}
 \floatname{code}{Riquadro}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% codici
+%==========
+%
+\usepackage[
+	final,
+	savemem
+]{listings}
+\usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
+\lstset{
+	language=[ISO]C++,%
+	keywordstyle=\color{NavyBlue},%\bfseries,
+	basicstyle=\small\ttfamily,
+	backgroundcolor=\color{blue!10},
+%	identifierstyle=\color{NavyBlue},
+	commentstyle=\color{darkgray!80},%\color{green}\ttfamily,
+	stringstyle=\color{PineGreen},
+	emph={NULL},
+	emphstyle=\color{Maroon}\bfseries,
+	numbers=left,% none
+	numberstyle=\scriptsize,%\tiny
+	stepnumber=5,
+	numbersep=8pt,
+	showstringspaces=false,
+	breaklines=true,
+	frameround=ftff,
+	frame=L,
+	belowcaptionskip=.75\baselineskip,
+	tabsize=4,
+%	inputencoding=utf8,
+%	extendedchars=false,
+%	literate={à}{{\'a}}1 {é}{{\'e}}1,
+%    escapeinside={/*}{*/}
+}
+\makeatletter
+\lst@Key{addtobasicstyle}\relax{%
+	\toks@=\expandafter{\lst@basicstyle #1}%
+	\edef\lst@basicstyle{\the\toks@}}
+\def\calc@current@size{%
+	\edef\current@size{%
+	\noexpand\fontsize{\f@size}{\f@baselineskip}%
+	\noexpand\selectfont}}
+
+\renewcommand\lstinline[1][]{%
+	\leavevmode\bgroup %
+		\calc@current@size
+		\def\lst@boxpos{b}\lsthk@PreSet
+		\lstset{flexiblecolumns,addtobasicstyle=\current@size,#1}%
+		\lsthk@TextStyle
+		\@ifnextchar\bgroup{\afterassignment\lst@InlineG
+		\let\@let@token}\lstinline@}
+\makeatother
+% algoritmi
+\usepackage[
+	slide,	% aggiunge spaziatura verticale per resa migliore
+%	nokwfunc,
+	algoruled,
+	algochapter,
+	longend,
+	vlined
+]{algorithm2e}
+% traduco "Algorithm" in italiano
+\makeatletter
+\renewcommand{\listalgorithmcfname}{Lista degli Algoritmi}%
+\renewcommand{\algorithmcfname}{Algoritmo}%
+\renewcommand{\algocf@typo}{}%
+\renewcommand{\@algocf@procname}{Procedura}
+\renewcommand{\@algocf@funcname}{Funzione}
+\makeatother
+% didascalie in italiano
+\addto\captionsitalian{\renewcommand{\lstlistingname}{Codice}}
+\addto\captionsitalian{\renewcommand{\lstlistlistingname}{Elenco dei codici}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Indice Analitico
+%==========
+%
+\usepackage{makeidx, multicol}
+\makeindex
+%%
+\let\orgtheindex\theindex
+\let\orgendtheindex\endtheindex
+\def\theindex{%
+	\def\twocolumn{\begin{multicols}{2}}%
+	\def\onecolumn{}%
+	\clearpage
+	\orgtheindex
+}
+\def\endtheindex{%
+	\end{multicols}%
+	\orgendtheindex
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Con 'openright' è possibile avere una pagina bianca a fine capitolo; 
+% per evitare che in questa pagina siano presenti testatine o piè di pagina:
+%==========
+%
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside
+\ifodd\c@page
+\else\hbox{}\thispagestyle{empty}\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% bibliografia
+%=========
+%
+\usepackage[%
+	autostyle,
+	italian=guillemets,%
+]{csquotes}
+\usepackage[%
+	style=numeric-comp,%
+	useprefix,%
+	hyperref,%
+	backref,%
+	backend=bibtex%
+]{biblatex}
+\addbibresource{bibliografia.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Didascalie
+%=========
+%
+\usepackage{caption}
+\captionsetup{%
+	format=hang,%
+	font=small,%
+	labelfont={%
+		color=darkgray,%
+		sf, bf%
+	}%
+}
+\captionsetup[table]{%
+%	skip=\medskipamount,%
+%	position = top%
+}
+\captionsetup[figure]{%
+%	skip=\medskipamount,
+	position = bottom%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Acronimi
+%=========
+%
+\usepackage[
+	printonlyused,%
+	smaller,%
+%	withpage,%
+%	footnote
+]{acronym}
+% descrizioni degli acronimi giustificate
+\makeatletter
+\def\bflabel#1{{\textbf{\textsf{#1}}\hfill}}
+\renewenvironment{AC@deflist}[1]%
+{\ifAC@nolist%
+\else%
+\begin{list}{}%
+{\settowidth{\labelwidth}{\textbf{\textsf{#1}}}%
+\setlength{\leftmargin}{\labelwidth}%
+\addtolength{\leftmargin}{\labelsep}%
+\renewcommand{\makelabel}{\bflabel}}%
+\fi}%
+{\ifAC@nolist%
+\else%
+\end{list}%
+\fi}%
+\makeatother
+%
+\usepackage{relsize}
+\renewcommand*{\acsfont}[1]{\textsmaller{\sf{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
 
 \title{
 	{\rmfamily\normalfont\color{darkgray}{Appunti di}}\\
-	\color{Maroon}\sffamily\normalfont\spacedallcaps{Laboratorio d'Informatica}
+	\color{Maroon}\sffamily\normalfont\textsc{Laboratorio d'Informatica}
 }
 \subtitle{
 	\color{gray} Prof. Bernardinello, Luca\\
@@ -110,7 +316,7 @@
 	4 CFU
 }
 \author{
-	\spacedlowsmallcaps{
+	\textsc{
 		\href{mailto:p.digiglio@campus.unimib.it}{\color{darkgray}Paolo Di Giglio}
 	}
 }
@@ -120,6 +326,7 @@
 	\today
 }
 
+\usepackage{hyperref}
 \hypersetup{final}
 \begin{document}
 
@@ -154,18 +361,23 @@
 
 \backmatter
 	\listoffigures
-	\addcontentsline{toc}{chapter}{\tocEntry{\listfigurename}}
+%	\addcontentsline{toc}{chapter}{\tocEntry{\listfigurename}}
+	\addcontentsline{toc}{chapter}{\listfigurename}
 
 	\listoftables
-	\addcontentsline{toc}{chapter}{\tocEntry{\listtablename}}
+%	\addcontentsline{toc}{chapter}{\tocEntry{\listtablename}}
+	\addcontentsline{toc}{chapter}{\listtablename}
 
 	\lstlistoflistings
-	\addcontentsline{toc}{chapter}{\tocEntry{\lstlistlistingname}}
+%	\addcontentsline{toc}{chapter}{\tocEntry{\lstlistlistingname}}
+	\addcontentsline{toc}{chapter}{\lstlistlistingname}
 
 	\input{./acronimi}
 
 	\nocite{*}
-	\bibliographystyle{plainnat}
-	\bibliography{bibliografia}
-	\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+	\printbibliography
+%	\bibliographystyle{plainnat}
+%	\bibliography{bibliografia}
+%	\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+	\addcontentsline{toc}{chapter}{\bibname}
 \end{document}
