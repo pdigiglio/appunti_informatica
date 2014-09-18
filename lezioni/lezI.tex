@@ -31,7 +31,7 @@ Ovviamente, un oggetto avrà priorità tanto maggiore quanto più grande sarà i
 
 Si hanno \num{50} schedine numerate, indicizzate da numeri \emph{non} progressivi compresi in un range che va da \numrange{1}{e6}. Bisogna ridisporre tale schedine in ordine crescente. In particolare, ci sono dei vincoli. Supponiamo di avere a disposizione uno spazio che non permetta di vedere i numeri di tutte le schedine contemporaneamente. C'è, però, a abbastanza spazio per appoggiare contemporaneamente due mazzi.
 
-Un procedimento risolutivo potrebbe essere il seguente. Si estrae una schedina $s_1$ dal mazzo non ordinato e la si appoggia accanto al mazzo stesso, in modo che il suo numero sia visibile. Se n'estrae una seconda $s_2$ e la si confronta con la prima. Se $s_1>s_2$, si pone $s_2$ sopra $s_1$. Altrimenti si ripone $s_2$ in fondo al mazzo da cui è stata estratta. Si ripete tale procedimento fino a quando il primo mazzo non finisce. In informatica, tale metodo risolutivo prende talvolta il nome di \emph{bubble sort}.
+Un procedimento risolutivo potrebbe essere il seguente. Si estrae una schedina $s_1$ dal mazzo non ordinato e la si appoggia accanto al mazzo stesso, in modo che il suo numero sia visibile. Se n'estrae una seconda $s_2$ e la si confronta con la prima. Se $s_1>s_2$, si pone $s_2$ sopra $s_1$. Altrimenti si ripone $s_2$ in fondo al mazzo da cui è stata estratta. Si ripete tale procedimento fino a quando il primo mazzo non finisce. In informatica, tale metodo risolutivo prende talvolta il nome di \algo{bubble sort}\index{boubble sort}\index{sort!boubble}.
 
 
 
@@ -53,21 +53,21 @@ c_\textup{bs}(n)
 \]
 Raddoppiando il numero di carte, dunque, il numero di confronti quadruplica.
 
-Esistono \marginpar{merge sort} molti altri metodi d'ordinamento, tra cui l'algoritmo \emph{merge sort}, inventato da John von Neumann nel 1945, che si basa un po' sull'antico detto romano ``divide et impera'' \parencite{wiki:it}.
+Esistono \marginpar{merge sort} molti altri metodi d'ordinamento, tra cui l'algoritmo \algo{merge sort}, inventato da John von Neumann nel 1945, che si basa un po' sull'antico detto romano ``divide et impera'' \parencite{wiki:it}.
 Come mostrato in figura~\ref{fig:merge}, si dividono progressivamente i dati di partenza (nel nostro caso, le \num{50} schedine) in due gruppi fino ad ottenerne mazzi da due o un dato.
 Se il numero di dati non è divisibile per due, non importa: si avrà almeno un mazzo da una schedina.
 Dopo aver suddiviso le schedine, si ordinano progressivamente partendo ``dal basso verso l'alto''.
 
 Per quanto riguarda il costo di tale algoritmo, si devono effettuare all'incirca $\log_2(n)$ suddivisioni.
 Ad ogni passaggio a ritroso, inoltre, bisogna compiere $n$ confronti.
-Il costo dell'algoritmo sarà, quindi, $c_\textup{ms}(n)\thicksim n\log_{2}n$. Per $n\to+\infty$, si ha che:
+Il costo dell'algoritmo sarà, quindi, $c_\textup{ms}(n)\thicksim n\log_{2}(n)$. Per $n\to+\infty$, si ha che:
 \[
 c_\textup{bs}(n)\overset{n\to+\infty}{\thicksim} n^{2} \gg n\log_{2}(n) \overset{n\to+\infty}{\thicksim} c_\textup{ms}(n).
 \]
-Si riscontra, quindi, che l'algoritmo merge sort è più efficiente dell'algoritmo bubble sort.
+Si riscontra, quindi, che l'algoritmo \algo{merge sort} è più efficiente dell'algoritmo \algo{bubble sort}.
 \begin{table}
 	\centering
-	\caption[Costo dell'algoritmo bubble sort]{Costo computazionale di un algoritmo bubble sort ($n\in\mathbb{N}\sm\Set{0}$).}
+	\caption[Costo dell'algoritmo \algo{bubble sort}]{Costo computazionale di un algoritmo \algo{bubble sort} ($n\in\mathbb{N}\sm\Set{0}$).}
 	\label{tab:bubble}
 	\begin{tabular}{>$c<$ >$c<$}
 		\toprule
@@ -84,8 +84,15 @@ n			&n-1				\\
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{immagini/merge_sort}
-	\caption[Merge sort]{Rappresentazione dell'algoritmo merge sort.}
+%	\includegraphics[width=\columnwidth]{immagini/merge_sort}
+\subfloat[][Suddivisione.]{
+	\input{immagini/merge_sort_divide_v2.pgf}
+}\quad
+\subfloat[][Ordinamento.]{
+	\input{immagini/merge_sort_sort.pgf}
+}
+
+	\caption[Merge sort]{Rappresentazione dell'algoritmo \algo{merge sort}.}
 	\label{fig:merge}
 \end{figure}
 
@@ -94,5 +101,5 @@ Il \emph{programma} è un oggetto che si può presentare sotto varie forme. Le p
 \begin{description}
 	\item[In corso d'esecuzione.] In questo caso, prende il nome di \emph{processo};
 	\item[File eseguibile.] Esso è essenzialmente un file (con estensione \ext{.exe} in \os{Windows}) contenente un insieme d'istruzioni comprensibili dall'unità di calcolo. Una volta eseguito, si traduce in un processo. Il linguaggio in cui è scritto tale file prende il nome di \emph{assembly} o \emph{linguaggio macchina}. Quest'ultimo nome lascia intuire che tale file non è fatto per essere letto ed interpretato dall'uomo;
-	\item[Codice sorgente.] Questo è un file di testo contenente istruzioni comprensibili anche all'uomo. \`E scritto in un \emph{linguaggio di programmazione} (vedi il paragrafo~\ref{subsec:programmazione} a pagina~\pageref{subsec:programmazione}). Per ottenere un file eseguibile dal codice sorgente, c'è bisogno di ``tradurre'' quest'ultimo tramite un processo che, per ragioni storiche, prende il nome di \emph{compilazione}.\footnote{Per maggiori dettagli, si rimanda a degli appunti sul sito del prof.~Bernardinello all'indirizzo \url{http://www.mc3.disco.unimib.it/lif/Dep/vigcc.pdf}}.
+	\item[Codice sorgente.] Questo è un file di testo contenente istruzioni comprensibili anche all'uomo. \`E scritto in un \emph{linguaggio di programmazione} (vedi il paragrafo~\ref{subsec:programmazione} a pagina~\pageref{subsec:programmazione}). Per ottenere un file eseguibile dal codice sorgente, c'è bisogno di ``tradurre'' quest'ultimo tramite un processo che, per ragioni storiche, prende il nome di \emph{compilazione}.\footnote{Per maggiori dettagli, si rimanda a degli appunti sul sito del prof.~Bernardinello all'indirizzo \url{http://www.mc3.disco.unimib.it/lif/Dep/vigcc.pdf}}
 \end{description}
