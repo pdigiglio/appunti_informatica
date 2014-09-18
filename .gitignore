@@ -6,3 +6,10 @@
 *.synctex.gz
 *.lo?
 *.out
+*.ilg
+*.ind
+*-blx.bib
+*.pdf
+*.run.xml
+*.toc
+*.idx
