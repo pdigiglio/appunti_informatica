@@ -1,0 +1,47 @@
+\chapter[Lezione IV]{Lezione IV\newline\small{\emph{14/04/2011}}}
+	\section{Esercizio}
+Si vuole calcolare il valore di $\pi$. \`E noto che:
+\[
+\frac{\pi}{4}=\sum_{k=0}^{+\infty}(-1)^k\frac{1}{2k+1}=1-\frac{1}{3}+\frac{1}{5}\dots
+\]
+Questo metodo non può essere steso come \emph{algoritmo} (che è \textbf{finito} per definizione\footnote{Un algoritmo è un procedimento che consente di ottenere un risultato eseguendo, in un determinato ordine, dei passi semplici (scelti da un insieme finito). Pertanto:
+\begin{itemize}[noitemsep]
+	\item
+La sequenza di istruzioni deve essere finita (\emph{finitezza});
+	\item
+Essa deve portare ad un risultato (\emph{effettività});
+	\item
+Le istruzioni devono essere eseguibili materialmente (\emph{realizzabilità});
+	\item
+Le istruzioni devono essere espresse in modo non ambiguo (\emph{non ambiguità}).
+\end{itemize}   
+I passi costituenti di un algoritmo devono essere ""semplici'', nel senso di ""non ambigui''.}). Tuttavia, ci si può accontentare di approssimazioni di $\pi$ che discostino dal valore reale per una quantità finita piccola a piacere facendo eseguire al calcolatore un numero finito (se pur molto grande) di iterazioni. La sommatoria, allora, diverrà:
+\[
+\frac{\pi}{4} \thickapprox \sum_{k=0}^{n\in\mathbb{N}}(-1)^k\frac{1}{2k+1}=1-\frac{1}{3}+\frac{1}{5}\dots+\frac{\ (-1)^n}{2n+1}.
+\]
+
+Un algoritmo come quello del codice~\vref{cod:pigreco} calcolerà un valore approssimato del valore di $\pi$. Chiaramente, la precisione del valore calcolato dipenderà dalla grandezza di $n$. Infatti
+\[
+\lim_{n\to\infty}\sum_{k=0}^n\frac{\ (-1)^k}{2k+1} =\frac{\pi}{4}.
+\]
+\begin{lstlisting}[caption={\em Calcolo del valore approssimato di $\pi$.}, label={cod:pigreco}]
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main ( int argc, char *argv[] ) {
+	int n, i = 0;
+	double somma = 0.0;
+	printf("Inserisci n: ");
+	scanf("%d", &n);
+	while ( i <= n ) {
+		if ( i%2 == 0 )
+			somma = somma + (1/(2*i + 1));
+		else
+			somma = somma - (1/(2*i + 1));
+		i = i + 1;
+	}
+	printf("Pi Greco = %lf", somma*4);
+	exit(EXIT_SUCCESS);
+}
+\end{lstlisting}

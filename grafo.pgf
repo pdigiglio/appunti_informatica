@@ -1,0 +1,22 @@
+\begin{figure}
+\begin{tikzpicture}
+
+%	\draw[style=dotted] (-2,0) grid [] (5,6);
+%	\draw node [black, shape=circle, fill] at (0,0) {};
+
+	\coordinate (A) at (-2,6);
+	\coordinate (B) at (2,5);
+	\coordinate (C) at (4,2);
+	\coordinate (D) at (3,0);
+	\coordinate (E) at (1,4);
+	\coordinate (F) at (-1,3);
+	\coordinate (G) at (-2.5,0.5);
+
+	\foreach \a/\b/\d in {A/B/5, B/C/3, C/D/4, D/G/12, G/F/4, F/E/3, A/E/1, D/E/2, D/B/1}
+		\draw [line width=0.5pt, color=blue] (\a) -- (\b) node [blue, sloped,midway,above] {$\d$};
+
+	\foreach \n in {A,B,C,D,E,F,G} 
+		\draw [] node [circle,draw,minimum size=1cm,top color=gray] at (\n) {\color{black}{\n}};
+
+\end{tikzpicture}
+\end{figure}

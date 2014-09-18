@@ -1,0 +1,171 @@
+\documentclass[
+	a4paper,
+	titlepage,
+	twoside,
+	headinclude=true,
+	footinclude=false,
+	openright,
+	pdfspacing,
+	10pt,
+	numbers=noenddot,
+	manychapters,
+%	final
+]{scrbook} %BCOR=5mm
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,german,italian]{babel}
+
+\usepackage{braket}
+
+\usepackage[
+	table,
+	dvipsnames,
+	usenames
+]{xcolor}
+\definecolor{mygreen}{rgb}{0,0.5,0}
+
+\usepackage[italian]{varioref}
+
+\input{./classicthesis-config}
+\usepackage{classicthesis}
+\usepackage{arsclassica}
+
+\usepackage[%
+%	tracking=true,%
+%	babel=true%
+]{microtype}
+
+
+\usepackage{scrpage2}
+\usepackage{emptypage}
+\pagestyle{scrheadings}
+
+\renewcommand{\sfdefault}{iwona}
+% per permettere grassetto in \ttseries
+\renewcommand{\ttdefault}{pcr} % font della famiglia Courier
+%\renewcommand{\ttdefault}{fvm} % font di ClassicThesis
+%\usepackage[urw-garamond]{mathdesign}
+
+\addto\captionsitalian{\renewcommand{\lstlistingname}{Codice}}
+\addto\captionsitalian{\renewcommand{\lstlistlistingname}{Elenco dei codici}}
+
+\captionsetup[table]{skip=\medskipamount, position=top}
+\captionsetup[figure]{position=bottom}
+\usepackage{MyMathDef}
+\usepackage{siunitx}
+\sisetup{
+	range-phrase={ a },
+	separate-uncertainty,
+%	input-decimal-marker={.},
+	output-decimal-marker={,},
+	exponent-product = \cdot,
+}
+
+\usepackage{enumitem}
+\usepackage{mparhack}
+
+\usepackage{indentfirst}
+\usepackage{multicol}
+
+
+\usepackage{eurosym}
+
+
+\usepackage{tikz,fp,ifthen}
+\usetikzlibrary{calc, backgrounds,fit}
+
+\newcommand{\parencite}{\cite}
+\renewcommand{\marginpar}{\graffito}
+
+\usepackage{amsmath, amssymb,mathtools}
+\usepackage{bm} %bold math, per il neretto matematico: comando \bm
+
+% estensioni
+\newcommand{\ext}[1]{\texttt{#1}}
+% sistemi operativi
+\newcommand{\os}[1]{\textsf{#1}}
+
+
+\newenvironment{sistema}{\left\lbrace\begin{array}{@{}l@{}}}{\end{array}\right.} %definisco l'ambiente "sistema"
+
+\usepackage{multirow}
+
+\usepackage{wrapfig} %immagini incorniciate
+
+\usepackage{float}
+\floatstyle{ruled}
+\newfloat{code}{tbp}{loc}
+\floatname{code}{Riquadro}
+
+
+\newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
+
+\title{
+	{\rmfamily\normalfont\color{darkgray}{Appunti di}}\\
+	\color{Maroon}\sffamily\normalfont\spacedallcaps{Laboratorio d'Informatica}
+}
+\subtitle{
+	\color{gray} Prof. Bernardinello, Luca\\
+	a.a. 2010/2011\\
+	4 CFU
+}
+\author{
+	\spacedlowsmallcaps{
+		\href{mailto:p.digiglio@campus.unimib.it}{\color{darkgray}Paolo Di Giglio}
+	}
+}
+
+\date{
+	\small Ultima revisione:\\
+	\today
+}
+
+\hypersetup{final}
+\begin{document}
+
+\frontmatter
+
+	\pdfbookmark[0]{Titolo}{chap:titolo}
+	\maketitle
+
+	\pdfbookmark[0]{\contentsname}{chap:indice}
+	\tableofcontents
+
+	\input{prefazione}
+
+\mainmatter
+	\input{lezioni/lezI}
+	\input{lezioni/lezII}
+	\input{lezioni/lezIII}
+	\input{lezioni/lezIV}
+	\input{lezioni/lezV}
+	\input{lezioni/lezVI}
+	\input{lezioni/lezVII}
+	\input{lezioni/lezVIII}
+	\input{lezioni/lezIX}
+	\input{lezioni/lezX}
+	\input{lezioni/lezXI}
+	\input{lezioni/esame}
+	\input{lezioni/source}
+
+		\appendix
+	\input{lezioni/varie}
+
+
+\backmatter
+	\listoffigures
+	\addcontentsline{toc}{chapter}{\tocEntry{\listfigurename}}
+
+	\listoftables
+	\addcontentsline{toc}{chapter}{\tocEntry{\listtablename}}
+
+	\lstlistoflistings
+	\addcontentsline{toc}{chapter}{\tocEntry{\lstlistlistingname}}
+
+	\input{./acronimi}
+
+	\nocite{*}
+	\bibliographystyle{plainnat}
+	\bibliography{bibliografia}
+	\addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
+\end{document}
