@@ -44,9 +44,9 @@
 \usepackage{emptypage}
 \pagestyle{scrheadings}
 
-\renewcommand{\sfdefault}{iwona}
+%\renewcommand{\sfdefault}{iwona}
 % per permettere grassetto in \ttseries
-\renewcommand{\ttdefault}{pcr} % font della famiglia Courier
+%\renewcommand{\ttdefault}{pcr} % font della famiglia Courier
 %\renewcommand{\ttdefault}{fvm} % font di ClassicThesis
 %\usepackage[urw-garamond]{mathdesign}
 
@@ -113,6 +113,7 @@
 \newcommand{\os}[1]{\textsf{#1}}
 % nome algoritmi
 \newcommand{\algo}[1]{\textit{#1}}
+\newcommand{\lang}[1]{\textsf{#1}}
 
 
 \newenvironment{sistema}{\left\lbrace\begin{array}{@{}l@{}}}{\end{array}\right.} %definisco l'ambiente "sistema"
@@ -277,7 +278,7 @@
 %=========
 %
 \usepackage[
-	printonlyused,%
+%	printonlyused,%
 	smaller,%
 %	withpage,%
 %	footnote
@@ -325,9 +326,48 @@
 	\small Ultima revisione:\\
 	\today
 }
+% abilita la ricerca di ° a documento finito
+\usepackage{textcomp}
+
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{2 on 1}[
+%	a4paper,%
+%	border shrink=1mm,
+%	landscape%
+%]
 
 \usepackage{hyperref}
-\hypersetup{final}
+\hypersetup{
+%	draft,
+	final,
+	colorlinks=true,
+	linktocpage=true,
+	pdfstartpage=3,
+	pdfstartview=FitV,
+	breaklinks=true,
+	pdfpagemode=UseNone,
+	pageanchor=true,
+	pdfpagemode=UseOutlines,%
+	plainpages=false,
+	bookmarksnumbered,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,%
+	hypertexnames=true,
+	pdfhighlight=/O,
+	urlcolor=webbrown,
+	linkcolor=RoyalBlue,
+	citecolor=webgreen,
+%	pagecolor=RoyalBlue,%
+}
+
+% definisco lo spazio per il testo
+%\areaset[current]{\textwidth}{691pt}
+
+% spaziatura europea dopo il punto
+\frenchspacing
+% frequenza di divisione in sillabe (default=100)
+% numero più piccolo -> sillabazione più frequente
+\pretolerance=2
 \begin{document}
 
 \frontmatter
@@ -341,19 +381,19 @@
 	\input{prefazione}
 
 \mainmatter
-	\input{lezioni/lezI}
+%	\input{lezioni/lezI}
 	\input{lezioni/lezII}
-	\input{lezioni/lezIII}
-	\input{lezioni/lezIV}
-	\input{lezioni/lezV}
-	\input{lezioni/lezVI}
-	\input{lezioni/lezVII}
-	\input{lezioni/lezVIII}
-	\input{lezioni/lezIX}
-	\input{lezioni/lezX}
-	\input{lezioni/lezXI}
-	\input{lezioni/esame}
-	\input{lezioni/source}
+%	\input{lezioni/lezIII}
+%	\input{lezioni/lezIV}
+%	\input{lezioni/lezV}
+%	\input{lezioni/lezVI}
+%	\input{lezioni/lezVII}
+%	\input{lezioni/lezVIII}
+%	\input{lezioni/lezIX}
+%	\input{lezioni/lezX}
+%	\input{lezioni/lezXI}
+%	\input{lezioni/esame}
+%	\input{lezioni/source}
 
 		\appendix
 	\input{lezioni/varie}
@@ -373,6 +413,12 @@
 	\addcontentsline{toc}{chapter}{\lstlistlistingname}
 
 	\input{./acronimi}
+
+%\clearpage
+%\phantomsection
+\addcontentsline{toc}{section}{\indexname}
+\printindex
+
 
 	\nocite{*}
 	\printbibliography
