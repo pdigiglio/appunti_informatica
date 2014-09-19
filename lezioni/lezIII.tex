@@ -2,17 +2,20 @@
 	\subsection{Iterazione}
 	\label{sec:it}
 
-\emph{Iterazione} vuol dire \emph{ripetizione}. Possiamo individuare due tipi di iterazioni. Più esattamente, la condizione verificata la quale un'iterazione continua può essere di due tipi:
+\emph{Iterazione}\index{iterazione} vuol dire \emph{ripetizione}. Possiamo individuare due tipi di iterazioni o, più esattamente, condizioni verificate le quali un'iterazione continua.
+Si presentano i casi seguenti:
 \begin{itemize}
 	\item
 L'iterazione viene ripetuta un numero $n$ di volte fissato a priori;
 	\item
 Il numero di volte $n$ per cui si ripete l'operazione viene determinato da come procede l'esecuzione (o l'iterazione stessa).
 \end{itemize}	
-Nel linguaggio C, non esiste una forma che equivalga alla locuzione “"ripeti l'operazione per $n$ volte'', ma bisogna ricorrere ad un'iterazione regolata da una determinata condizione.
+Nel linguaggio \lang{C}, non esiste una forma che equivalga alla locuzione ``ripeti l'operazione per $n$ volte'', ma bisogna ricorrere ad un'iterazione regolata da una determinata condizione.
 
-Un espediente piuttosto frequente è mostrato nel codice~\vref{cod:conv}. Si dichiara una variabile di tipo \lstinline!int!. Si fa in modo che, ad ogni iterazione, tale variabile venga incrementata di un certo numero (ad esempio, di \lstinline!1!). Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contatore}. Si fissa la condizione per la continuazione dell'iterazione (o \emph{ciclo}) in modo tale che, quando il contatore raggiunge un dato valore, il ciclo si blocchi.
-\begin{lstlisting}[caption={{\em Tabella di conversione \euro{} - \pounds.}}, label={cod:conv}]
+Un espediente piuttosto frequente è mostrato nel codice~\vref{cod:conv}.
+Si dichiara una variabile di tipo \lstinline!int! e si fa in modo che ad ogni iterazione tale variabile venga incrementata di un certo numero, ad esempio \num{1}.
+Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contatore}\index{contatore}. Si fissa la condizione per la continuazione dell'iterazione (o \emph{ciclo}\index{ciclo}) in modo tale che, quando il contatore raggiunge un dato valore, il ciclo si blocchi.
+\begin{lstlisting}[caption={{\em Tabella di conversione Euro/Lira.}}, label={cod:conv}]
 ...
 /* 
 ** dichiaro la variabile (contatore) e la ini-
@@ -26,15 +29,16 @@ while ( i < 10 ) {
 }
 ...
 \end{lstlisting}
-L'iterazione, nel codice esempio~\vref{cod:conv}, procederà finché la variabile \lstinline!i! non avrà assunto il valore \lstinline!10! (quindi, il ciclo si ripeterà 10 volte\footnote{Un errore molto frequente è impostare un ciclo di questo tipo dimenticandosi d'incrementare il contatore. Questo produrrebbe un ciclo infinito. Inoltre, il calcolatore non ha alcun modo di accorgersi di siffatti errori (si veda il paragrafo~\vref{subsec:ins}).}). In questo esempio, \marginpar{Il ciclo \lstinline!while!}il ciclo è stato introdotto introdotto usando la locuzione:
+L'iterazione, nel codice esempio~\ref{cod:conv}, procederà finché la variabile \lstinline!i! non avrà assunto il valore \num{10} (quindi, il ciclo si ripeterà \num{10} volte).\footnote{Un errore molto frequente è impostare un ciclo di questo tipo dimenticandosi d'incrementare il contatore. Questo produrrebbe un ciclo infinito! Inoltre, il calcolatore non ha alcun modo di accorgersi di siffatti errori (si veda il paragrafo~\ref{subsec:ins}).}
+In questo esempio, \marginpar{Il ciclo \lstinline!while!}il ciclo è stato introdotto introdotto usando la locuzione:
 \begin{lstlisting}
-while (test) {
+while ( £!\MyComment{test}!£ ) {
 	...
 }
 \end{lstlisting}
-Essa inizializza un ciclo che  procede finché il test espresso tra parentesi rimarrà verificato. Quando la condizione \lstinline!i < 10! diventa falsa, l'esecutore salta il blocco \lstinline!while! e procede con il comando che segue.
+Essa inizializza un ciclo che  procede finché il \MyComment{test} espresso tra parentesi rimarrà verificato. Quando la condizione ``\lstinline!i < 10!'' diventa falsa, l'esecutore salta il blocco \lstinline!while! e procede con il comando che segue.
 
-Le condizioni possono anche essere concatenate, cioè è possibile specificare più test all'interno di una sola coppia di parentesi tonde. Il C dispone degli \emph{operatori logici} elencati nella tabella~\vref{tab:lop}.
+Le condizioni possono anche essere concatenate, cioè è possibile specificare più test all'interno di una sola coppia di parentesi tonde. Il \lang{C} dispone degli \emph{operatori logici} elencati nella tabella~\ref{tab:lop}.
 
 \begin{table}[p]
 	\centering
@@ -51,29 +55,38 @@ Non $C_1$	       &\lstinline?!?    &\lstinline?( !(  x > y ) )? cioè \lstinline
 	\end{tabular}
 \end{table}
 
-Nel codice~\vref{cod:conv} è stato\marginpar{Commenti} introdotto l'uso dei \emph{commenti}. Un programma scritto in C può presentare dei commenti, parti di codice che il compilatore non cerca d'interpretare. Essi sono compresi tra \emph{slash} ed \emph{asterischi} (\lstinline!/* commento */!) ed hanno lo scopo di migliorare la leggibilità del sorgente. Si può commentare il codice anche usando la forma \lstinline$// commento$. La differenza tra le due forme è che, mentre nella prima il commento finisce dopo {\color{green}\lstinline!*/!}, nella seconda tutti i caratteri su una stessa riga (da \lstinline!//! in poi) vengono ignorati al momento dell'esecuzione.
 
-Il frammento di codice~\vref{cod:conv}, se opportunamente completato, stampa a schermo due colonne. A sinistra un numero intero da \lstinline!0! a \lstinline!9!, a destra lo stesso numero moltiplicato per \lstinline!1936.27! (una tabella di conversione tra \euro{} e \pounds). La funzione che stampa a schermo è \lstinline$printf();$\marginpar{\lstinline!printf();!}. Tale funzione può essere usata in diverse forme, riassunte nella tabella~\vref{tab:printf}.
+Nel codice~\ref{cod:conv} è stato\marginpar{Commenti} introdotto l'uso dei \emph{commenti}\index{commento}.
+Un programma scritto in \lang{C} può presentare dei commenti, parti di codice che il compilatore non cerca d'interpretare.
+Essi sono compresi tra \lstinline!/* slash ed asterischi */! ed hanno lo scopo di migliorare la leggibilità del sorgente.
+Un commento può anche essere introdotto da un \lstinline!// doppio slash!.
+La differenza tra le due forme è che, mentre nella prima il commento finisce dopo il secondo asterisco-slash, nella seconda tutti i caratteri su una stessa riga (da \lstinline!//! in poi) vengono ignorati al momento dell'esecuzione.
+
+Il frammento di codice~\ref{cod:conv}, se opportunamente completato, stampa a schermo due colonne: a sinistra un numero intero da \numrange{0}{9}, a destra lo stesso numero moltiplicato per \num{1936.27} (una tabella di conversione tra Euro e Lire).
+La funzione che stampa a schermo è \lstinline$printf()$\index{printf()@\texttt{printf()}}\marginpar{\lstinline!printf()!}.
+Tale funzione può essere usata in diverse forme, riassunte nella tabella~\ref{tab:printf}.
 \begin{table}[p]
-	\caption{Usi della funzione \lstinline$printf();$.}
+	\caption{Usi della funzione \lstinline$printf()$.}
 	\label{tab:printf}
 	\centering
-	\begin{tabular}{lp{0.4\columnwidth}}
+	\begin{tabular}{lp{0.5\columnwidth}}
 		\toprule
 Sintassi							& Funzione \\
 		\midrule
-\lstinline!printf("testo \n");!					& Stampa un messaggio letteralmente. La combinazione \lstinline$\n$ equivale al carattere ""a capo''. \\
+\lstinline!printf("testo \n");!					& Stampa un messaggio letteralmente. La combinazione ``\lstinline$\n$'' equivale al carattere ``a capo''. \\
 
 \lstinline!printf("%d", num);!					& Stampa il valore della variabile \lstinline$num$, che dev'essere di tipo \lstinline$int$. \\
 
 \lstinline!printf("%f", x);!					&  Stampa il valore della variabile \lstinline$x$, che può essere di tipo \lstinline$double$ (in questo caso, la sintassi prevederebbe \lstinline$%lf$ e non \lstinline$%f$ tra virgolette) o \lstinline$float$.\\
 
-\lstinline!printf("testo: %8.2f", x);!		&  Ogni sotto espressione introdotta da \lstinline!%! indica il punto in cui sarà inserito il valore di una variabile. La sequenza compresa tra virgolette è seguita dall'elenco delle variabili cui si fa riferimento, separate da virgole. La combinazione \lstinline$%8.2f$ specifica che il valore della variabile \lstinline$x$ va stampato in modo che occupi almeno otto posizioni, delle quali due devono seguire il punto decimale. \\
+\lstinline!printf("testo: %8.2f", x);!		&  Ogni sotto espressione introdotta da \lstinline!%! indica il punto in cui sarà inserito il valore di una variabile. La sequenza compresa tra virgolette è seguita dall'elenco delle variabili cui si fa riferimento, separate da virgole. La combinazione ``\lstinline$%8.2f$'' specifica che il valore della variabile \lstinline$x$ va stampato in modo che occupi almeno otto posizioni, delle quali due devono seguire il punto decimale. \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-Per leggere un valore inserito nello \emph{standard input} (\lstinline!stdin!), che nella maggior parte dei casi è la tastiera, si può usare la funzione \lstinline$scanf();$\marginpar{\lstinline!scanf();!}. Tale funzione ammette le sintassi elencate nella tabella~\vref{tab:scanf}. In tutti i casi il carattere \lstinline!&! precede l'identificatore della variabile.
+Per leggere un valore inserito nello \emph{standard input}\index{standard input} (indicato con \lstinline!stdin!\index{stdin@\texttt{stdin}}), che nella maggior parte dei casi è la tastiera, si può usare la funzione \lstinline$scanf()$\index{scanf()@\texttt{scanf()}}\marginpar{\lstinline!scanf()!}.
+Tale funzione ammette le sintassi elencate nella tabella~\ref{tab:scanf} a pagina~\pageref{tab:scanf}.
+In tutti i casi il carattere ``\lstinline!&!'' precede l'identificatore della variabile.
 \begin{table}[p]
 	\caption{Usi della funzione \lstinline$scanf();$.}
 	\label{tab:scanf}
@@ -93,9 +106,9 @@ Sintassi							& Funzione \\
 
 \begin{table}[p]
 	\centering
-	\caption[Opzioni di  \lstinline!printf();! e \lstinline!scanf();!]{Opzioni delle funzioni  \lstinline!printf();! e \lstinline!scanf();!}
+	\caption[Opzioni di  \lstinline!printf()! e \lstinline!scanf()!]{Opzioni delle funzioni  \lstinline!printf()! e \lstinline!scanf()!}
 	\label{tab:spop}
-	\begin{tabular}{l p{0.51\columnwidth}}
+	\begin{tabular}{l p{0.75\columnwidth}}
 		\toprule
 Opzione	&Funzione	\\
 		\midrule
@@ -110,23 +123,31 @@ Opzione	&Funzione	\\
 \end{table}
 
 	\section{Strutture Dati}
-Una \emph{struttura dati}\footnote{L'espressione ""struttura dati'' è grammaticalmente scorretta in italiano. La forma corretta sarebbe ""struttura dei dati''. Tuttavia, essa è una forma ereditata dall'inglese \emph{data structures}, quindi viene accettata anche nella prima forma.} è un'entità usata per organizzare un insieme di dati all'interno della memoria del computer (ed eventualmente per memorizzarli in una memoria di massa). Detto in parole povere, è una rappresentazione schematica dei dati su cui s'intende lavorare.
+Una \emph{struttura dati}\index{struttura dati} è un'entità usata per organizzare un insieme di dati all'interno della memoria del computer (ed eventualmente per memorizzarli in una memoria di massa).\footnote{L'espressione ``struttura dati'' è grammaticalmente scorretta in italiano; la forma corretta sarebbe ``struttura dei dati''.
+Tuttavia, essa è una forma ereditata dall'inglese \emph{data structures}, quindi viene accettata anche nella prima forma.}
+Detto in parole povere, è una rappresentazione schematica dei dati su cui s'intende lavorare.
 La scelta delle strutture dati da utilizzare è strettamente legata a quella degli algoritmi.
 
 		\subsection{Vettori}
 		\label{subsec:array}
-Il \emph{vettore} (o array) è un ""oggetto'' formato da una sequenza di valori omogenei (ossia, dello stesso tipo), una variabile in cui tutti i valori occupano posizioni adiacenti. Se si deve risolvere un problema che viene naturalmente rappresentato sotto forma vettoriale (o matriciale) questa struttura dati risulta estremamente utile. Per dichiarare un vettore, si usa la seguente sintassi: \lstinline!double p[3];!.
+Il \emph{vettore} (o array) è un oggetto formato da una sequenza di valori omogenei (ossia, dello stesso tipo), una variabile in cui tutti i valori occupano posizioni adiacenti.
+Se si deve risolvere un problema che viene naturalmente rappresentato sotto forma vettoriale (o matriciale) questa struttura dati risulta estremamente utile.
+Per dichiarare un vettore di tipo \lstinline!double! e lunghezza tre, si usa la sintassi ``\lstinline!double p[3];!''.
 
-Si supponga di aver bisogno di rappresentare la posizione di un punto (rispetto all'origine di un sistema d'assi cartesiani orientato) nello spazio tridimensionale. Risulta comodo usare un vettore che contenga dei valori Reali\footnote{La migliore approssimazione che ottenibile di un numero $n\in\mathbb{R}$, è una variabile di tipo \lstinline!double!.}, come quello dichiarato poc'anzi, di nome \lstinline!p!, che comprende tre variabili.
+Si supponga di aver bisogno di rappresentare la posizione di un punto (rispetto all'origine di un sistema d'assi cartesiani orientato) nello spazio tridimensionale.
+Risulta comodo usare un vettore che contenga dei valori reali, come quello dichiarato poc'anzi, di nome \lstinline!p!, che comprende tre variabili.\footnote{La migliore approssimazione che ottenibile di un numero $x\in\mathbb{R}$, è una variabile di tipo \lstinline!double!.}
 
-Di fatto, tale dichiarazione corrisponde a quella di tre variabili: \lstinline!p[0]!, \lstinline!p[1]!, \lstinline!p[2]! (tutte di tipo \lstinline!double!). Esse occupano posizioni contigue in memoria e condividono una parte del nome (oltre ad essere indicizzate). Volendo, possono anche essere usate separatamente come delle normali variabili. L'averle dichiarate sotto forma di un vettore permette di manipolarle meglio per operazioni vettoriali.
+Di fatto, tale dichiarazione corrisponde a quella di tre variabili: \lstinline!p[0]!, \lstinline!p[1]!, \lstinline!p[2]! (tutte di tipo \lstinline!double!).
+Esse occupano posizioni contigue in memoria e condividono una parte del nome, oltre ad essere indicizzate.
+Volendo, possono anche essere usate separatamente come delle normali variabili.
+L'averle dichiarate sotto forma di un vettore permette di manipolarle meglio per operazioni vettoriali.
 
-Nel seguente codice esempio, dopo aver dichiarato un vettore di lunghezza \lstinline!100!, s'assegna alla sua $e$-esima coordinata il valore $e^2-3e$.
+Nel seguente codice esempio, dopo aver dichiarato un vettore di lunghezza \num{100}, s'assegna alla sua $e$-esima coordinata il valore $e^2-3e$.
 \begin{lstlisting}
 int v[100], e;
 e = 0;
 while ( e <= 99 ) {
-	v[e] = e*e-3*e;
+	v[e] = e*e - 3*e;
 	e = e + 1;
 }
 \end{lstlisting}
@@ -146,13 +167,17 @@ Si consideri una funzione tale che:
 \[
 y=
 \begin{sistema}
-abs:\mathbb{R}\mapsto\mathbb{R} \\
-abs(x)=\abs{x}
+\mathop{\mathrm{abs}}\colon\mathbb{R}\mapsto\mathbb{R} \\
+\mathop{\mathrm{abs}}(x)=\abs{x}
 \end{sistema}
 \]
-All'interno di un programma, si possono definire delle parti di codice che eseguono delle operazioni specifiche (\emph{funzioni}, appunto). Per fare ciò, bisogna specificare un Dominio, un Codominio e la forma della funzione (la sequenza di istruzioni che la compongono). Successivamente, la funzione sarà disponibile per essere richiamata in altre parti del programma.
+All'interno di un programma, si possono definire delle parti di codice che eseguono delle operazioni specifiche (\emph{funzioni}, appunto).
+Per fare ciò, bisogna specificare un Dominio, un Codominio e la forma della funzione (la sequenza di istruzioni che la compongono).
+Successivamente, la funzione sarà disponibile per essere richiamata in altre parti del programma.
 
-Il codice~\vref{cod:absfunc} mostra la precedente funzione stesa in linguaggio C. Si noti che, dopo averla dichiarata, la si può richiamare come a riga 16. Si tenga inoltre presente che ogni programma in C \emph{deve} contenere una funzione \lstinline!main()!.
+Il codice~\ref{cod:absfunc} mostra la precedente funzione stesa in linguaggio \lang{C}.
+Si noti che, dopo averla dichiarata, la si può richiamare come a riga~\ref{richiamo_abs}.
+Si tenga inoltre presente che ogni programma in \lang{C} \emph{deve} contenere una funzione \lstinline!main()!.
 \begin{lstlisting}[caption={\em Definizione e chiamata della funzine \lstinline!abs()!.}, label={cod:absfunc}]
 /* codominio_nome della funzione_(dominio) */
 double abs ( double x ) {
@@ -169,8 +194,10 @@ double abs ( double x ) {
 int main ( int argc, char *argv[] ) {
 	double v, y;
 	scanf("%lf", &v);
-	y = abs(v);
+
+	y = abs(v);£!\label{richiamo_abs}!£
 	printf("%lf", y);
+
 	exit(EXIT_SUCCESS);
 }
 \end{lstlisting}
@@ -178,15 +205,15 @@ int main ( int argc, char *argv[] ) {
 Si considerino delle funzioni con due (o più) parametri formali, come la seguente:
 \[
 \begin{sistema}
-max:\mathbb{R}\times\mathbb{R}\mapsto\mathbb{R} \\
-max(x,y)=
+\mathop{\mathrm{max}}\colon\mathbb{R}\times\mathbb{R}\mapsto\mathbb{R} \\
+\mathop{\mathrm{max}}(x,y)=
 		\begin{cases}
 x,	& \text{ se } x>y \\
 y,	& \text{ se } x<y
 		\end{cases}
 \end{sistema}
 \]
-Essa trova il massimo tra due numeri. Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in C.
+Essa trova il massimo tra due numeri. Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in \lang{C}.
 \begin{lstlisting}[caption={\em Funzione \lstinline!max()!, con due argomenti.}, label={cod:MultiArgFunc}]
 double max ( double x, double y ) {
 	if ( x < y )
