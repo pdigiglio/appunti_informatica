@@ -11,43 +11,57 @@
 La\marginpar{Struttura di John von Neumann} struttura di un calcolatore descritta di seguito è rimasta più o meno immutata nel corso del tempo, sin dagli anni '40. Essa è stata attribuita al matematico e informatico \emph{John von Neumann} (figura~\vref{fig:vn}). Il calcolatore (figura~\vref{fig:neu}) è essenzialmente composto da:
 \begin{description}
 	\item
-[CPU] (\emph{Central Process Unit}, cioè \emph{Unità Centrale d'Elaborazione}), dove vengono  trasformati e manipolati i dati;
+[\ac{cpu}] Nella \ac{cpu} (ovvero \emph{Unità Centrale d'Elaborazione}) vengono  trasformati e manipolati i dati;
 	\item
-[RAM] (\emph{Random Access Memory}, ossia \emph{Memoria di Lavoro}) è una memoria volatile. Nel caso di spegnimento del computer, i dati contenuti in essa vanno perduti. Serve per conservare i dati durante l'esecuzione di un programma (o l'elaborazione degli stessi);
+[\ac{ram}] La \ac{ram} (ossia la \emph{Memoria di Lavoro}) è una memoria volatile: nel caso di spegnimento del computer, i dati contenuti in essa vanno perduti.
+Serve per conservare i dati durante l'esecuzione di un programma (o l'elaborazione degli stessi);
 	\item
-[I/O] (unità di \emph{Input/Output}, cioè d'ingresso e uscita) sono tutte quelle unità che consentono di immettere/acquisire dati nel/dal calcolatore. Sono, ad esempio: tastiera (input), mouse (input), monitor (output), stampante (output)\dots
+[\ac{io}] Le unità di \ac{io}, cioè d'\emph{Ingresso/Uscita} consentono di immettere/acquisire dati nel/dal calcolatore e sono, ad esempio, tastiera (input), mouse (input), monitor (output), stampante (output), etc\dots
 	\item
-[Memoria Permanente] ossia quei supporti che conservano i dati a lungo termine, anche dopo lo spegnimento del calcolatore. Sono, ad esempio, dischi fissi, floppy, Compact Disc\dots
+[Memoria Permanente] ossia quei supporti che conservano i dati a lungo termine, anche dopo lo spegnimento del calcolatore. Sono, ad esempio, dischi fissi, floppy, Compact Disc, etc\dots
 \end{description}
 
-Le prime tre componenti elencate sono assolutamente necessarie ai fini del  funzionamento del calcolatore.  Esse comunicano tra di loro per mezzo del \emph{bus}. Affinché le varie parti lavorino in modo sincrono, inoltre, in ogni macchina è presente anche un apparecchio simile ad un metronomo (il \emph{clock}), che manda dei segnali ad ogni parte del computer. Il clock, quindi, stabilisce la frequenza di lavoro.
+
+Le prime tre componenti elencate sono assolutamente \emph{necessarie} ai fini del funzionamento del calcolatore e comunicano tra loro per mezzo del \emph{bus}\index{bus}.
+Affinché le varie parti lavorino in modo sincrono, inoltre, in ogni macchina è presente il \emph{clock}\index{clock}, un apparecchio simile ad un metronomo che manda dei segnali ad ogni parte del computer.
+Il clock, quindi, stabilisce la frequenza di lavoro.
 
 
 
-La CPU contiene dei registri. In ognuno di essi si possono conservare dei dati, che la CPU è in grado di leggere ed utilizzare. La RAM, in modo analogo, è organizzata in celle indicizzate. Ogni cella è individuata da un numero intero non negativo. Tali numeri sono progressivi e vanno da $0$ a $n$. Affinché i programmi vengano eseguiti, è necessario memorizzare informazioni nella memoria di lavoro. Queste sono composte, in genere, sia dai dati da elaborare, sia dalle istruzioni tramite cui avverrà l'elaborazione.
+La \ac{cpu} contiene dei registri.
+In ognuno di essi si possono conservare dei dati, che la \ac{cpu} è in grado di leggere ed utilizzare.
+La \ac{ram}, in modo analogo, è organizzata in celle indicizzate da un numero intero non negativo.
+Tali numeri sono progressivi e vanno da $0$ a $n$.
+Affinché i programmi vengano eseguiti, è necessario memorizzare informazioni nella memoria di lavoro.
+Queste sono composte, in genere, sia dai dati da elaborare, sia dalle istruzioni tramite cui avverrà l'elaborazione.
 
-La \marginpar{Funzionamento della CPU} macchina (più strettamente parlando, la CPU) per funzionare esegue tre operazioni principali:
+La \marginpar{Funzionamento della \ac{cpu}} macchina (più strettamente parlando, la \ac{cpu}) per funzionare esegue tre operazioni principali:
 \begin{description}[]
 	\item
-[Fetch;] reperisce nella memoria di lavoro la prossima istruzione da eseguire. Tra i registri della CPU, infatti, ve n'è uno dedicato a contenere il numero della cella (chiamato anche \emph{indirizzo}) della RAM contenente l'istruzione successiva;
+[Fetch\index{fetch}] reperisce nella memoria di lavoro la prossima istruzione da eseguire. Tra i registri della \ac{cpu}, infatti, ve n'è uno dedicato a contenere il numero della cella (chiamato anche \emph{indirizzo}) della \ac{ram} contenente l'istruzione successiva;
 	\item
-[Decode;] una volta trovata l'istruzione da eseguire è necessario che questa venga decodificata dalla CPU;
+[Decode\index{decode}] una volta trovata l'istruzione da eseguire è necessario che questa venga decodificata dalla \ac{cpu};
 	\item
-[Execute;] avvenuta la decodifica, la CPU esegue l'istruzione. In generale, ciò comporta una modifica del contenuto dei registri. In particolare, cambierà almeno il contenuto del \emph{program counter} (il registro della CPU che contiene l'indirizzo dell'istruzione successiva).
+[Execute\index{execute}] avvenuta la decodifica, la \ac{cpu} esegue l'istruzione. In generale, ciò comporta una modifica del contenuto dei registri. In particolare, cambierà almeno il contenuto del \emph{program counter}\index{program counter} (il registro della \ac{cpu} che contiene l'indirizzo dell'istruzione successiva).
 \end{description}
 
 	\section{Rappresentazione della memoria del calcolatore e tipi di dato semplici}
 	\label{sec:mem}
-Può tornare utile immaginare la memoria di un computer come un foglio a quadretti (per gli attuali calcolatori, anche quelli presenti in ambienti domestici, il numero di ""quadretti'' è dell'ordine di $10^9$). Ogni quadretto può contenere uno ed un solo "“dato semplice'' (ad esempio un carattere, un numero, o un qualsiasi altro \emph{simbolo}).
+Può tornare utile immaginare la memoria di un computer come un foglio a quadretti (per gli attuali calcolatori, anche quelli presenti in ambienti domestici, il numero di ``quadretti'' è dell'ordine di \num{e9}). Ogni quadretto può contenere uno ed un solo ``dato semplice'' (ad esempio un carattere, un numero, o un qualsiasi altro \emph{simbolo}).
 
-Ogni dato (qualsiasi) occupa una certa quantità di quadretti (o celle). Ognuna di queste celle è identificata da un numero\footnote{Il calcolatore non è in grado di "“comprendere'' la numerazione decimale. Esso è in grado di codificare solo istruzioni che gli vengano passate in linguaggio binario.} progressivo (il suddetto \emph{indirizzo}). Possiamo contrassegnare uno o più quadretti consecutivi con un nome simbolico (spesso risulta abbastanza scomodo usare gli indirizzi per individuare la posizione dei dati). In questo modo, identifichiamo dei ""blocchi'' di quadretti. Essi \marginpar{Variabili} sono chiamati \emph{variabili}. Le variabili vengono classificate in \emph{tipi}.
+Ogni dato (qualsiasi) occupa una certa quantità di quadretti (o celle).
+Ognuna di queste celle è identificata da un numero progressivo (il suddetto \emph{indirizzo}).\footnote{Il calcolatore non è in grado di ``comprendere'' la numerazione decimale. Esso è in grado di codificare solo istruzioni che gli vengano passate in linguaggio binario.}
+Poiché spesso è abbastanza scomodo usare gli indirizzi per individuare la posizione dei dati, possiamo contrassegnare uno o più quadretti consecutivi con un nome simbolico.
+In\marginpar{Variabili} questo modo, identifichiamo dei ``blocchi'' di quadretti  chiamati \emph{variabili}\index{variabile}. Le variabili vengono classificate in \emph{tipi}\index{tipo}.
 
-Il concetto di tipo, non è una caratteristica di tutti i \emph{linguaggi di programmazione}. In C è necessario specificare il tipo di una variabile ma lo stesso non vale, ad esempio, per linguaggi come il Python. Ad ogni tipo di dato corrisponde una particolare quantità di memoria che il calcolatore \emph{alloca} (alcuni tipi richiedono più celle di altri).
+Il concetto di tipo, non è una caratteristica di tutti i \emph{linguaggi di programmazione}.
+In linguaggio \lang{C} è necessario specificare il tipo di una variabile ma lo stesso non vale, ad esempio, per linguaggi come il \lang{Python}.
+Ad ogni tipo di dato corrisponde una particolare quantità di memoria che il calcolatore \emph{alloca} (alcuni tipi richiedono più celle di altri).
 
-I \marginpar{Tipi primitivi} tipi \emph{primitivi} in C sono:
+I \marginpar{Tipi primitivi} \emph{tipi primitivi}\index{tipo!primitivo} in linguaggio \lang{C} sono:
 \begin{itemize}
 	\item
-\lstinline!char!: indica un carattere (lettera , cifra, segno…) ed occupa 1 cella;
+\lstinline!char!: indica un carattere (lettera , cifra, segno…) ed occupa una cella;
 	\item
 \lstinline!int!: indica un numero intero (anche negativo, cioè appartenente a $\mathbb{Z}$);
 	\item
@@ -56,29 +70,48 @@ I \marginpar{Tipi primitivi} tipi \emph{primitivi} in C sono:
 \end{itemize}
 
 	\section{Programmazione imperativa ed assegnamenti}
-Esistono diversi \emph{paradigmi} (schemi generali) di programmazione; qui ci occuperemo della \emph{programmazione imperativa}. In \marginpar{Assegnamento} questo tipo di programmazione l'operazione principale è l'\emph{assegnamento}, definito come il processo di inserimento dei dati nelle celle. Un esempio d'istruzione di assegnamento è la scrittura \lstinline!x = 5303;! (in C). Un'istruzione d'assegnamento è formata da tre parti:
+Esistono diversi \emph{paradigmi}\index{paradigma} (schemi generali) di programmazione.
+Qui ci occuperemo della \emph{programmazione imperativa}.
+In \marginpar{Assegnamento} questo tipo di programmazione l'operazione principale è l'\emph{assegnamento}\index{assegnamento}, definito come il processo di inserimento dei dati nelle celle.
+Un esempio d'istruzione di assegnamento è la scrittura ``\lstinline!x = 5303;!'' (in linguaggio \lang{C}).
+Un'istruzione d'assegnamento è formata da tre parti:
 \begin{itemize}
 	\item
-Nome della variabile (ad esempio, \lstinline!x!);
+Nome della variabile (ad esempio, ``\lstinline!x!'');
 	\item
-Operatore di assegnamento (\lstinline! = !);
+Operatore di assegnamento ``\lstinline!=!'';
 	\item
-Valore della variabile (\lstinline!5303!). Il valore della variabile deve essere compatibile con il suo tipo, altrimenti il computer segnalerà che c'è un errore.\footnote{Le variabili di tipo \lstinline!float! ""contengono'' un numero decimale. Si tenga presente che un assegnamento per una variabile di questo tipo dev'essere, ad esempio, \lstinline!f = 23.934;!. \emph{La virgola è di tipo anglosassone}. Il computer non riconoscerà un assegnamento del tipo \lstinline!f = 23,934;!.}
+Valore della variabile (ad esempio \lstinline!5303!) che deve essere \emph{compatibile} con il suo tipo, altrimenti il computer segnalerà che c'è un errore.\footnote{Le variabili di tipo \lstinline!float! ``contengono'' un numero decimale.
+Si tenga presente che un assegnamento per una variabile di questo tipo dev'essere, ad esempio, \lstinline!f = 23.934;!.
+La virgola è di tipo \emph{anglosassone}.
+Il computer non riconoscerà un assegnamento del tipo \lstinline!f = 23,934;!.
+}
 \end{itemize}
-Sono ammessi assegnamenti anche del tipo \lstinline!v = x;!, sempre a patto che le variabili \lstinline!v! e \lstinline!x! abbiano dei tipi compatibili tra di loro. Con questo assegnamento, anche la variabile \lstinline!v! ora ha il valore \lstinline!5303!.
+Sono ammessi assegnamenti anche del tipo ``\lstinline!v = x;!'', sempre a patto che le variabili \lstinline!v! e \lstinline!x! abbiano dei tipi compatibili tra di loro.
+Con questo assegnamento, anche la variabile \lstinline!v! ora ha il valore \lstinline!5303!.
 
-Le variabili possono anche essere delle funzioni (matematiche) come, ad esempio, \lstinline!y = v/10;!. Se \lstinline!v! è un intero (poniamo \lstinline!58!), il risultato sarà un intero (\lstinline!5!). Se, invece, \lstinline!v! è di tipo \lstinline!float!, allora otterremo come risultato \lstinline!5.8!. Possiamo anche scrivere degli assegnamenti in cui la stessa variabile compare da entrambe le parti. Ad esempio, \lstinline!x = x+1;! è un assegnamento valido. Questo non fa altro che aggiornare il valore della variabile \lstinline!x!.
+Le variabili possono anche essere delle funzioni (matematiche) come, ad esempio, ``\lstinline!y = v/10;!''.
+Se \lstinline!v! è un intero (poniamo \lstinline!58!), il risultato sarà un intero (\lstinline!5!).
+Se, invece, \lstinline!v! è di tipo \lstinline!float!, allora otterremo come risultato \lstinline!5.8!.
+Possiamo anche scrivere degli assegnamenti in cui la stessa variabile compare da entrambe le parti.
+Ad esempio, ``\lstinline!x = x+1;!'' è un assegnamento valido.
+Questo non fa altro che aggiornare il valore della variabile \lstinline!x!.
 
-Supponiamo ora di avere una variabile \lstinline!beta! che sia stata dichiarata, ad esempio, di tipo \lstinline!float!. Ammettiamo che essa contenga un certo valore e che noi vogliamo triplicare tale valore. Possiamo, in questo caso, scrivere \lstinline!beta = 3*beta;!. Ciò è lecito: anche se \lstinline!3! non è di tipo \lstinline!float!, \lstinline!3*beta! lo sarà. 
+Supponiamo ora di avere una variabile \lstinline!beta! che sia stata dichiarata, ad esempio, di tipo \lstinline!float!.
+Ammettiamo che essa contenga un certo valore e che noi vogliamo triplicare tale valore.
+Possiamo, in questo caso, scrivere ``\lstinline!beta = 3 * beta;!''.
+Ciò è lecito: anche se \lstinline!3! non è di tipo \lstinline!float!, la quantità \lstinline!3 * beta! lo sarà. 
 
-Per \marginpar{Dichiarazione} comunicare al computer il tipo di variabile che intendiamo usare, dobbiamo effettuare la già citata operazione di \emph{dichiarazione}. In C, essa assume la forma \lstinline!float gamma;!, oppure:
+Per \marginpar{Dichiarazione} comunicare al computer il tipo di variabile che intendiamo usare, dobbiamo effettuare la già citata operazione di \emph{dichiarazione}\index{dichiarazione}.
+In \lang{C}, essa assume la forma ``\lstinline!float gamma;!'', oppure:
 \begin{lstlisting}
 float beta, gamma;
 gamma = 1.0;
 beta = gamma + 5;
 \end{lstlisting}
+In generale, tutte le dichiarazioni vanno poste all'inizio del programma
 
-In generale, tutte le dichiarazioni vanno poste all'inizio del programma. Il C dispone anche di operatori aritmetici. I \marginpar{Principali operatori algebrici} principali operatori sono: \lstinline!+! (operatore somma), \lstinline!-! (operatore differenza), \lstinline!*! (operatore prodotto), \lstinline!/! (operatore quoziente), \lstinline!%! (operatore modulo, restituisce il resto di una divisione). Ad esempio:
+Il \lang{C} dispone anche di operatori aritmetici. I \marginpar{Principali operatori algebrici} principali operatori sono: \lstinline!+! (operatore somma), \lstinline!-! (operatore differenza), \lstinline!*! (operatore prodotto), \lstinline!/! (operatore quoziente), \lstinline!%! (operatore modulo, restituisce il resto di una divisione). Ad esempio:
 \begin{lstlisting}
 int z;
 z = 5%3;
@@ -87,7 +120,9 @@ restituisce un valore \lstinline!z = 2!.
 
 	\section{Strutture di controllo}
 	\label{sec:ContStruc}
-L'ordine con cui vengono eseguite le istruzioni dipende dalle \emph{strutture di controllo}. Esse sono, essenzialmente, gli assegnamenti ed altre poche istruzioni ed hanno il compito di ""gestire'' e, appunto, controllare il flusso delle informazioni durante l'esecuzione di un programma. Qualunque algoritmo può essere espresso per mezzo di tre strutture di controllo:
+L'ordine con cui vengono eseguite le istruzioni dipende dalle \emph{strutture di controllo}.
+Esse sono, essenzialmente, gli assegnamenti ed altre poche istruzioni ed hanno il compito di ``gestire'' e, appunto, controllare il flusso delle informazioni durante l'esecuzione di un programma.
+Qualunque algoritmo può essere espresso per mezzo di tre strutture di controllo:
 \begin{itemize}
 	\item
 Sequenza;
@@ -98,18 +133,24 @@ Iterazione.
 \end{itemize}
 
 		\subsection{Sequenza}
-La \emph{sequenza} è determinata dall'ordine in cui vengono scritte le istruzioni. Per convenzione, la ""lettura'' avviene dall'alto in basso e da sinistra verso destra. Così, istruzioni scritte ""in alto'' verranno eseguite prima di istruzioni scritte ""in basso''.
+La \emph{sequenza} è determinata dall'ordine in cui vengono scritte le istruzioni. Per convenzione, la ``lettura'' avviene dall'alto in basso e da sinistra verso destra. Così, istruzioni scritte ``in alto'' verranno eseguite prima di istruzioni scritte ``in basso''.
 
 		\subsection{Scelta}
-In C, la scelta si riconosce dalla preposizione \lstinline!if!. Ad esempio:
+In \lang{C}, la scelta si riconosce dalla preposizione \lstinline!if!. Ad esempio:
 
 \begin{lstlisting}
 if ( x < 0 )
 	x = -x;
 \end{lstlisting}
-Sintatticamente, le parentesi tonde sono obbligatorie. Esse racchiudono la condizione che deve essere verificata affinché il \emph{corpo} della scelta venga eseguito. La condizione viene talvolta chiamata \emph{test}. Se la condizione non è verificata, l'istruzione \lstinline!x = -x;! (che nel nostro caso rappresenta il corpo della scelta) non viene eseguita. Si noti che è possibile trovare corpi che comprendano più di una istruzione. In questo caso, tali istruzioni vanno incluse tra parentesi graffe. Se ne vedranno degli esempi in seguito.
+Sintatticamente, le parentesi tonde sono obbligatorie.
+Esse racchiudono la condizione che deve essere verificata affinché il \emph{corpo} della scelta venga eseguito.
+La condizione viene talvolta chiamata \emph{test}\index{test}.
+Se la condizione non è verificata, l'istruzione ``\lstinline!x = -x;!'' (che nel nostro caso rappresenta il corpo della scelta) non viene eseguita.
+Si noti che è possibile trovare corpi che comprendano più di una istruzione.
+In questo caso, tali istruzioni vanno incluse tra parentesi graffe.
+Se ne vedranno degli esempi in seguito.
 
-Per \marginpar{Operatori relazionali} il test, si dispone dei seguenti operatori relazionali: \lstinline!<! (operatore minore), \lstinline!<=! (operatore minore o uguale), \lstinline!>! (operatore maggiore), \lstinline!>=! (operatore maggiore o uguale), \lstinline!==! (operatore uguale), \lstinline?!=? (operatore diverso\footnote{In generale, il simbolo \lstinline?!? nei test equivale ad una negazione. Quindi \lstinline?!=? starebbe a significare "“non uguale'', cioè diverso.}).
+Per \marginpar{Operatori relazionali} il test, si dispone dei seguenti operatori relazionali: \lstinline!<! (operatore minore), \lstinline!<=! (operatore minore o uguale), \lstinline!>! (operatore maggiore), \lstinline!>=! (operatore maggiore o uguale), \lstinline!==! (operatore uguale), \lstinline?!=? (operatore diverso\footnote{In generale, il simbolo \lstinline?!? nei test equivale ad una negazione. Quindi \lstinline?!=? starebbe a significare ``non uguale'', cioè diverso.}).
 
 
 \begin{code}
@@ -175,17 +216,17 @@ else if (test2)
 \caption{Sintassi della scelta \lstinline!if (...)  else!}
 \label{riq:IfChoose}
 \end{code}
-È possibile trovare anche scelte che presentano le sintassi elencate nel riquadro~\vref{riq:IfChoose}. Nel codice~\vref{code:corpo}, il corpo della scelta \lstinline!if! è composto da tutte le istruzioni contenute tra parentesi graffe. Il calcolatore le esegue come se fossero una sola istruzione (naturalmente, rispettando la convenzione di eseguire prima quelle scritte"" in alto'').
+È possibile trovare anche scelte che presentano le sintassi elencate nel riquadro~\vref{riq:IfChoose}. Nel codice~\vref{code:corpo}, il corpo della scelta \lstinline!if! è composto da tutte le istruzioni contenute tra parentesi graffe. Il calcolatore le esegue come se fossero una sola istruzione (naturalmente, rispettando la convenzione di eseguire prima quelle scritte  ``in alto'').
 
-In \marginpar{Struttura caratteristica di un programma in C} generale, un programma scritto in C ha una struttura generale caratteristica. Essa si ripresenta quasi uguale nella maggior parte dei programmi ed è mostrata nel codice~\vref{cod:GenProSyn}.
-\begin{lstlisting}[caption={[\em Struttura di un programma in linguaggio C.] {Struttura generale di un programma in linguaggio C.}},float,label={cod:GenProSyn}]
+In \marginpar{Struttura caratteristica di un programma in \lang{C}} generale, un programma scritto in \lang{C} ha una struttura generale caratteristica. Essa si ripresenta quasi uguale nella maggior parte dei programmi ed è mostrata nel codice~\vref{cod:GenProSyn}.
+\begin{lstlisting}[caption={[\em Struttura di un programma in linguaggio \lang{C}.] {Struttura generale di un programma in linguaggio \lang{C}.}},float,label={cod:GenProSyn}]
 #include <stdio.h>
 
 int main (void) {
 	int x, y;
 	float z, f;
 
-	/*istruzioni */
+	/* istruzioni */
 
 	exit(...);
 }
