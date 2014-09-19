@@ -138,6 +138,7 @@
 	savemem
 ]{listings}
 \usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
+\newcommand{\MyComment}[1]{$\langle${\em\sffamily{{#1}}}$\rangle$}
 \lstset{
 	language=[ISO]C++,%
 	keywordstyle=\color{NavyBlue},%\bfseries,
@@ -158,6 +159,8 @@
 	frame=L,
 	belowcaptionskip=.75\baselineskip,
 	tabsize=4,
+	moredelim=[is][\em\sffamily]{|*}{*|},
+	escapeinside={£!}{!£},
 %	inputencoding=utf8,
 %	extendedchars=false,
 %	literate={à}{{\'a}}1 {é}{{\'e}}1,
@@ -382,8 +385,8 @@
 
 \mainmatter
 %	\input{lezioni/lezI}
-	\input{lezioni/lezII}
-%	\input{lezioni/lezIII}
+%	\input{lezioni/lezII}
+	\input{lezioni/lezIII}
 %	\input{lezioni/lezIV}
 %	\input{lezioni/lezV}
 %	\input{lezioni/lezVI}
