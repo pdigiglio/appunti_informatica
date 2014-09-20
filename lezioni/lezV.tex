@@ -1,56 +1,76 @@
 \chapter[Lezione V]{Lezione V\newline\small{\emph{21/04/2011}}}
 	\section{Ancora sulle funzioni}
 	\label{sec:fun2}
-La funzione è una specie di ""scatola'' cui si associa un nome simbolico: vi entrano dei dati e ne esce il risultato della loro elaborazione. Quest'ultima avviene per mezzo delle istruzioni che ne compongono il corpo.
+La funzione è una specie di ``scatola'' cui si associa un nome simbolico: vi entrano dei dati e ne esce il risultato della loro elaborazione.
+Quest'ultima avviene per mezzo delle istruzioni che ne compongono il corpo.
 
-In \marginpar{L'istruzione \lstinline!return!} una funzione, l'istruzione \lstinline!return! è sempre l'ultima ad essere eseguita e ne indica la fine. Si noti che ciò non vuol dire essa che debba essere l'ultima ad essere scritta. Se è inclusa in una scelta, ad esempio, non è affatto detto che debba essere eseguita. \`E lecito, dunque, che dopo \lstinline!return ...;! vi siano altre righe di codice.
+In \marginpar{L'istruzione \lstinline!return!} una funzione, l'istruzione \lstinline!return! è sempre l'ultima ad essere eseguita e ne indica la fine.
+Si noti che ciò non vuol dire essa che debba essere l'ultima ad essere scritta.
+Se è inclusa in una scelta, ad esempio, non è affatto detto che debba essere eseguita.
+\`E lecito, dunque, che dopo ``\lstinline$return $\MyComment{\dots}\lstinline$;$'' vi siano altre righe di codice.
 
-Quando una funzione viene eseguita, il processo principale si ""blocca'' in attesa del suo risultato. Tutte le variabili create durante questo lasso di tempo vengono cancellate quando essa termina (all'istruzione \lstinline!return!, appunto). 
+Quando una funzione viene eseguita, il processo principale si ``blocca'' in attesa del suo risultato.
+Tutte le variabili create durante questo lasso di tempo vengono cancellate quando essa termina (all'istruzione \lstinline!return!, appunto). 
 
-Nella\marginpar{Argomenti formali e reali} definizione della funzione, le variabili che si trovano all'interno delle parentesi tonde sono dette \emph{argomenti formali}. Nel momento in cui la si richiama in qualche altra riga del codice, le si passano degli \emph{argomenti reali}. Il codice~\vref{cod:callfunc} è un esempio di chiamata della funzione \lstinline!flip()! (all'interno della funzione \lstinline!main()!). Qui, le variabili \lstinline!a!, \lstinline!b! e \lstinline!c! sono gli argomenti reali della chiamata della funzione \lstinline!flip()!. Si noti che essi sono stati dichiarati in modo da essere compatibili con i tipi richiesti dagli argomenti formali.
+Nella\marginpar{Argomenti formali e reali} definizione della funzione, le variabili che si trovano all'interno delle parentesi tonde sono dette \emph{argomenti formali}\index{argomento formale}.
+Nel momento in cui la si richiama in qualche altra riga del codice, le si passano degli \emph{argomenti reali}\index{argomento reale}.
+Il codice~\ref{cod:callfunc} è un esempio di chiamata della funzione \lstinline!flip()! (all'interno della funzione \lstinline!main()!).
+Qui, le variabili \lstinline!a!, \lstinline!b! e \lstinline!c! sono gli argomenti reali della chiamata della funzione \lstinline!flip()!.
+Si noti che essi sono stati dichiarati in modo da essere compatibili con i tipi richiesti dagli argomenti formali.
 \begin{lstlisting}[caption={\em Chiamata della funzione \lstinline!flip()!.}, label={cod:callfunc}]
 double flip (int x, double y, int z ) {
-	/* istruzioni */
-	return ... ;
+
+	£!\MyComment{istruzioni}!£
+
+	return £!\MyComment{\dots}!£;
 }
 
 int main ( int argc, char *argv[] ) {
 	int a, c;
 	double b, x;
+
 	x = flip( a, b, c );
-	...
+
+	£!\MyComment{\dots}!£
 }
 \end{lstlisting}
 
-Le\marginpar{Variabili locali e globali} variabili definite in qualsiasi funzione si prendono il nome di \emph{variabili locali} della funzione \lstinline!x()! (dove \lstinline!x()! è il nome della stessa: \lstinline!flip()!, ad esempio). In C, esse si distinguono dalle  \emph{variabili globali}. Queste ultime, infatti, sono quelle dichiarate al di fuori di tutte le funzioni e restano a disposizione di ognuna di esse per tutta la durata del programma (cioè della funzione \lstinline!main()!). Ogni funzione può modificare il valore di una variabile globale, mentre non è possibile richiamare direttamente\footnote{Lo si può però fare tramite i puntatori (vedi il paragrafo~\vref{sec:pointers}).} una variabile della funzione \lstinline!flip()! dalla \lstinline!main()!, ad esempio.
 
-La\marginpar{Passaggio per valore} comunicazione tra funzioni avviene tramite un procedimento chiamato \emph{passaggio per valore} (descritto nel prossimo esempio). Una funzione riceve il valore di una variabile come parametro reale, ma \emph{non} può modificare il valore assegnato alla stessa\footnote{Questo non è sempre vero. A causa della loro stretta relazione coi puntatori, è possibile che il valore di una variabile dichiarata come array passata come argomento reale venga modificata durante l'esecuzione di una funzione (si veda il paragrafo~\vref{sec:pointers}).}. Quando una funzione viene eseguita, il calcolatore le riserva uno spazio chiamato \emph{record di attivazione}.
+Le\marginpar{Variabili locali e globali} variabili definite in qualsiasi funzione prendono il nome di \emph{variabili locali}\index{variabile!locale} della funzione \lstinline!x()! (dove \lstinline!x()! è il nome della stessa: \lstinline!flip()!, ad esempio).
+In \lang{C}, esse si distinguono dalle  \emph{variabili globali}\index{variabile!globale} che, dichiarate al di fuori di tutte le funzioni, restano a disposizione di ognuna di esse per tutta la durata del programma---cioè della funzione \lstinline!main()!.
+Ogni funzione può modificare il valore di una variabile globale ma non è possibile richiamare direttamente una variabile della funzione \lstinline!flip()! dalla funzione \lstinline!main()!, ad esempio.\footnote{Lo si può però fare tramite i puntatori (vedi il paragrafo~\ref{sec:pointers} a pagina~\pageref{sec:pointers}).}
+
+La\marginpar{Passaggio per valore} comunicazione tra funzioni avviene tramite un procedimento chiamato \emph{passaggio per valore} (descritto nel prossimo esempio).
+Una funzione riceve il valore di una variabile come parametro reale, ma \emph{non} può modificare il valore assegnato alla stessa.\footnote{Questo non è sempre vero. A causa della loro stretta relazione coi puntatori, è possibile che il valore di una variabile dichiarata come array passata come argomento reale venga modificata durante l'esecuzione di una funzione (si veda sempre il paragrafo~\ref{sec:pointers} a pagina~\pageref{sec:pointers}).}
+Quando una funzione viene eseguita, il calcolatore le riserva uno spazio chiamato \emph{record di attivazione}\index{record di attivazione}.
 
 Si supponga di voler scrivere un programma che calcola la somma dei primi $n$ elementi di un array:
 \begin{lstlisting}
-#include <...>
-...
 double somma ( double v[], int n ) {
 	int i = 0;
 	double s = 0.0;
+
 	while ( i < n) {
 		s = s + v[i];
 		i = i + 1;
 	}
+
 	return s;
 }
-...
+
 int main ( int argc, char *argv[] ) {
 	double m[10], p[20], v, w;
-	...
+
 	v = somma( m, 10 );
 	w = somma( p, 15 );
-	...
+
+	£!\MyComment{\dots}!£
+
 }
 \end{lstlisting}
-Si noti che tale programma funziona se e solo se, quando si chiama la funzione \lstinline!somma()!, il secondo argomento è minore o uguale alla lunghezza del vettore passato come primo argomento. In caso contrario, si otterrà soltanto un errore di \emph{segmentazione}.
+Si noti che tale programma funziona se e solo se, quando si chiama la funzione \lstinline!somma()!, il secondo argomento è minore o uguale alla lunghezza del vettore passato come primo argomento. In caso contrario, si otterrà soltanto un \emph{errore di segmentazione}.
 
-Il codice~\ref{code:char} nel riquadro~\vref{riq:char}, introduce ora un nuovo tipo di variabile, che corrisponde al “simbolo”.
+
 \begin{code}
 \begin{minipage}{0.45\columnwidth}
 	\begin{lstlisting}[caption={\em Il tipo \lstinline!char!.},nolol,label={code:char}]
@@ -65,18 +85,30 @@ char x = 'a';
 printf("%c", x + 1);
 	\end{lstlisting}
 \end{minipage}
-\caption{I caratteri in C.}
+\caption{I caratteri in \lang{C}.}
 \label{riq:char}
 \end{code}
+Il codice~\ref{code:char} nel riquadro~\ref{riq:char}, introduce ora un nuovo tipo di variabile, che corrisponde al “simbolo”.
+I vettori di caratteri costituiscono la rappresentazione delle parole in \lang{C}. 
+Le variabili di tipo \lstinline!char! si dichiarano racchiudendo il valore da assegnare tra singoli apici. Anche i numeri possono essere considerati dei caratteri, purché racchiusi tra apici.
+Dopo aver dichiarato un numero come carattere, tuttavia, non è possibile eseguire le consuete operazioni algebriche su di esso.
 
-I vettori di caratteri costituiscono la rappresentazione delle parole in C.  Le variabili di tipo \lstinline!char! si dichiarano racchiudendo il valore da assegnare tra singoli apici. Anche i numeri possono essere considerati dei caratteri, purché racchiusi tra apici. Dopo aver dichiarato un numero come carattere, tuttavia, non è possibile eseguire le consuete operazioni algebriche su di esso.
-
-Nel \marginpar{Rappresentazione dei caratteri} calcolatore, ad ogni carattere è assegnata una sequenza di cifre binarie (in genere, 8 cifre) che è effettivamente un numero. Pertanto, l'espressione \lstinline!p[3]*4! ha significato, ma non è quello che ci si aspetterebbe. La codifica numerica dei caratteri, tuttavia, può consentire delle operazioni interessanti. Le lettere dell'alfabeto, ad esempio, sono numerate in ordine progressivo\footnote{Le lettere maiuscole sono poste in ordine progressivo tra di loro, così come quelle minuscole. Tuttavia, le rappresentazioni di \lstinline!a! e \lstinline!B! non hanno differiscono tra di loro per un unità.}. Con un programma simile a quello del codice~\vref{code:Printb}, il calcolatore stamperà a schermo il carattere \lstinline!b!. Tale rappresentazione dei caratteri permette, inoltre, di ordinare alfabeticamente le parole.
+Nel \marginpar{Rappresentazione dei caratteri} calcolatore, ad ogni carattere è assegnata una sequenza di cifre binarie (in genere, \num{8} cifre) che è effettivamente un numero.
+Pertanto, l'espressione ``\lstinline!p[3] * 4!'' ha significato, ma non è quello che ci si aspetterebbe.
+La codifica numerica dei caratteri, tuttavia, può consentire delle operazioni interessanti.
+Le lettere dell'alfabeto, ad esempio, sono numerate in ordine progressivo.\footnote{Le lettere maiuscole sono poste in ordine progressivo tra di loro, così come quelle minuscole. Tuttavia, le rappresentazioni di \lstinline!a! e \lstinline!B! non hanno differiscono tra di loro per un unità.}
+Con un programma simile a quello del codice~\ref{code:Printb}, il calcolatore stamperà a schermo il carattere ``b''.
+Tale rappresentazione dei caratteri permette, inoltre, di ordinare alfabeticamente le parole.
 
 		\subsection{Filtri}
-L'istruzione\marginpar{La funzione \lstinline!getchar();!} \lstinline!x = getchar();! comunica all'esecutore di leggere il carattere successivo dallo standard input (in genere, la tastiera) e di toglierlo dalle serie dei ""caratteri in entrata''. \lstinline!getchar()! è una funzione che non ammette parametri e ha come unico risultato l'assegnamento del carattere letto alla variabile cui è associata (nella fattispecie, \lstinline!x!). La\marginpar{La funzione \lstinline!putchar();!} funzione \lstinline!putchar(x);!, invece, stampa sullo \emph{standard output} (\lstinline!stdout!, in genere il monitor) il valore della variabile \lstinline!x!.
+L'istruzione\marginpar{La funzione \lstinline!getchar();!} ``\lstinline!x = getchar();!'' comunica all'esecutore di leggere il carattere successivo dallo standard input (in genere, la tastiera), assegnarlo alla variabile \lstinline!x! e di toglierlo dalle serie dei ``caratteri in entrata''.
+La funzione \lstinline!getchar()! non ammette parametri e ha come unico risultato l'assegnamento del carattere letto alla variabile cui è associata (nella fattispecie, \lstinline!x!).
+L'\marginpar{La funzione \lstinline!putchar();!}istruzione ``\lstinline!putchar(x);!'', invece, stampa sullo \emph{standard output}\index{standard output} (\lstinline!stdout!\index{stdout@\texttt{stdout}}, in genere il monitor) il valore della variabile \lstinline!x!.
 
-Il programma nel codice~\vref{cod:eco} ""fa l'eco'' di quanto riceve dallo standard input. Esso appartiene alla famiglia dei \emph{filtri}, cioè programmi che leggono dei caratteri ed eseguono delle operazioni su di essi. \lstinline!EOF! è una sequenza di caratteri speciale (del linguaggio C) che sta per \lstinline!End Of File!. Per i sistemi UNIX, la sequenza riconosciuta come \lstinline!EOF! è la combinazione di tasti \lstinline!CTRL+D!. 
+Il programma nel codice~\vref{cod:eco} ``fa l'eco'' di quanto riceve dallo standard input.
+Esso appartiene alla famiglia dei \emph{filtri}, cioè programmi che leggono dei caratteri ed eseguono delle operazioni su di essi.
+Il valore \lstinline!EOF! è una sequenza di caratteri speciale (del linguaggio \lang{C}) che sta per \emph{End Of File}.
+Per i sistemi \os{UNIX}, la sequenza riconosciuta come \lstinline!EOF! è la combinazione di tasti \key{CTRL + D}. 
 \begin{lstlisting}[caption={\em Esempio di filtro.}, label={cod:eco}]
 #include <stdio.h>
 #include <stdlib.h>
@@ -84,11 +116,15 @@ Il programma nel codice~\vref{cod:eco} ""fa l'eco'' di quanto riceve dallo stand
 
 int main ( int argc, char *argv[] ) {
 	int c;
+	/* leggo il primo carattere */
 	c = getchar();
-	while ( c != EOF ) {
+	while ( c != EOF ) { /* fino a quando non premo 'CTRL + D' */
+		/* stampo il carattere */
 		putchar(c);
+		/* leggo il successivo */
 		c = getchar();
 	}
-exit(EXIT_SUCCESS);
+
+	exit(EXIT_SUCCESS);
 }
 \end{lstlisting}

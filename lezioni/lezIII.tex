@@ -16,24 +16,26 @@ Un espediente piuttosto frequente è mostrato nel codice~\vref{cod:conv}.
 Si dichiara una variabile di tipo \lstinline!int! e si fa in modo che ad ogni iterazione tale variabile venga incrementata di un certo numero, ad esempio \num{1}.
 Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contatore}\index{contatore}. Si fissa la condizione per la continuazione dell'iterazione (o \emph{ciclo}\index{ciclo}) in modo tale che, quando il contatore raggiunge un dato valore, il ciclo si blocchi.
 \begin{lstlisting}[caption={{\em Tabella di conversione Euro/Lira.}}, label={cod:conv}]
-...
-/* 
-** dichiaro la variabile (contatore) e la ini-
-** zializzo, assegnandole un  valore iniziale
-*/
+£!\MyComment{\dots}!£
+
+/* dichiaro la variabile (contatore) e la inizializzo */
 int i = 0; 
 while ( i < 10 ) {
 	printf("%d ... %f", i, i*1936.27);
+
 	/* incremento il valore del contatore */
 	i = i + 1; 
 }
-...
+
+£!\MyComment{\dots}!£
 \end{lstlisting}
 L'iterazione, nel codice esempio~\ref{cod:conv}, procederà finché la variabile \lstinline!i! non avrà assunto il valore \num{10} (quindi, il ciclo si ripeterà \num{10} volte).\footnote{Un errore molto frequente è impostare un ciclo di questo tipo dimenticandosi d'incrementare il contatore. Questo produrrebbe un ciclo infinito! Inoltre, il calcolatore non ha alcun modo di accorgersi di siffatti errori (si veda il paragrafo~\ref{subsec:ins}).}
 In questo esempio, \marginpar{Il ciclo \lstinline!while!}il ciclo è stato introdotto introdotto usando la locuzione:
 \begin{lstlisting}
 while ( £!\MyComment{test}!£ ) {
-	...
+
+	£!\MyComment{\dots}!£
+
 }
 \end{lstlisting}
 Essa inizializza un ciclo che  procede finché il \MyComment{test} espresso tra parentesi rimarrà verificato. Quando la condizione ``\lstinline!i < 10!'' diventa falsa, l'esecutore salta il blocco \lstinline!while! e procede con il comando che segue.
@@ -163,14 +165,14 @@ Un insieme $Y$ detto \emph{Codominio} della funzione $f$;
 Una legge tale per cui $\forall x \in X, \exists! \ y \in Y \mid y=f(x)$.
 \end{itemize}
 
-Si consideri una funzione tale che:
-\[
-y=
-\begin{sistema}
-\mathop{\mathrm{abs}}\colon\mathbb{R}\mapsto\mathbb{R} \\
-\mathop{\mathrm{abs}}(x)=\abs{x}
-\end{sistema}
-\]
+Si consideri la funzione \emph{valore assoluto} $\mathop{\mathrm{abs}}\colon\R\to\R^+\cup\Set{0}$ tale che $y = \mathop{\mathrm{abs}}(x)=\abs{x}$.
+%\[
+%y=
+%\begin{sistema}
+% \\
+%\mathop{\mathrm{abs}}(x)=\abs{x}
+%\end{sistema}
+%\]
 All'interno di un programma, si possono definire delle parti di codice che eseguono delle operazioni specifiche (\emph{funzioni}, appunto).
 Per fare ciò, bisogna specificare un Dominio, un Codominio e la forma della funzione (la sequenza di istruzioni che la compongono).
 Successivamente, la funzione sarà disponibile per essere richiamata in altre parti del programma.
@@ -181,10 +183,7 @@ Si tenga inoltre presente che ogni programma in \lang{C} \emph{deve} contenere u
 \begin{lstlisting}[caption={\em Definizione e chiamata della funzine \lstinline!abs()!.}, label={cod:absfunc}]
 /* codominio_nome della funzione_(dominio) */
 double abs ( double x ) {
-	/*
-	** Il corpo di una funzione va sempre posto
-	**fra parentesi graffe.
-	*/
+	/* Il corpo di una funzione va sempre posto fra parentesi graffe */
 	if ( x < 0 )
 		return -x;
 	else
@@ -202,18 +201,19 @@ int main ( int argc, char *argv[] ) {
 }
 \end{lstlisting}
 
-Si considerino delle funzioni con due (o più) parametri formali, come la seguente:
+Si considerino delle funzioni con due (o più) parametri formali, il \emph{massimo} tra due numeri $\max\colon\R\x\R\to\R$ tale che 
 \[
-\begin{sistema}
-\mathop{\mathrm{max}}\colon\mathbb{R}\times\mathbb{R}\mapsto\mathbb{R} \\
-\mathop{\mathrm{max}}(x,y)=
+%\begin{sistema}
+%\mathop{\mathrm{max}}\colon\mathbb{R}\times\mathbb{R}\mapsto\mathbb{R} \\
+\mathop{\mathrm{max}}(x,y)\coloneqq
 		\begin{cases}
-x,	& \text{ se } x>y \\
-y,	& \text{ se } x<y
+x,	& \text{se } x>y \\
+y,	& \text{se } x<y
 		\end{cases}
-\end{sistema}
+%\end{sistema}
 \]
-Essa trova il massimo tra due numeri. Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in \lang{C}.
+%Essa trova il massimo tra due numeri.
+Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in \lang{C}.
 \begin{lstlisting}[caption={\em Funzione \lstinline!max()!, con due argomenti.}, label={cod:MultiArgFunc}]
 double max ( double x, double y ) {
 	if ( x < y )
