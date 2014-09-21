@@ -16,6 +16,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english,italian]{babel}
 
+\usepackage{showkeys}%,showidx}
+
 \usepackage[
 	table,
 	dvipsnames,
@@ -142,10 +144,10 @@
 \usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
 \newcommand{\MyComment}[1]{$\langle${\em\sffamily{{#1}}}$\rangle$}
 \lstset{
-	language=[ISO]C++,%
-	keywordstyle=\color{NavyBlue},%\bfseries,
+	language=C,%
+	keywordstyle={\color{NavyBlue}\bfseries},
 	basicstyle=\small\ttfamily,
-	backgroundcolor=\color{blue!10},
+	backgroundcolor=\color{blue!7},
 %	identifierstyle=\color{NavyBlue},
 	commentstyle=\color{darkgray!80},%\color{green}\ttfamily,
 	stringstyle=\color{PineGreen},
@@ -390,9 +392,9 @@
 %	\input{lezioni/lezII}
 %	\input{lezioni/lezIII}
 %	\input{lezioni/lezIV}
-	\input{lezioni/lezV}
+%	\input{lezioni/lezV}
 %	\input{lezioni/lezVI}
-%	\input{lezioni/lezVII}
+	\input{lezioni/lezVII}
 %	\input{lezioni/lezVIII}
 %	\input{lezioni/lezIX}
 %	\input{lezioni/lezX}
