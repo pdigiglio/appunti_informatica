@@ -1,8 +1,12 @@
 \chapter[Lezione VIII]{Lezione VIII\newline\small\emph{12/05/2010}}
 	\section{Costruzione di una lista concatenata}
-Come già accennato, una lista concatenata è una sequenza di oggetti (chiamati anche \emph{nodi}) nella quale è definita una relazione d'ordine. Il criterio d'ordinamento è dato dalla successione dei puntatori. In una lista concatenata, per raggiungere l'n-esimo elemento bisogna percorrere tutti gli $n-1$ elementi precedenti.
+Come già accennato, una lista concatenata è una sequenza di oggetti, chiamati anche \emph{nodi}\index{nodo}, nella quale è definita una relazione d'ordine data dalla successione dei puntatori.
+In una lista concatenata, per raggiungere l'$n$-esimo elemento bisogna percorrere tutti gli $n-1$ elementi precedenti.
 
-Per costruire concretamente una lista concatenata c'è bisogno, oltre che degli elementi della lista, di una variabile (puntatore) che contenga l'indirizzo del primo elemento. In generale, risulta comodo chiamare questa variabile \lstinline!*testa!, come nel codice~\vref{cod:ListaConc}. All'inizio la lista è vuota ma \lstinline!testa! deve avere un valore legittimo. Per convenzione si pone, in questo caso, \lstinline!testa = NULL!. Si noti che l'assegnamento \lstinline!(*pn).next = testa;! equivale a \lstinline!pn->next = testa;!: usare una delle due sintassi è indifferente ai fini della compilazione del programma.
+Per costruire concretamente una lista concatenata c'è bisogno, oltre che degli elementi della lista, di una variabile (puntatore) che contenga l'indirizzo del primo elemento.
+In generale, risulta comodo chiamare questa variabile \lstinline!*testa!, come nel codice~\ref{cod:ListaConc}.
+All'inizio la lista è vuota ma \lstinline!testa! deve avere un valore legittimo: per convenzione si assegna, in questo caso, \lstinline!testa = NULL!.
+Si noti che l'assegnamento \lstinline!(*pn).next = testa! equivale a \lstinline!pn->next = testa!: usare una delle due sintassi è indifferente ai fini della compilazione del programma.
 \begin{lstlisting}[caption={\em Costruzione di una lista concatenata.}, label={cod:ListaConc}]
 struct nodo {
 	int v;
@@ -13,15 +17,23 @@ struct nodo {
 typedef struct nodo Nodo;
 testa = NULL;
 
-pn = (Nodo *)malloc(sizeof(Nodo));
+/* alloco la memoria per il primo record */
+pn = ( Nodo * ) malloc( sizeof( Nodo ) );
+/* assegno al contatore l'indirizzo del primo record */
 testa = pn;
+
 int i = 1;
 while ( i < 10 ) {
-	pn = (Nodo *)malloc(sizeof(Nodo));	
+	/* alloco memoria per record successivi */
+	pn = ( Nodo * ) malloc( sizeof( Nodo ) );	
 	if ( pn == NULL )
-		exit(EXIT_FAILURE);
+		exit( EXIT_FAILURE );
+
+	/* collego il record al precedente */
 	(*pn).next = testa;
+	/* modifico la testa dello stack */
 	testa = pn;
+
 	i++;
 } 
 \end{lstlisting}
@@ -34,15 +46,17 @@ while ( pn != NULL ) {
 	pn = pn->next;
 }
 \end{lstlisting}
-Si tenga presente che, se la lista è vuota, il ciclo fallisce perché la condizione \lstinline!pn == NULL! è verificata fin dal primo elemento.
+Si tenga presente che, se la lista è vuota, il ciclo fallisce perché il test ``\lstinline!pn == NULL!'' è verificato fin dal primo elemento.
 
 	\section{Esempi}
-I codici~\vref{tab:begin}, ~\vref{tab:end} e~\vref{tab:middle} sono esempi di come inserire nodi in una lista concatenata rispettivamente all'inizio, alla fine ed in una posizione intermedia.\footnote{Nell'esempio~\ref{tab:middle} non è stata inserita la \lstinline!/* condizione */! perché dipende dal criterio che si vuole usare per inserire il nodo.}
+I codici~\ref{tab:begin},~\ref{tab:end} e~\ref{tab:middle} sono esempi di come inserire nodi in una lista concatenata rispettivamente all'inizio, alla fine ed in una posizione intermedia.
+Nell'esempio~\ref{tab:middle} non sono state inserite le \MyComment{altre condizioni} perché dipendono dal criterio che si vuole usare per inserire il nodo.
 	
 \begin{lstlisting}[caption={\emph{Inserimento in testa}}, label={tab:begin}]
-pn = (Nodo *)malloc(sizeof(Nodo));
-if ( ... )
-	exit(...);
+pn = ( Nodo * ) malloc( sizeof( Nodo ) );
+if ( pn == NULL )
+	exit( EXIT_FAILURE );
+
 pn->next = testa;
 testa = pn;
 \end{lstlisting}
@@ -51,23 +65,18 @@ testa = pn;
 /* pi funge da contatore */
 pi = testa;
 /* scorro la lista finche' non finisce */
-while( pi->next != NULL)
+while( pi->next != NULL )
 	pi = pi->next;
-/*
-** assegno all'ultimo puntatore l'indizizzo
-** del nodo pn (creato con malloc();)
-*/
+
+/* assegno all'ultimo puntatore l'indirizzo di pn (creato con malloc()) */
 pi->next = pn;
-/*
-** Ora pn e' l'ultimo, quindi il suo campo
-** .next dev'essere NULL
-*/
+/* pn e' l'ultimo, quindi il suo campo .next dev'essere NULL */
 pn->next = NULL;
 \end{lstlisting}
 
 \begin{lstlisting}[caption={\emph{Inserimento intermedio}}, label={tab:middle}]
 pi = testa;
-while( pi->next /* condizione */)
+while( pi->next £!\MyComment{altre condizioni}!£ )
 	pi = pi->next;
 
 pn->next=pi->next;
