@@ -58,7 +58,9 @@
 \captionsetup[table]{skip=\medskipamount, position=top}
 \captionsetup[figure]{position=bottom}
 \usepackage{MyMathDef}
-\usepackage{siunitx}
+\usepackage[%
+	binary-units=true, % to have \bit and \byte
+]{siunitx}
 \sisetup{
 	range-phrase={ a },
 	separate-uncertainty,
