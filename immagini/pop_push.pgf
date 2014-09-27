@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+	scale = 1.5,
+	x={(1 cm,0 cm)},
+	z={(-.35cm,-.22cm)},
+	y={(0cm,1cm)}
+]
+\tikzset{zxplane/.style={canvas is zx plane at y=#1,very thin}}
+\tikzset{yxplane/.style={canvas is yx plane at z=#1,very thin}}
+
+%\begin{scope}[]
+			\node[rotate = 90] () at (-1.3,.5) {stack};
+		\begin{scope}[canvas is yx plane at z=0]
+			\draw [->, shorten >=4pt] (2.5,-1.1) arc (0:90:1) node [at start,above] {\algo{pop}};
+			\draw [<-,shorten >=4pt] (2.5,1.1) arc (0:-90:1) node [at start,above] {\algo{push}};
+
+		\end{scope}
+
+		\begin{scope}[zxplane=1.5]
+			\draw[fill=black!50!blue, opacity=.3] (1,0) arc (0:360:1) ;
+		\end{scope}
+
+	\foreach \x in {0,1,...,10} {
+		\begin{scope}[zxplane=\x/10]
+			\draw[fill=black!50, opacity=.3] (1,0) arc (0:360:1) ;
+		\end{scope}
+	}
+%\end{scope}
+
+\end{tikzpicture}
