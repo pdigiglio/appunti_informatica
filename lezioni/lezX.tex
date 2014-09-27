@@ -2,18 +2,28 @@
 	\section{Breve storia dell'informatica}
 L'\emph{informatica} è una disciplina che si fonda su due pilastri fondamentali:
 \begin{description}
-	\item[Teoria della computazione;] (Turing, Church, Post nel 1936) che si occupa di studiare il concetto di ""algoritmo'' e tutto ciò che ne consegue;
+	\item[Teoria della computazione;] (Turing, Church, Post nel 1936) che si occupa di studiare il concetto di \emph{algoritmo} e tutto ciò che ne consegue;
 	\item[Teoria dell'informazione;] (Shannon nel 1949) che nasce essenzialmente dal problema di trasportare messaggi da un luogo ad un altro nel modo più sicuro ed efficiente possibile.
 \end{description}
 
 		\subsection{Teoria della computazione}
 La \emph{teoria della computazione} nasce dalla domanda: cosa è possibile calcolare meccanicamente?
 
-Parte della teoria si spende nello specificare innanzitutto il significato della parola ""meccanicamente''. Data la generalità di questa trattazione, si può assumere che significhi ""seguendo delle istruzioni fisse''.
+Parte della teoria si spende nello specificare innanzitutto il significato della parola <<meccanicamente>>.
+Data la generalità di questa trattazione, si può assumere che significhi <<seguendo delle istruzioni fisse>>.
 
 		\subsection{La macchina di Turing}
 		\label{subsec:mturing}
-Negli anni '30 esistevano già le calcolatrici, ma la tecnologia non rendeva ancora disponibile alcunché di più avanzato. C'erano,\marginpar{Computer e contabili} tuttavia i \emph{computer} che, in lingua inglese, erano i contabili. Alan Mathison Turing (vedi il paragrafo~\vref{subsec:turing}) s'ispirò proprio al modo di lavorare del contabile per mettere a punto la sua idea si calcolatore. Il contabile, infatti, è chiamato ad eseguire dei calcoli applicando formule date a priori, una matita ed un foglio. Non ha bisogno di usare la creatività o l'inventiva. Svolge solo dei calcoli e, di tanto in tanto, si serve del foglio e della matita per appuntare dei risultati intermedi. Il contabile ha inoltre a disposizione una quantità finita di segni differenti da poter usare. Riesce a riconoscere ed interpretare solo un numero finito di simboli. Anche il foglio (a quadretti) di cui dispone ha una dimensione limitata. Inoltre, in ogni quadretto c'è lo spazio per uno ed un solo simbolo. Egli può anche trovarsi in un numero finito di quelli che Turing denominò ""stati mentali'', ossia delle ""condizioni interne'' che lo fanno reagire in modo diverso a degli stimoli provenienti dall'esterno.
+Negli anni '30 esistevano già le calcolatrici, ma la tecnologia non rendeva ancora disponibile alcunché di più avanzato.
+C'erano,\marginpar{Computer e contabili} tuttavia i \emph{computer} che, in lingua inglese, erano i contabili.
+
+Alan Mathison Turing (vedi il paragrafo~\ref{subsec:turing} a pagina~\pageref{subsec:turing}) s'ispirò proprio al modo di lavorare del contabile per mettere a punto la sua idea si calcolatore.
+Il contabile, infatti, è chiamato ad eseguire dei calcoli applicando formule date a priori, una matita ed un foglio; non ha bisogno di usare la creatività o l'inventiva.
+Svolge solo dei calcoli e, di tanto in tanto, si serve del foglio e della matita per appuntare dei risultati intermedi.
+Il contabile ha inoltre a disposizione una quantità finita di segni differenti da poter usare: riesce a riconoscere ed interpretare solo un numero finito di simboli.
+Anche il foglio (a quadretti) di cui dispone ha una dimensione limitata.
+Inoltre, in ogni quadretto c'è lo spazio per uno ed un solo simbolo.
+Egli può anche trovarsi in un numero finito di quelli che Turing denominò <<stati mentali>>, ossia delle \emph{condizioni interne} che lo fanno reagire in modo diverso a degli stimoli provenienti dall'esterno.
 
 \begin{wrapfloat}{figure}{i}{0pt}
 	\centering
@@ -21,50 +31,64 @@ Negli anni '30 esistevano già le calcolatrici, ma la tecnologia non rendeva anc
 	\caption{Macchina di Turing.}
 	\label{fig:tm}
 \end{wrapfloat}
-Partendo \marginpar{Macchina di Turing} da quanto detto finora, Turing immaginò la cosiddetta \emph{Macchina di Turing} (figura~\vref{fig:tm}). Molto schematicamente, si tratta di una scatola che può trovarsi in un numero finito di stati interni differenti. Dalla scatola si protende un braccio che dà su un nastro scorrevole. Quest'ultimo contiene dei numeri, dei caratteri alfanumerici o niente. Tale nastro può essere allungato indefinitamente, pur restando di lunghezza finita. Il braccio è in grado sia di leggere dal nastro che di scrivervi sopra. Il cuore dell'apparecchio è la \emph{tabella delle istruzioni}.
+Partendo \marginpar{Macchina di Turing} da quanto detto finora, Turing immaginò la cosiddetta \emph{Macchina di Turing} (figura~\ref{fig:tm}).
+Molto schematicamente, si tratta di una scatola che può trovarsi in un numero finito di stati interni differenti.
+Dalla scatola si protende un braccio che dà su un nastro scorrevole.
+Quest'ultimo contiene dei numeri, dei caratteri alfanumerici o niente. Tale nastro può essere allungato indefinitamente, pur restando di lunghezza finita.
+Il braccio è in grado sia di leggere dal nastro che di scrivervi sopra.
+Il cuore dell'apparecchio è la \emph{tabella delle istruzioni}.
 
-Sia $S$ l'insieme degli stati interni assumibili dalla macchina e $A$ l'insieme dei simboli che essa riesce a riconoscere:
-\[
-\left[
-	\begin{aligned}
-S &= \{ \sigma_1, \dots, \sigma_n \}; \\
-A &= \{ \alpha_1, \dots, \alpha_m \};
-	\end{aligned}
-\right.
-\text{ con } m,n \in \mathbb{N}.
-\]
+Sia $S\coloneqq \Set{\sigma_1,\sigma_2,\dots,\sigma_n}$ l'insieme degli stati interni assumibili dalla macchina e $A\coloneqq\Set{\alpha_1,\alpha_2,\dots,\alpha_m}$, con $n,m\in\N$ l'insieme dei simboli che essa riesce a riconoscere.
+%\[
+%\left[
+%	\begin{aligned}
+%S &= \{ \sigma_1, \dots, \sigma_n \}; \\
+%A &= \{ \alpha_1, \dots, \alpha_m \};
+%	\end{aligned}
+%\right.
+%\text{ con } m,n \in \mathbb{N}.
+%\]
 Le istruzioni della macchina, allora, hanno la forma:
 \begin{quote}
-""se (il tuo stato è $\sigma_i$) e se (leggi $\alpha_e$ nella casella); allora (cambia stato in $\sigma_r$, sposta la testina a destra e scrivi\dots)''
+<<Se \MyComment{il tuo stato è $\sigma_i$} e se \MyComment{leggi $\alpha_e$ nella casella}; allora \MyComment{cambia stato $\sigma_i\mapsto\sigma_r$} e \MyComment{sposta la testina a destra} e \MyComment{scrivi $\alpha_k$}\dots>>
 \end{quote}
-Ad un certo punto, la macchina troverà un'istruzione di \lstinline!stop! e si fermerà. Allora si possono fissare gli insiemi dell'alfabeto $A$ e degli stati interni $S$ (delle istruzioni):
-\begin{itemize}
-	\item
-\emph{Alfabeto}: codice binario;
-	\item
-\emph{Istruzioni:}
-		\begin{itemize}
+Ad un certo punto, la macchina troverà un'istruzione di \MyComment{stop} e si fermerà.
+Allora si possono fissare gli insiemi dell'alfabeto $A$ e degli stati interni $S$ (ossia delle istruzioni):
+\begin{description}
+	\item[Alfabeto] codice binario;
+	\item[Istruzioni] Immaginando che il nastro scorra verso sinistra, si possono definire i seguenti stati interni:
+		\begin{enumerate}
 			\item
-Se (la testina legge un numero) $\rightarrow$ (va a destra);
+Se \MyComment{la testina legge una cifra}, allora \MyComment{va a destra};
 			\item
-Se (la testina legge una casella vuota) $\rightarrow$ (scrive nella prima casella vuota ""$0$'').
-		\end{itemize}
-\end{itemize}
-In pratica, tale funzione aggiunge uno \lstinline!0! ad un numero binario, che corrisponde a raddoppiarlo.
+Se \MyComment{la testina legge una casella vuota} allora \MyComment{scrive nella casella la cifra \num[detect-all]{0}}.
+		\end{enumerate}
+\end{description}
+In pratica, tale funzione aggiunge uno zero in coda ad un numero binario, che corrisponde a raddoppiarlo.
 
 		\subsection{Problemi insolubili}
 		\label{subsec:ins}
-Con questo tipo di macchine è possibile calcolare funzioni $f:\mathbb{N}\mapsto\mathbb{N}$ come, ad esempio, $f(n)=2n;\ f(n)=\sqrt{n}$ (purché ci si accontenti della sola parte intera)$; f(n)=n^2+n+1 \dots$ Esistono, tuttavia, delle funzioni che non possono essere calcolate con una macchina di Turing dal momento che non esiste un processo meccanico (algoritmo) che porti alla loro soluzione\footnote{Questo si può dimostrare provando che l'insieme funzioni aritmetiche calcolabili è un sottoinsieme di quello delle funzioni aritmetiche. Dal momento che una funzione aritmetica è calcolabile se e solo se esiste un algoritmo che la calcola \parencite{fp:comp}, segue la tesi.}.
 
-Non \marginpar{Polinomio di grado qualsiasi} esiste un algoritmo che, dato un polinomio a coefficienti interi di grado non fissato a priori, sia in grado di stabilire se esistano o meno delle radici intere. Tale risultato è ottenibile solo conoscendo in anticipo il grado del polinomio.
+Con questo tipo di macchine è possibile calcolare funzioni $f\colon\N\to\N$ come, ad esempio, $f(n)\coloneqq2n$, $f(n)\coloneqq\sqrt{n}$ (purché ci si accontenti della sola parte intera), $f(n)\coloneqq n^2+n+1$, etc\dots{}
+Esistono, tuttavia, delle funzioni che non possono essere calcolate con una macchina di Turing dal momento che non esiste un processo meccanico (algoritmo) che porti alla loro soluzione.\footnote{Questo si può dimostrare provando che l'insieme funzioni aritmetiche calcolabili è un sottoinsieme di quello delle funzioni aritmetiche.
+Dal momento che una funzione aritmetica è calcolabile se e solo se esiste un algoritmo che la calcola \cite{fp:comp}, segue la tesi.}
 
-Un'altra \marginpar{Problema dell'arresto} questione non risolubile è il cosiddetto \emph{problema dell'arresto}. Si consideri un codice del tipo:
+Non \marginpar{Polinomio di grado qualsiasi} esiste un algoritmo che, dato un polinomio a coefficienti interi di grado non fissato a priori, sia in grado di stabilire se esistano o meno delle radici intere.
+Tale risultato è ottenibile solo conoscendo in anticipo il grado del polinomio.
+
+
+Un'altra \marginpar{Problema dell'arresto} questione non risolubile è il cosiddetto \emph{problema dell'arresto}.
+Si consideri un codice del tipo:
 \begin{lstlisting}
 i = 1;
 while( i > 0 )
 	i++;
 \end{lstlisting}
-Esso genera un ciclo teoricamente infinito. Una volta avviato non può arrestarsi, tranne che per cause esterne\footnote{Vedi: ""black out'', oppure ""utente incavolato che sfascia il computer perché il suo programmino non funziona''\dots}. Dopo aver compilato il programma, non c'è alcuna possibilità d'individuare un errore di questo tipo durante l'esecuzione. Non si può dimostrare di aver scritto un ciclo infinito (anche se ad un certo punto, cominciano a sorgere forti sospetti\dots). Si potrebbe pensare, allora, di scrivere un programma che verifichi il codice di un altro dal punto di vista logico. Lo stesso Turing dimostrò che un siffatto programma non può essere steso.
+Esso genera un ciclo teoricamente infinito che, una volta avviato, non può arrestarsi se non interrotto dall'esterno.
+%\footnote{Vedi: ``black out'', oppure ``utente incavolato che sfascia il computer perché il suo programmino non funziona''\dots}
+Dopo aver compilato il programma, non c'è alcuna possibilità d'individuare un errore di questo tipo durante l'esecuzione: non si può dimostrare di aver scritto un ciclo infinito. %(anche se ad un certo punto, cominciano a sorgere forti sospetti\dots).
+Si potrebbe pensare, allora, di scrivere un programma che verifichi il codice di un altro dal punto di vista logico.
+Lo stesso Turing dimostrò che un siffatto programma non può essere steso.
 
 		\subsection{La macchina universale}
 Presa una macchina di Turing tale che:
@@ -132,14 +156,14 @@ Ora, una macchina di Turing può essere descritta con un numero. Si consideri, a
 \]
 Se alla macchina $E$ corrisponde il codice \lstinline!1_0_11_0_1!, allora la macchina $U$ riesce ad interpretarlo come istruzione ed applicarlo su un numero $x$ (\lstinline!101!, ad esempio). Tale macchina $U$ è una cosiddetta \emph{macchina Universale}. In questo modo non si deve progettare un apparecchio specifico per ogni algoritmo da eseguire, ma ne basta uno solo. 
 
-Da \marginpar{La tesi di Church-Turing} quanto detto finora, discende la \emph{tesi\footnote{Si noti che \emph{non} è un teorema perché discende direttamente da tutta la teoria ""costruita'' da Turing.} di Church-Turing}:
+Da \marginpar{La tesi di Church-Turing} quanto detto finora, discende la \emph{tesi\footnote{Si noti che \emph{non} è un teorema perché discende direttamente da tutta la teoria ``costruita'' da Turing.} di Church-Turing}:
 \begin{quotation}
 "<Le funzioni calcolabili dalla macchina di Turing sono \emph{tutte e sole} quelle calcolabili meccanicamente.">
 \end{quotation}
 Gli studi di John von Neumann negli anni '40 (vedi il paragrafo~\vref{sec:neu}) si basavano proprio sulle osservazioni di Turing.
 
 	\section{Algoritmo di Dijkstra per i cammini minimi}
-Un \emph{grafo} (vedi il paragrafo~\vref{subsec:grafo}) è un oggetto composto di vertici (o \emph{nodi}) e lati (o \emph{archi}). Un arco ""unisce'' due nodi. Siano V ed E rispettivamente gli insiemi dei vertici e lati, allora:
+Un \emph{grafo} (vedi il paragrafo~\vref{subsec:grafo}) è un oggetto composto di vertici (o \emph{nodi}) e lati (o \emph{archi}). Un arco ``unisce'' due nodi. Siano V ed E rispettivamente gli insiemi dei vertici e lati, allora:
 \[
 \begin{split}
 &V=\{(x_1,y_1),\dots,(x_n,y_n)\} \\
@@ -153,22 +177,7 @@ Si vuole calcolare il cammino più breve che collega il vertice A della figura~\
 	\centering
 	\subfloat[][{\em Rappresentazione del grafo.}\label{fig:dij}]{
 %\includegraphics[width=\columnwidth]{immagini/dijkstra}
-\begin{tikzpicture}
-	\coordinate (A) at (-2,6);
-	\coordinate (B) at (2,5);
-	\coordinate (C) at (4,2);
-	\coordinate (D) at (3,0);
-	\coordinate (E) at (1,4);
-	\coordinate (F) at (-1,3);
-	\coordinate (G) at (-2.5,0.5);
-
-	\foreach \a/\b/\d in {A/B/5, B/C/3, C/D/4, D/G/12, G/F/4, F/E/3, A/E/1, D/E/2, D/B/1}
-		\draw [line width=0.5pt, color=blue] (\a) -- (\b) node [blue, sloped,midway,above] {$\d$};
-
-	\foreach \n in {A,B,C,D,E,F,G} 
-		\draw [] node [circle,draw,minimum size=1cm,top color=gray] at (\n) {\color{black}{\n}};
-
-\end{tikzpicture}
+	\input{immagini/dijkstra.pgf}
 }	\\
 	\subfloat[][{\em La tabella contiene alcune distanze partendo dal vertice A. Il cammino minimo è evidenziato.}\label{tab:dij}]{
 \begin{tabular}{l l l}
@@ -219,5 +228,5 @@ Ci si serve di una \emph{lista adiacenze}.
 
 Essa, come mostra la figura~\vref{fig:adi}, consiste in più serie di record ognuna delle quali si riferisce ad un nodo di partenza differente. Ogni struttura contiene un campo che tenga traccia del nome del nodo collegato e un campo puntatore alla struttura successiva. Nel campo puntatore dell'ultimo record, ormai è inutile dirlo, si pone il valore \lstinline!NULL!.
 
-Tale rappresentazione risulta piuttosto ridondante per grafi non orientati perché si usano due record per ogni arco, ma diventa più efficiente nel caso di grafi orientati. Si noti che, volendo aggiungere il ""peso'' di ogni lato, si dovrebbe aggiungere ad ogni record un campo dedicato.
+Tale rappresentazione risulta piuttosto ridondante per grafi non orientati perché si usano due record per ogni arco, ma diventa più efficiente nel caso di grafi orientati. Si noti che, volendo aggiungere il ``peso'' di ogni lato, si dovrebbe aggiungere ad ogni record un campo dedicato.
 \end{itemize}
