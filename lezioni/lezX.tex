@@ -91,88 +91,102 @@ Si potrebbe pensare, allora, di scrivere un programma che verifichi il codice di
 Lo stesso Turing dimostrò che un siffatto programma non può essere steso.
 
 		\subsection{La macchina universale}
-Presa una macchina di Turing tale che:
-\[
-	\begin{aligned}	
-	&\left[
-		\begin{aligned}
-&S=\{\sigma_1, \sigma_2, \sigma_3\}; \\
-&A=\{1, 0\};	\\
-		\end{aligned}
-	\right .	\\
-&\sigma_1, 0 \rightarrow 1, \sigma_2, \text{ destra};	\\
-&\vdots
-	\end{aligned}
-\]
-Si possono tradurre gli stati interni del computer usando il suo alfabeto (il codice binario). Nello specifico, ci sono tre (11) stati , e due (10) simboli. Adottando le convenzioni delle tabelle~\vref{tab:istr} e~\vref{tab:stat} è possibile tradurre le istruzioni in linguaggio binario.
+Presa una macchina di Turing tale con stati interni $S=\Set{\sigma_1, \sigma_2, \sigma_3}$ e alfabeto $A=\Set{1, 0}$ tale che siano assegnate istruzioni della forma
+\begin{equation}\label{eq:istruzione}
+%	\begin{aligned}	
+%	&\left[
+%		\begin{aligned}
+%&S=\{\sigma_1, \sigma_2, \sigma_3\}; \\
+%&A=\{1, 0\};	\\
+%		\end{aligned}
+%	\right .	\\
+%&
+(\sigma_1, 0) \mapsto (1, \sigma_2, \text{ destra}),	%\\
+%&\vdots
+%	\end{aligned}
+\end{equation}
+si possono ricavare i corrispondenti stati interni del computer usando il suo alfabeto (il codice binario).
+Nello specifico, ci sono tre stati  (che sono \num[parse-numbers=false]{11_2} in binario) e due (ossia \num[parse-numbers=false]{10_2}) simboli.
 \begin{table}
 	\centering
 \subfloat[][{\em Rappresentazione binaria delle istruzioni.}\label{tab:istr}]{
-	\begin{tabular}{l c}
+	\begin{tabular}{l S}
 		\toprule
-\emph{Istruzione}			&\emph{Numero}	\\
+\emph{Istruzione}			&{\emph{Numero}}	\\
 		\midrule
-Sposta la testina a destra		&\lstinline!0!	\\
-Sposta la testina a sinistra		&\lstinline!1!	\\
+Sposta la testina a destra		&0	\\
+Sposta la testina a sinistra		&1	\\
 		\bottomrule
 	\end{tabular}
 }\quad
 \subfloat[][{\em Rappresentazione binaria degli stati interni.}\label{tab:stat}]{%}
-	\begin{tabular}{l c}
+	\begin{tabular}{l S[parse-numbers=false]}
 		\toprule
-\emph{Stato}			&\emph{Numero}	\\
+\emph{Stato}			&{\emph{Numero}}	\\
 		\midrule
-$\sigma_1$				&\lstinline!01!	\\
-$\sigma_2$				&\lstinline!10!	\\
-$\sigma_3$				&\lstinline!11!	\\
+$\sigma_1$				&01	\\
+$\sigma_2$				&10	\\
+$\sigma_3$				&11	\\
 		\bottomrule
 	\end{tabular}
 }
-	\caption[Macchina di Turing]{Convenzioni binarie per la macchina di Turing}
+	\caption[Macchina di Turing]{Convenzioni binarie per la macchina di Turing.}
 \end{table}
-Si ha che:
-\[
-	\begin{aligned}	
-	&\left[
-		\begin{aligned}
-&\mathtt{01\ 10\ 11} 		\\
-&\mathtt{1\ 0} 			\\
-		\end{aligned}
-	\right .	\\
-&\mathtt{1\_0\_1\_10\_0}	\\
-&\vdots
-	\end{aligned}
-\]
+Adottando le convenzioni delle tabelle~\ref{tab:istr} e~\ref{tab:stat} è possibile tradurre le istruzioni in linguaggio binario.
+Gli stati vengono mappati nell'insieme $\Set{01,10,11}$ e l'alfabeto diventa $\Set{1,0}$, pertanto l'istruzione~\eqref{eq:istruzione} si traduce in
+\begin{equation}\label{eq:istruzione-bin}\tag{\ref*{eq:istruzione}/bin.}
+%	\begin{aligned}	
+%	&\left[
+%		\begin{aligned}
+%&\mathtt{01\ 10\ 11} 		\\
+%&\mathtt{1\ 0} 			\\
+%		\end{aligned}
+%	\right .	\\
+\mathtt{1\_0\_1\_10\_0}%	\\
+%&\vdots
+%	\end{aligned}
+\end{equation}
 Il problema di distinguere i numeri da elaborare dalle istruzioni è facilmente risolvibile.
 
-Ora, una macchina di Turing può essere descritta con un numero. Si consideri, allora, una macchina $U$ che riesca a riconoscere parti di codice di altre macchine. Si hanno due macchine $E$ e $D$ tali che:
-\[
-\left\{
-	\begin{aligned}
-&E:\,f(x)=2 		\\
-&D:\,f(x)=x^2-1
-	\end{aligned}
-\right.
-\]
-Se alla macchina $E$ corrisponde il codice \lstinline!1_0_11_0_1!, allora la macchina $U$ riesce ad interpretarlo come istruzione ed applicarlo su un numero $x$ (\lstinline!101!, ad esempio). Tale macchina $U$ è una cosiddetta \emph{macchina Universale}. In questo modo non si deve progettare un apparecchio specifico per ogni algoritmo da eseguire, ma ne basta uno solo. 
+Ora, una macchina di Turing può essere descritta con un numero.
+Si consideri, allora, una macchina $U$ che riesca a riconoscere parti di codice di altre due macchine $E\colon f(x)\coloneqq2x$ e $D\colon f(x)\coloneqq x^2-1$.
+Se alla macchina $E$ corrisponde il codice~\eqref{eq:istruzione-bin} della moltiplicazione per due, la macchina $U$ riesce ad interpretarlo come istruzione ed applicarlo ad un numero $x$ (\num[parse-numbers=false]{101}, ad esempio).
+La macchina $U$ è una cosiddetta \emph{macchina universale}\index{macchina universale}.
+In questo modo non c'è bisogno di progettare un apparecchio specifico per ogni algoritmo da eseguire ma ne basta uno solo.
 
-Da \marginpar{La tesi di Church-Turing} quanto detto finora, discende la \emph{tesi\footnote{Si noti che \emph{non} è un teorema perché discende direttamente da tutta la teoria ``costruita'' da Turing.} di Church-Turing}:
-\begin{quotation}
-"<Le funzioni calcolabili dalla macchina di Turing sono \emph{tutte e sole} quelle calcolabili meccanicamente.">
-\end{quotation}
-Gli studi di John von Neumann negli anni '40 (vedi il paragrafo~\vref{sec:neu}) si basavano proprio sulle osservazioni di Turing.
+
+Da \marginpar{La tesi di Church-Turing} quanto detto finora, discende la
+\begin{thesis*}[di Church-Turing]
+Le funzioni calcolabili dalla macchina di Turing sono \emph{tutte e sole} quelle calcolabili meccanicamente.
+\end{thesis*}
+Si noti che questo \emph{non} è un teorema perché discende direttamente da tutta la teoria ``costruita'' da Turing.
+
+
+Gli studi di John von Neumann negli anni '40 (vedi il paragrafo~\ref{sec:neu} a pagina~\ref{sec:neu}) si basavano proprio sulle osservazioni di Turing.
+
 
 	\section{Algoritmo di Dijkstra per i cammini minimi}
-Un \emph{grafo} (vedi il paragrafo~\vref{subsec:grafo}) è un oggetto composto di vertici (o \emph{nodi}) e lati (o \emph{archi}). Un arco ``unisce'' due nodi. Siano V ed E rispettivamente gli insiemi dei vertici e lati, allora:
-\[
-\begin{split}
-&V=\{(x_1,y_1),\dots,(x_n,y_n)\} \\
-&E\subseteq V\times V
-\end{split}
-\]
-Se si associa ad ogni lato $e_{i}\in E$ un numero $z_i\in\mathbb{R^{+}}$, è naturale interpretare $z_i$ come la distanza che intercorre tra i due nodi collegati dall'arco $e_i$.Dato un grafo, è lecito chiedersi quale sia il \emph{cammino minimo} (o cammino di minimo costo) tra due suoi punti qualsiasi. Per rispondere a tale domanda, ci si serve dell'{\em algoritmo di Dijkstra}.
 
-Si vuole calcolare il cammino più breve che collega il vertice A della figura~\ref{fig:dij} con tutti gli altri. Per fare ciò è conveniente registrare tutti i possibili percorsi (con le rispettive distanze) in una tabella come la~\ref{tab:dij}. Si trovano i nodi immediatamente vicini ad $A$. Si ha che $\overline{AB}=5$ e $\overline{AE}=1$. Per ora, queste sono le distanze minime. Partendo ora da B, si ha che $\overline{AC}=\overline{AB}+\overline{BC}=8$ e $\overline{AD}=\overline{AB}+\overline{BC}=6$. Entrambi questi percorsi individuano, al momento, dei cammini minimi. Ripetendo l'operazione per tutti i vertici del grafo, si ottiene tabulata la distanza minima tra $A$ e qualsiasi altro nodo (ma anche tra due vertici qualsiasi $v_1,v_2\in\{A, B, C, D, E, F, G\}$).
+Un \emph{grafo}\index{grafo} (vedi il paragrafo~\ref{subsec:grafo} a pagina~\pageref{subsec:grafo}) è un oggetto composto di vertici\index{vertice}, o \emph{nodi}\index{nodo}, e lati\index{lato}, o \emph{archi}\index{arco}, che uniscono due nodi.
+
+
+Siano $V=\Set{(x_1,y_1),\dots,(x_n,y_n)}$ ed $E\subseteq V\times V$ rispettivamente gli insiemi dei vertici e lati. 
+Se si associa ad $e_{i}\in E$ un numero $z_i\in\R^+$, è naturale interpretare $z_i$ come la distanza che intercorre tra i due nodi collegati dall'arco $e_i$.
+Dato un grafo, è dunque lecito chiedersi quale sia il cammino \emph{minimo}, o di \emph{minimo costo}, tra due suoi vertici qualsiasi.
+L'\algo{algoritmo di Dijkstra} risponde a tale domanda.
+
+
+Si vuole calcolare il cammino più breve che collega il vertice~$A$ %\hyperlink{coordinate:A}{A}
+della figura~\ref{fig:dij} con tutti gli altri.
+Per fare ciò è conveniente registrare tutti i possibili percorsi (con le rispettive distanze) in una tabella come la~\ref{tab:dij}.
+Si trovano i nodi immediatamente vicini ad~$A$. %\hyperlink{coordinate:A}{$A$}.
+Si ha che $\overline{AB}=5$ e $\overline{AE}=1$.
+Per ora, queste sono le distanze minime.
+Partendo ora da~$B$%\hyperlink{coordinate:B}{$B$}
+, si ha che $\overline{AC}=\overline{AB}+\overline{BC}=8$ e $\overline{AD}=\overline{AB}+\overline{BC}=6$.
+Entrambi questi percorsi individuano, al momento, dei cammini minimi.
+Ripetendo l'operazione per tutti i vertici del grafo, si ottiene tabulata la distanza minima tra~$A$%\hyperlink{coordinate:A}{$A$}
+ e qualsiasi altro nodo (ma anche tra due vertici qualsiasi $v_1,v_2\in\Set{A, B, C, D, E, F, G}$).
 \begin{figure}
 	\centering
 	\subfloat[][{\em Rappresentazione del grafo.}\label{fig:dij}]{
@@ -208,25 +222,34 @@ v_ N		&8.9		&0		&\dots 	&0		\\
 	
 \end{figure}
 
-Per \marginpar{Rappresentazioni in C} tradurre tale algoritmo in linguaggio C, c'è innanzitutto bisogno di trovare una rappresentazione per il grafo. Vi sono diverse soluzioni:
+Per \marginpar{Rappresentazioni in \lang{C}} tradurre tale algoritmo in linguaggio \lang{C}, c'è innanzitutto bisogno di trovare una rappresentazione per il grafo.
+Vi sono diverse soluzioni:
 \begin{itemize}
 	\item
 Si rappresentano i vertici con degli interi e il lati con un record che contenga informazioni sui nodi che collega e la loro distanza;
 	\item
 Si usa una matrice.
 
-Avendo dei vertici $v_{i\in\{1,\dots,N\}}\in V$, si dichiara una matrice $N\times N$ come la tabella~\vref{tab:mat} e si stabilisce che:
+Avendo dei vertici $v_{i\in\{1,\dots,N\}}\in V$, si dichiara una matrice $N\times N$ come la tabella~\ref{tab:mat} e si stabilisce che:
 	\begin{itemize}
 		\item
 Se tra due vertici c'è un lato, si scrive nella casella corrispondente il valore $1$ (o la distanza $z\in\mathbb{R^{+}}$);
 		\item
 Se tra due vertici non c'è un lato, si scrive nella casella corrispondente il valore $0$.
 	\end{itemize}
-Si noti, che avendo dichiarato una matrice \lstinline!float m[N][N];! si ha che \lstinline!m[e][j] == 0! $\forall e,j\in\{1,\dots,N\}\mid e=j$ se non esistono archi che colleghino un punto con se stesso, come in figura~\ref{fig:dij}. Con questa rappresentazione, il costo computazionale dell'algoritmo di Dijkstra (siccome sulla diagonale ci sono solo valori nulli) è $N^2-N\thicksim N^2$ per $N\to+\infty$. Pertanto, la rappresentazione matriciale risulta piuttosto scomoda se il grafo è sparso, cioè se ci sono pochi archi.
+Si noti che, avendo dichiarato una matrice $\Set{m_{ij}}$ (di tipo \lstinline!float!), gli elementi diagonali $m_{jj}$ sono nulli se non esistono archi che collegano un punto con se stesso, come in figura~\ref{fig:dij}.
+Con questa rappresentazione, il costo computazionale dell'algoritmo di Dijkstra (siccome sulla diagonale ci sono solo valori nulli) è
+\begin{equation}
+c_\textup{D}(N) = N(N-1)\underset{N\to\infty}{\thicksim} N^2.
+\end{equation}
+Pertanto, la rappresentazione matriciale risulta piuttosto scomoda se il grafo è sparso, cioè se ci sono pochi archi.
 	\item
 Ci si serve di una \emph{lista adiacenze}.
 
-Essa, come mostra la figura~\vref{fig:adi}, consiste in più serie di record ognuna delle quali si riferisce ad un nodo di partenza differente. Ogni struttura contiene un campo che tenga traccia del nome del nodo collegato e un campo puntatore alla struttura successiva. Nel campo puntatore dell'ultimo record, ormai è inutile dirlo, si pone il valore \lstinline!NULL!.
+Essa, come mostra la figura~\ref{fig:adi}, consiste in più serie di record ognuna delle quali si riferisce ad un nodo di partenza differente.
+Ogni struttura contiene un campo che tenga traccia del nome del nodo collegato e un campo puntatore alla struttura successiva.
+Nel campo puntatore dell'ultimo record si pone il valore \lstinline!NULL!.
 
-Tale rappresentazione risulta piuttosto ridondante per grafi non orientati perché si usano due record per ogni arco, ma diventa più efficiente nel caso di grafi orientati. Si noti che, volendo aggiungere il ``peso'' di ogni lato, si dovrebbe aggiungere ad ogni record un campo dedicato.
+Tale rappresentazione risulta piuttosto ridondante per grafi non orientati perché si usano due record per ogni arco, ma diventa più efficiente nel caso di grafi orientati.
+Si noti che, volendo aggiungere il peso di ogni lato, si dovrebbe aggiungere ad ogni record un campo dedicato.
 \end{itemize}
