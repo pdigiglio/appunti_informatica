@@ -83,6 +83,7 @@
 
 \usepackage{tikz,fp,ifthen}
 \usetikzlibrary{
+	3d, % to have options like yxplan
 	positioning,
 	shapes,
 	calc,
@@ -117,7 +118,7 @@
 \newcommand{\ext}[1]{\texttt{#1}}
 % sistemi operativi
 \newcommand{\os}[1]{\textsf{#1}}
-\newcommand{\key}[1]{\textsl{#1}}
+\newcommand{\key}[1]{{\color{darkgray}\sf\small#1}}
 
 % nome algoritmi
 \newcommand{\algo}[1]{\textit{#1}}
@@ -146,7 +147,7 @@
 	savemem
 ]{listings}
 \usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
-\newcommand{\MyComment}[1]{$\langle${\em\sffamily{{#1}}}$\rangle$}
+\newcommand{\MyComment}[1]{$\langle${\itshape\sffamily{{#1}}}$\rangle$}
 \lstset{
 	language=C,%
 	keywordstyle={\color{NavyBlue}\bfseries},
@@ -401,6 +402,7 @@
 %	\input{lezioni/lezVII}
 %	\input{lezioni/lezVIII}
 %	\input{lezioni/lezIX}
+\key{CTRL} CTRL
 	\input{lezioni/lezX}
 %	\input{lezioni/lezXI}
 %	\input{lezioni/esame}
