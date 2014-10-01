@@ -1,47 +1,164 @@
 \chapter[Lezione XI]{Lezione XI\newline\small{\emph{06/03/2011}}}
+
 	\section{Lezione pre-esame}
-Per un manuale affidabile sulla sintassi in C, è possibile fare riferimento alla voce \lstinline!C syntax! su \href{http://en.wikipedia.org/wiki/Main_Page}{Wikipedia} (in inglese).
+
+Per un manuale affidabile sulla sintassi in linguaggio \lang{C}, è possibile fare riferimento alla voce \textsf{C syntax} su \href{http://en.wikipedia.org/wiki/Main_Page}{Wikipedia} (in inglese).
 		\subsection{Modello (o struttura) dei dati}
 Le strutture dati studiate finora sono le seguenti (tranne le ultime due, cui s'accennerà in seguito):
 \begin{itemize}[noitemsep]
 	\item
-Array o vettori, matrici (vedi il paragrafo~\vref{subsec:array});
+Array o vettori, matrici (vedi il paragrafo~\ref{subsec:array} a pagina~\pageref{subsec:array});
 	\item
-Grafi (vedi il paragrafo~\vref{subsec:grafo});
+Grafi (vedi il paragrafo~\ref{subsec:grafo} a pagina~\pageref{sucsec:grafo});
 	\item
-Record o strutture (vedi il paragrafo~\vref{subsec:record});
+Record o strutture (vedi il paragrafo~\ref{subsec:record} a pagina~\pageref{subsec:record});
 	\item
-Stack (vedi il paragrafo~\vref{subsec:stack});
+Stack (vedi il paragrafo~\ref{subsec:stack} a pagina~\pageref{sucsec:stack});
 	\item
-Liste concatenate (vedi il paragrafo~\vref{subsec:liste});
+Liste concatenate (vedi il paragrafo~\ref{subsec:liste} a pagina~\pageref{sucsec:liste});
 	\item
-Code (vedi il paragrafo~\vref{subsec:coda});
+Code (vedi il paragrafo~\ref{subsec:coda});
 	\item
-Alberi (vedi il paragrafo~\vref{subsec:albero}).
+Alberi (vedi il paragrafo~\ref{subsec:albero}).
 \end{itemize}
-Ciascuno di questi modelli si caratterizza per le operazioni che permette di compiere. Nelle liste concatenate trattate nel  paragrafo~\vref{subsec:stack}, ad esempio, sono definiti l'inserimento (con la funzione \lstinline!push()!) e la cancellazione di elementi (tramite la funzione \lstinline!pop()!).
+Ciascuno di questi modelli si caratterizza per le operazioni che permette di compiere.
+Nelle liste concatenate trattate nel  paragrafo~\ref{subsec:stack}, ad esempio, sono definiti l'inserimento (con la funzione \lstinline!push()!) e la cancellazione di elementi (tramite la funzione \lstinline!pop()!).
 
-In ogni caso, una struttura dati non è troppo vincolante: è possibile creare una lista concatenata usando una matrice, ad esempio. Dichiarando una matrice di $n$ righe, si possono destinare le prime $n-1$ al ""carico utile'' e l'$n$-esima a puntare al nodo successivo. In parole povere, si usa l'$n$-esima riga come campo \lstinline!*next!. Così facendo, è come se una colonna di una matrice rappresentasse un nodo. Tuttavia, poiché le matrici sono indicizzate tramite interi $z$ progressivi, basterà un intero per identificare l'indirizzo del nodo successivo. Come ultimo accorgimento, basta stabilire che il nodo ""di coda'' contenga nella sua $n$-esima riga un intero negativo (come \lstinline!-1!) ad indicare la fine della lista. Ad ogni modo, servirà comunque una variabile ausiliaria (analogamente al puntatore \lstinline!*testa!) di tipo \lstinline!int! che indichi qual è il primo nodo.
 
-Per l'esame, potrebbe essere necessario apportare delle modifiche ad una struttura dati esistente, come creare una lista concatenata bidirezionale (vedi la figura~\vref{fig:blist}). Tale struttura ha bisogno di due campi puntatore (\lstinline!*prev! e \lstinline!*next!) e può essere percorsa in entrambi i versi. Oppure, si potrebbero dover dichiarare più campi puntatori all'interno di un record per ordinare la lista in base a criteri differenti.
+In ogni caso, una struttura dati non è troppo vincolante: è possibile creare una lista concatenata usando una matrice, ad esempio.
+Dichiarando una matrice di $n$ righe, si possono destinare le prime $n-1$ al ``carico utile'' e l'$n$-esima a puntare al nodo successivo, come campo \lstinline!*next!.
+Così facendo, è come se una colonna di una matrice rappresentasse un nodo.
+Tuttavia, poiché le matrici sono indicizzate tramite interi $z$ progressivi, basterà un intero per identificare l'indirizzo del nodo successivo.
+Come ultimo accorgimento, basta stabilire che il nodo di coda contenga nella sua $n$-esima riga un intero negativo ad indicare la fine della lista.
+Ad ogni modo, servirà comunque una variabile ausiliaria (analogamente al puntatore \lstinline!*testa!) di tipo \lstinline!int! che indichi qual è il primo nodo.
+
+
+Per l'esame, potrebbe essere necessario apportare delle modifiche ad una struttura dati esistente, come creare una lista concatenata bidirezionale (vedi la figura~\ref{fig:blist}).
+Tale struttura ha bisogno di due campi puntatore (\lstinline!*prev! e \lstinline!*next!) e può essere percorsa in entrambi i versi.
+Oppure, si potrebbero dover dichiarare più campi puntatori all'interno di un record per ordinare la lista in base a criteri differenti.
 
 	\section{Strutture dati}
+
 		\subsection{Coda}
 		\label{subsec:coda}
-La \emph{coda} (figura~\vref{fig:coda}) è una struttura dinamica lineare: gli elementi, cioè, sono ordinati. A differenza di uno stack, tuttavia, essi seguono una disciplina del tipo FIFO (\emph{First In First Out}). Un nuovo oggetto inserito si colloca in fondo alla coda, mentre per estrarne uno lo si preleva dalla testa.
 
-Risulta ora evidente l'analogia di tale struttura con una fila (o coda) reale che si fa per usufruire di un servizio ad uno sportello, da cui peraltro prende il nome. Differenze tra coda e stack si riscontrano anche nel \emph{costo computazionale}, ossia sul numero di ""calcoli'' che l'esecutore deve compiere per effettuare un'operazione sulla struttura, come mostra la tabella ~\vref{tab:co-st}. Per eliminare un elemento, partendo da \lstinline!*testa!, il computer deve percorrere tutta la coda finché non giunge all'ultimo. Per ""snellire'' il costo computazionale della coda, è possibile introdurre un puntatore al nodo finale in modo tale che l'eliminazione comporti un solo passaggio, al pari dell'inserimento.
+\begin{figure}
+	\centering
+\includegraphics[width=0.45\columnwidth]{immagini/coda}
+	\caption[Coda]{Rappresentazione grafica di una coda.}
+	\label{fig:coda}
+\end{figure}
+La \emph{coda}, mostrata in figura~\ref{fig:coda}, è una struttura dinamica lineare: gli elementi, cioè, sono ordinati.
+A differenza di uno stack, tuttavia, essi seguono una disciplina del tipo \ac{fifo}.
+Un nuovo oggetto inserito si colloca in fondo alla coda, mentre per estrarne uno lo si preleva dalla testa.
+
+Risulta ora evidente l'analogia di tale struttura con una fila (o coda) reale che si fa per usufruire di un servizio ad uno sportello, da cui peraltro prende il nome.
+Differenze tra coda e stack si riscontrano anche nel costo computazionale, ossia sul numero di ``calcoli'' che l'esecutore deve compiere per effettuare un'operazione sulla struttura, come mostra la tabella~\ref{tab:co-st}.
+Per eliminare un elemento, partendo da \lstinline!*testa!, il computer deve percorrere tutta la coda finché non giunge all'ultimo.
+Per ridurre il costo computazionale della coda, è possibile introdurre un puntatore al nodo finale in modo tale che l'eliminazione comporti un solo passaggio, al pari dell'inserimento.
 
 		\subsection{Albero}
 		\label{subsec:albero}
-Un \emph{albero} è un modello dei dati che sfrutta una struttura gerarchica. Esistono diverse implementazioni di albero; in prima battuta si può considerare una rappresentazione che preveda due campi puntatore per ogni struttura. Siano essi \lstinline!*min! e \lstinline!*max!.
+Un \emph{albero} è un modello dei dati che sfrutta una struttura gerarchica.
+Esistono diverse implementazioni di albero; in prima battuta si può considerare una rappresentazione che preveda due campi puntatore per ogni struttura, siano essi \lstinline!*min! e \lstinline!*max!.
 
-Si supponga di aver bisogno di tenere ordinati $n$ dati numerici inseriti nello \lstinline!stdin!. All'inserimento del primo dato $d_1$ si crea un nodo (sia esso \lstinline!n_1!), chiamato \emph{capostipite} o \emph{padre} (il ""pallino'' rosso in figura~\vref{fig:albero}). All'ingresso del secondo dato $d_2$ si crea un altro nodo (\lstinline!n_2!) e si stabilisce che:
+\begin{figure}
+	\centering
+\subfloat[][Rapresentazione grafica di un \acs{bst}.\label{fig:albero_BST_nr}]{
+\begin{tikzpicture}[
+	every node/.style = {
+		circle,
+		opacity=.4,
+		inner sep=2pt,
+%		minimum width={ width("50") + 3 pt},
+%		text width={width("Magnetometer")},
+%		align=center,
+		text opacity=1
+	},
+%level distance=30pt
+]
+\tikzstyle{level 1}=[sibling distance = 23mm]
+\tikzstyle{level 2}=[sibling distance = 15mm]
+\tikzstyle{level 3}=[sibling distance = 12mm]
+
+	\node [ball color = red] { $50$ }
+		child {
+			node [ball color=purple] {$17$}
+				child{
+					node [ball color=blue] {$12$}
+						child{
+							node [ball color=green] {$9$}
+						}
+						child{
+							node [ball color=green] {$14$}
+						}
+				}
+				child{
+					node [ball color=blue] {$23$}
+						child{
+							node [ball color=green] {$19$}
+						}
+				}
+		}
+		child{
+			node [ball color=purple] {$72$}
+				child{
+					node [ball color=blue] {$54$}
+						child{
+							node [ball color=green] {$67$}
+						}
+				}
+				child{
+					node [ball color=blue] {$76$}
+				}
+		};
+\end{tikzpicture}
+}
+\end{figure}
+Si supponga di aver bisogno di tenere ordinati $N$ dati numerici inseriti nello \lstinline!stdin!.
+All'inserimento del primo dato $d_1$ si crea un nodo $n_1$ chiamato \emph{capostipite}\index{capostipite} o \emph{padre}\index{padre} (il pallino rosso in figura~\ref{fig:albero_BST_nr}).
+\begin{tikzpicture}[
+	every node/.style = {
+		circle,
+	}
+]
+\tikzstyle{level 1}=[sibling distance = 25mm]
+\tikzstyle{level 2}=[sibling distance = 13mm]
+\tikzstyle{level 2}=[sibling distance = 10mm]
+
+	\node [ball color = red] {}
+		child {
+			node [ball color=green] {}
+		}
+		child{
+			node [ball color=blue] {}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+		}
+		child{
+			node [ball color=blue] {}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+		};
+\end{tikzpicture}
+
+All'ingresso del secondo dato $d_2$ si crea un altro nodo $n_2$ e si stabilisce che
 \begin{itemize}
 	\item
-$d_1>d_2 \quad \rightarrow \quad $ \lstinline!min = &n_2!;
+Se $d_1>d_2$ si assegna al puntatore \lstinline!min! l'indirizzo del nodo $n_2$;
 	\item
-$d_1<d_2 \quad \rightarrow \quad $ \lstinline!max = &n_2!.
+Se $d_1<d_2$ si assegna al puntatore \lstinline!max! l'indirizzo del nodo $n_2$.
 \end{itemize}
 Ripetendo il procedimento $n$ volte, si avranno dei record contenenti numeri ordinati (in ordine crescente, in questo caso).
 
@@ -52,7 +169,7 @@ Ripetendo il procedimento $n$ volte, si avranno dei record contenenti numeri ord
 %	%\label{fig:albero}
 %\end{wrapfloat}
 
-Per com'è stato costruito quest'albero, ogni {\em genitore} può essere collegato al massimo a due \emph{figli}. Esso è, quindi, un albero binario o BST (\emph{Binary Search Tree}, figura~\vref{fig:bst1}). Ad ogni modo, è possibile creare una struttura ""dal basso'', in cui ogni albero figlio ha un puntatore al genitore. Tale modifica permette di avere un albero non più (soltanto) binario ma anche a più elementi.
+Per com'è stato costruito quest'albero, ogni {\em genitore} può essere collegato al massimo a due \emph{figli}. Esso è, quindi, un albero binario o BST (\emph{Binary Search Tree}, figura~\vref{fig:bst1}). Ad ogni modo, è possibile creare una struttura ``dal basso'', in cui ogni albero figlio ha un puntatore al genitore. Tale modifica permette di avere un albero non più (soltanto) binario ma anche a più elementi.
 
 \begin{table}
 	\centering
@@ -72,8 +189,8 @@ Per com'è stato costruito quest'albero, ogni {\em genitore} può essere collega
 	\centering
 \subfloat[Binary Search Tree][\emph{Binary Search Tree}\label{fig:bst1}]{\includegraphics[width=\columnwidth]{immagini/bst_1}} \\
 \subfloat[BST con caratteri alfabetici][\emph{BST con caratteri alfabetici}\label{fig:bst_2}]{\includegraphics[width=0.45\columnwidth]{immagini/bst_2}} \quad
-\subfloat[Albero][\emph{Rappresentazione grafica di un albero}\label{fig:albero}]{\includegraphics[width=0.45\columnwidth]{immagini/albero}}\\
+%\subfloat[Albero][\emph{Rappresentazione grafica di un albero}\label{fig:albero}]{\includegraphics[width=0.45\columnwidth]{immagini/albero}}\\
 \subfloat[Lista concatenata bidirezionale][{\em Lista concatenata bidirezionale. I campi in blu sono puntatori.}\label{fig:blist}]{\includegraphics[width=0.45\columnwidth]{immagini/lista_bidirezionale}}\quad
-\subfloat[Coda][{\em Rappresentazione grafica di una coda.}\label{fig:coda}]{\includegraphics[width=0.45\columnwidth]{immagini/coda}}
+%\subfloat[Coda][{\em Rappresentazione grafica di una coda.}\label{fig:coda}]{\includegraphics[width=0.45\columnwidth]{immagini/coda}}
 	\caption{Alcune strutture dati.}
 \end{figure}
