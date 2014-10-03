@@ -1,7 +1,10 @@
 \chapter{Appunti vari}
 	\section{Stack}
 	\label{sec:vari:stack}
-Come già detto, si può usare un vettore come \emph{stack} (pila), dichiarandolo abbastanza lungo e supponendo che le operazioni aritmetiche stiano all'interno della lunghezza del vettore. Ci si può servire di una variabile intera che punti alla prima posizione libera del vettore. Per ogni operazione \emph{push}, si copia il nuovo valore nella posizione dell'indice e s'aggiorna il valore di quest'ultimo. Nel caso dell'operazione \emph{pop} si dovrà leggere il valore della variabile due caselle a sinistra dell'indice e spostare quest'ultimo di una posizione a sinistra.
+Come già detto, si può usare un vettore come \emph{stack} (pila), dichiarandolo abbastanza lungo e supponendo che le operazioni aritmetiche stiano all'interno della lunghezza del vettore.
+Ci si può servire di una variabile intera che punti alla prima posizione libera del vettore.
+Per ogni operazione \emph{push}, si copia il nuovo valore nella posizione dell'indice e s'aggiorna il valore di quest'ultimo.
+Nel caso dell'operazione \emph{pop} si dovrà leggere il valore della variabile due caselle a sinistra dell'indice e spostare quest'ultimo di una posizione a sinistra.
 
 	\section[Editor di testo \textsf{vi(m)}]{Editor di testo vi(m)\protect\footnote{{L}a versione corrente è \emph{Vi IMprooved}.}}
 Sull'editor di testo \emph{vi}, ci sono due modalità:
@@ -10,7 +13,21 @@ Sull'editor di testo \emph{vi}, ci sono due modalità:
 	\item Modo comando.
 \end{itemize}
 
-Quando il programma viene avviato, è in \emph{modalità comando}, in attesa di ricevere un particolare comando. Premendo il tasto ""I'', l'editor passa in \emph{modalità inserimento}. Premendo il tasto ""A'' in modalità comando, si comincia a scrivere a destra del cursore. Per uscire da questa modalità: ""Esc''. Il tasto ""O'' apre una nuova riga sotto la posizione del cursore, mentre la combinazione ""Maiusc+O'' ne apre una sopra la posizione del cursore. Quando il cursore si sposta su una parentesi aperta, il programma evidenzia la parentesi chiusa corrispondente. Per cancellare un carattere, in modo comando, basta spostare il cursore sopra il carattere da cancellare e premere il tasto ""X''. Per cancellare l'intera riga, ci si sposta all'inizio della riga e si preme il tasto ""D'' (2 volte). In modalità comando, alla pressione del tasto "":'' (Maiusc+.) il programma aspetta si dei comandi, ad esemprio, per salvare "":w'' (\emph{write}), per uscire e ritornare all'\emph{ambiente shell} "":q'' (\emph{quit}). A questo punto, volendo, è possibile tornare a lavorare sul file salvato\footnote{Il comando "":w'' può salvare il contenuto del file non nel file in cui si sta lavorando, ma in uno diverso (in pratica lo copia) scrivendo "":w \emph{nomefile}''. "":wq'' salva ed esce.}.
+Quando il programma viene avviato, è in \emph{modalità comando}, in attesa di ricevere un particolare comando.
+Premendo il tasto \key{I}, l'editor passa in \emph{modalità inserimento}.
+Premendo il tasto \key{A} in modalità comando, si comincia a scrivere a destra del cursore.
+Per uscire da questa modalità: \key{Esc}.
+Il tasto \key{O} apre una nuova riga sotto la posizione del cursore, mentre la combinazione \key{Maiusc + O} ne apre una sopra la posizione del cursore.
+Quando il cursore si sposta su una parentesi aperta, il programma evidenzia la parentesi chiusa corrispondente.
+Per cancellare un carattere, in modo comando, basta spostare il cursore sopra il carattere da cancellare e premere il tasto \key{X}.
+Per cancellare l'intera riga, ci si sposta all'inizio della riga e si preme il tasto \key{D} due volte.
+In modalità comando, alla pressione del tasto \key{:}, ossia \key{Maiusc + .}, il programma aspetta si dei comandi, ad esempio, per salvare \lstinline!:w! (\emph{write}), per uscire e ritornare all'\emph{ambiente shell} \lstinline!:q! (\emph{quit}).
+A questo punto, volendo, è possibile tornare a lavorare sul file salvato.
+Il comando \lstinline!:w! può salvare il documento in un file diverso da quello su cui si sta lavorando tramite la sintassi 
+\begin{lstlisting}
+:w £!\MyComment{nome del file}!£
+\end{lstlisting}
+mentre la combinazione \lstinline!:wq! salva ed esce.
 
 	\section{Debugger}
 Il \emph{debugger} è un programma progettato per l'analisi e l'eliminazione dei bug (vedi il paragrafo~\vref{sec:bug}) presenti in altri software. Assieme al compilatore è fra i più importanti strumenti di sviluppo a disposizione di un programmatore. Il compito principale del debugger è di mostrare il frammento di codice che genera il problema (tipicamente un \emph{crash}).
