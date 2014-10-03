@@ -1,0 +1,35 @@
+\begin{tikzpicture}[
+	every node/.style = {
+		circle,
+	}
+]
+\tikzstyle{level 1}=[sibling distance = 25mm]
+\tikzstyle{level 2}=[sibling distance = 13mm]
+\tikzstyle{level 2}=[sibling distance = 10mm]
+
+	\node [ball color = red] {}
+		child {
+			node [ball color=green] {}
+		}
+		child{
+			node [ball color=blue] {}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+		}
+		child{
+			node [ball color=blue] {}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+				child{
+					node [ball color=green] {}
+				}
+		};
+\end{tikzpicture}

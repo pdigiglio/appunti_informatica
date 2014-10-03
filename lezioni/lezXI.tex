@@ -65,93 +65,17 @@ Esistono diverse implementazioni di albero; in prima battuta si può considerare
 \begin{figure}
 	\centering
 \subfloat[][Rapresentazione grafica di un \acs{bst}.\label{fig:albero_BST_nr}]{
-\begin{tikzpicture}[
-	every node/.style = {
-		circle,
-		opacity=.4,
-		inner sep=2pt,
-%		minimum width={ width("50") + 3 pt},
-%		text width={width("Magnetometer")},
-%		align=center,
-		text opacity=1
-	},
-%level distance=30pt
-]
-\tikzstyle{level 1}=[sibling distance = 23mm]
-\tikzstyle{level 2}=[sibling distance = 15mm]
-\tikzstyle{level 3}=[sibling distance = 12mm]
-
-	\node [ball color = red] { $50$ }
-		child {
-			node [ball color=purple] {$17$}
-				child{
-					node [ball color=blue] {$12$}
-						child{
-							node [ball color=green] {$9$}
-						}
-						child{
-							node [ball color=green] {$14$}
-						}
-				}
-				child{
-					node [ball color=blue] {$23$}
-						child{
-							node [ball color=green] {$19$}
-						}
-				}
-		}
-		child{
-			node [ball color=purple] {$72$}
-				child{
-					node [ball color=blue] {$54$}
-						child{
-							node [ball color=green] {$67$}
-						}
-				}
-				child{
-					node [ball color=blue] {$76$}
-				}
-		};
-\end{tikzpicture}
+	\input{immagini/bst_1.pgf}
+}\quad
+\subfloat[][\acs{bst} con caratteri alfabetici.\label{fig:bst_2}]{
+	\input{immagini/bst_2.pgf}
 }
+	\caption{Alcuni esempi di \acs{bst}.}
+	\label{fig:bst}
 \end{figure}
 Si supponga di aver bisogno di tenere ordinati $N$ dati numerici inseriti nello \lstinline!stdin!.
-All'inserimento del primo dato $d_1$ si crea un nodo $n_1$ chiamato \emph{capostipite}\index{capostipite} o \emph{padre}\index{padre} (il pallino rosso in figura~\ref{fig:albero_BST_nr}).
-\begin{tikzpicture}[
-	every node/.style = {
-		circle,
-	}
-]
-\tikzstyle{level 1}=[sibling distance = 25mm]
-\tikzstyle{level 2}=[sibling distance = 13mm]
-\tikzstyle{level 2}=[sibling distance = 10mm]
+All'inserimento del primo dato $d_1$ si crea un nodo $n_1$ chiamato \emph{capostipite}\index{capostipite} o \emph{padre}\index{padre} (il pallino rosso nelle figure~\ref{fig:albero_BST_nr} e~\ref{fig:bst_2}).
 
-	\node [ball color = red] {}
-		child {
-			node [ball color=green] {}
-		}
-		child{
-			node [ball color=blue] {}
-				child{
-					node [ball color=green] {}
-				}
-				child{
-					node [ball color=green] {}
-				}
-		}
-		child{
-			node [ball color=blue] {}
-				child{
-					node [ball color=green] {}
-				}
-				child{
-					node [ball color=green] {}
-				}
-				child{
-					node [ball color=green] {}
-				}
-		};
-\end{tikzpicture}
 
 All'ingresso del secondo dato $d_2$ si crea un altro nodo $n_2$ e si stabilisce che
 \begin{itemize}
@@ -169,7 +93,16 @@ Ripetendo il procedimento $n$ volte, si avranno dei record contenenti numeri ord
 %	%\label{fig:albero}
 %\end{wrapfloat}
 
-Per com'è stato costruito quest'albero, ogni {\em genitore} può essere collegato al massimo a due \emph{figli}. Esso è, quindi, un albero binario o BST (\emph{Binary Search Tree}, figura~\vref{fig:bst1}). Ad ogni modo, è possibile creare una struttura ``dal basso'', in cui ogni albero figlio ha un puntatore al genitore. Tale modifica permette di avere un albero non più (soltanto) binario ma anche a più elementi.
+In questa implementazione ogni \emph{genitore}\index{genitore} può essere collegato al massimo a due \emph{figli}\index{figlio} pertanto l'albero prende il nome di \emph{\acl{bst}} {\small(\acs{bst})}, oppure \emph{albero binario} (figura~\ref{fig:bst}).
+\`E possibile creare una struttura ``dal basso'', in cui ogni albero figlio contiene un campo puntatore al genitore.
+\begin{figure}
+	\centering
+\input{immagini/albero.pgf}
+	\caption{Esempio di albero a più elementi.}
+	\label{fig:+el-tree}
+\end{figure}
+Con questa modifica si possono ottenere alberi a più elementi come quello in figura~\ref{fig:+el-tree}.
+%Tale modifica permette di avere un albero non più (soltanto) binario ma anche a più elementi.
 
 \begin{table}
 	\centering
@@ -187,8 +120,8 @@ Per com'è stato costruito quest'albero, ogni {\em genitore} può essere collega
 
 \begin{figure}
 	\centering
-\subfloat[Binary Search Tree][\emph{Binary Search Tree}\label{fig:bst1}]{\includegraphics[width=\columnwidth]{immagini/bst_1}} \\
-\subfloat[BST con caratteri alfabetici][\emph{BST con caratteri alfabetici}\label{fig:bst_2}]{\includegraphics[width=0.45\columnwidth]{immagini/bst_2}} \quad
+%\subfloat[Binary Search Tree][\emph{Binary Search Tree}\label{fig:bst1}]{\includegraphics[width=\columnwidth]{immagini/bst_1}} \\
+%\subfloat[BST con caratteri alfabetici][\emph{BST con caratteri alfabetici}\label{fig:bst_2}]{\includegraphics[width=0.45\columnwidth]{immagini/bst_2}} \quad
 %\subfloat[Albero][\emph{Rappresentazione grafica di un albero}\label{fig:albero}]{\includegraphics[width=0.45\columnwidth]{immagini/albero}}\\
 \subfloat[Lista concatenata bidirezionale][{\em Lista concatenata bidirezionale. I campi in blu sono puntatori.}\label{fig:blist}]{\includegraphics[width=0.45\columnwidth]{immagini/lista_bidirezionale}}\quad
 %\subfloat[Coda][{\em Rappresentazione grafica di una coda.}\label{fig:coda}]{\includegraphics[width=0.45\columnwidth]{immagini/coda}}

@@ -1,0 +1,48 @@
+\begin{tikzpicture}[
+	every node/.style = {
+		circle,
+		opacity=.4,
+		inner sep=2pt,
+%		minimum width={ width("50") + 3 pt},
+%		text width={width("Magnetometer")},
+%		align=center,
+		text opacity=1
+	},
+%level distance=30pt
+]
+\tikzstyle{level 1}=[sibling distance = 23mm]
+\tikzstyle{level 2}=[sibling distance = 15mm]
+\tikzstyle{level 3}=[sibling distance = 12mm]
+
+	\node [ball color = red] { $50$ }
+		child {
+			node [ball color=purple] {$17$}
+				child{
+					node [ball color=blue] {$12$}
+						child{
+							node [ball color=green] {$10$}
+						}
+						child{
+							node [ball color=green] {$14$}
+						}
+				}
+				child{
+					node [ball color=blue] {$23$}
+						child{
+							node [ball color=green] {$19$}
+						}
+				}
+		}
+		child{
+			node [ball color=purple] {$72$}
+				child{
+					node [ball color=blue] {$54$}
+						child{
+							node [ball color=green] {$67$}
+						}
+				}
+				child{
+					node [ball color=blue] {$76$}
+				}
+		};
+\end{tikzpicture}
