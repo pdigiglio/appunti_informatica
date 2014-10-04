@@ -33,6 +33,12 @@ Come ultimo accorgimento, basta stabilire che il nodo di coda contenga nella sua
 Ad ogni modo, servirà comunque una variabile ausiliaria (analogamente al puntatore \lstinline!*testa!) di tipo \lstinline!int! che indichi qual è il primo nodo.
 
 
+\begin{figure}
+	\centering
+\includegraphics[width=0.45\columnwidth]{immagini/lista_bidirezionale}
+	\caption[Lista concatenata bidirezionale]{Lista concatenata bidirezionale: i campi in blu sono puntatori.}
+	\label{fig:blist}
+\end{figure}
 Per l'esame, potrebbe essere necessario apportare delle modifiche ad una struttura dati esistente, come creare una lista concatenata bidirezionale (vedi la figura~\ref{fig:blist}).
 Tale struttura ha bisogno di due campi puntatore (\lstinline!*prev! e \lstinline!*next!) e può essere percorsa in entrambi i versi.
 Oppure, si potrebbero dover dichiarare più campi puntatori all'interno di un record per ordinare la lista in base a criteri differenti.
@@ -54,6 +60,20 @@ A differenza di uno stack, tuttavia, essi seguono una disciplina del tipo \ac{fi
 Un nuovo oggetto inserito si colloca in fondo alla coda, mentre per estrarne uno lo si preleva dalla testa.
 
 Risulta ora evidente l'analogia di tale struttura con una fila (o coda) reale che si fa per usufruire di un servizio ad uno sportello, da cui peraltro prende il nome.
+\begin{table}
+	\centering
+	\caption[Costo computazionale]{La tabella mostra il costo computazionale di uno stack, una coda ed una coda con un puntatore all'ultimo elemento con $n$ elementi.}
+	\label{tab:co-st}
+	\begin{tabular}{l  S[parse-numbers=false] S}
+		\toprule
+Struttura		&{Inserimento}	&{Eliminazione}	\\
+		\midrule
+	Stack			&1				&1				\\
+	Coda			&n				&1			\\
+	Coda (puntatore)	&1				&1				\\
+\bottomrule
+	\end{tabular}
+\end{table}
 Differenze tra coda e stack si riscontrano anche nel costo computazionale, ossia sul numero di ``calcoli'' che l'esecutore deve compiere per effettuare un'operazione sulla struttura, come mostra la tabella~\ref{tab:co-st}.
 Per eliminare un elemento, partendo da \lstinline!*testa!, il computer deve percorrere tutta la coda finché non giunge all'ultimo.
 Per ridurre il costo computazionale della coda, è possibile introdurre un puntatore al nodo finale in modo tale che l'eliminazione comporti un solo passaggio, al pari dell'inserimento.
@@ -105,26 +125,13 @@ In questa implementazione ogni \emph{genitore}\index{genitore} può essere colle
 Con questa modifica si possono ottenere alberi a più elementi come quello in figura~\ref{fig:+el-tree}.
 %Tale modifica permette di avere un albero non più (soltanto) binario ma anche a più elementi.
 
-\begin{table}
-	\centering
-	\caption[Costo computazionale]{La tabella mostra il costo computazionale di uno stack, una coda ed una coda con un puntatore all'ultimo elemento, con $n$ elementi.}
-	\label{tab:co-st}
-	\begin{tabular}{l | c c}
-		\toprule
-\emph{Struttura}		&\emph{Inserimento}	&\emph{Eliminazione}	\\
-		\midrule
-	Stack			&$1$				&$1$				\\
-	Coda			&$n$				&$1$				\\
-	Coda (puntatore)	&$1$				&$1$
-	\end{tabular}
-\end{table}
 
-\begin{figure}
-	\centering
+%\begin{figure}
+%	\centering
 %\subfloat[Binary Search Tree][\emph{Binary Search Tree}\label{fig:bst1}]{\includegraphics[width=\columnwidth]{immagini/bst_1}} \\
 %\subfloat[BST con caratteri alfabetici][\emph{BST con caratteri alfabetici}\label{fig:bst_2}]{\includegraphics[width=0.45\columnwidth]{immagini/bst_2}} \quad
 %\subfloat[Albero][\emph{Rappresentazione grafica di un albero}\label{fig:albero}]{\includegraphics[width=0.45\columnwidth]{immagini/albero}}\\
-\subfloat[Lista concatenata bidirezionale][{\em Lista concatenata bidirezionale. I campi in blu sono puntatori.}\label{fig:blist}]{\includegraphics[width=0.45\columnwidth]{immagini/lista_bidirezionale}}\quad
+%\subfloat[Lista concatenata bidirezionale][{\em Lista concatenata bidirezionale. I campi in blu sono puntatori.}\label{fig:blist}]{\includegraphics[width=0.45\columnwidth]{immagini/lista_bidirezionale}}\quad
 %\subfloat[Coda][{\em Rappresentazione grafica di una coda.}\label{fig:coda}]{\includegraphics[width=0.45\columnwidth]{immagini/coda}}
-	\caption{Alcune strutture dati.}
-\end{figure}
+%	\caption{Alcune strutture dati.}
+%\end{figure}
