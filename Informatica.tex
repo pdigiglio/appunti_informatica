@@ -17,7 +17,7 @@
 \usepackage[english,italian]{babel}
 
 \usepackage{scrhack}
-%\usepackage{showkeys}%,showidx}
+\usepackage{showkeys}%,showidx}
 
 \usepackage[
 	table,
@@ -44,7 +44,7 @@
 
 
 \usepackage{scrpage2}
-\usepackage{emptypage}
+%\usepackage{emptypage}
 \pagestyle{scrheadings}
 
 %\renewcommand{\sfdefault}{iwona}
@@ -90,6 +90,105 @@
 	calc,
 	backgrounds,
 	fit
+}
+
+% for plots
+\usepackage{pgfplots}
+\pgfplotsset{
+	compat = {1.8},
+	every axis/.append style={
+		width = .77\columnwidth,
+		error bars/y dir=both,
+		error bars/y explicit,
+		error bars/x dir=both,
+		error bars/x explicit,
+%		samples =100,
+		axis line style={
+			color = black!50,
+		},
+		every axis label/.append style ={
+			color = black!80,
+		},
+		ylabel style = {
+			sloped,
+%			rotate=90,
+%			anchor=near ticklabel,
+		},
+		xlabel style = {sloped},
+		zlabel style = {sloped},
+		every tick label/.append style={
+			color = black!60,
+		},
+		mark size=.3pt,
+%		scaled ticks=base 10:-11, %mette * 10 ^{-11} agli assi
+		grid = major,
+		grid style = {
+			dotted,
+			color = gray!40
+		},
+		legend style = {
+			shade,
+%			draw = none,
+			bottom color = gray!10,
+			top color = white,
+			anchor = north % west
+		},
+		enlargelimits = .05
+	},
+	% imposto delle opzioni per i grafici
+	cycle list={
+		{%
+			solid, line width=.8pt,
+			color=blue!70,
+			opacity=.8,
+			mark=*,
+			mark options={%
+				scale=3,
+				fill=yellow!80!blue,
+				draw=blue!60
+			},
+			error bars/error bar style={
+				blue!100,
+				opacity = .85,
+			}
+		},
+		{%
+			line width=.8pt,
+			color=orange!100,
+			opacity=.8,
+			mark=square*,
+			mark options={%
+				scale=3,
+				fill=gray!80!orange,
+				draw=red!100
+			},
+			error bars/error bar style={
+				red!100,
+				solid,
+				opacity = .85
+			}
+		},
+		{%
+			line width=.8pt,
+			color=green!60,
+			opacity=.8,
+			mark=triangle*,
+			mark options={%
+				scale=3,
+				fill=green!30!blue,
+				opacity=.2,
+				draw=green!100
+			},
+			error bars/error bar style={
+				PineGreen!100,
+				solid,
+				opacity = .85
+			}
+		},
+	},
+%	every pin/.append style={
+%		font=\footnotesize
+%	},
 }
 
 
