@@ -1,14 +1,26 @@
 \chapter[Lezione II]{Lezione II\newline\small{\emph{31/03/2011}}}
 	\section{Struttura generale di un calcolatore}
 	\label{sec:neu}
+
+
+
+
+La\marginpar{%
+%\begin{figure}
+%	\centering
+	\vskip0pt
+\includegraphics[width=\marginparwidth]{immagini/von_neu}
+	\captionof{figure}[John von Neumann]{John von Neumann (Budapest, 28 dicembre 1903 --- Washington, 8 febbraio 1957).}
+	\label{fig:vn}
+%\end{figure}%
+} struttura di un calcolatore descritta di seguito, attribuita al matematico e informatico \emph{John von Neumann} (figura~\ref{fig:vn} a lato), è rimasta pressoché immutata nel corso del tempo, sin dagli anni '40.
 \begin{figure}
 	\centering
-		\subfloat[John Von Neumann][{\em John Von Neumann (Budapest, 28 dicembre 1903 - Washington, 8 febbraio 1957).}\label{fig:vn}]{\includegraphics[width=0.45\columnwidth]{immagini/von_neu}} \quad
-		\subfloat[Calcolatore di von Neumann][{\em Struttura generale di un calcolatore di von Neumann.}\label{fig:neu}]{\includegraphics[width=0.45\columnwidth]{immagini/von_neumann}}
-	\caption{John Von Neumann}
+\includegraphics[width=0.45\columnwidth]{immagini/von_neumann}
+	\caption[Calcolatore di von Neumann]{Struttura generale di un calcolatore di von Neumann.}
+	\label{fig:neu}
 \end{figure}
-
-La\marginpar{Struttura di John von Neumann} struttura di un calcolatore descritta di seguito è rimasta più o meno immutata nel corso del tempo, sin dagli anni '40. Essa è stata attribuita al matematico e informatico \emph{John von Neumann} (figura~\vref{fig:vn}). Il calcolatore (figura~\vref{fig:neu}) è essenzialmente composto da:
+Il calcolatore, come schematizzato in figura~\ref{fig:neu}, è essenzialmente composto da:
 \begin{description}
 	\item
 [\ac{cpu}] Nella \ac{cpu} (ovvero \emph{Unità Centrale d'Elaborazione}) vengono  trasformati e manipolati i dati;
@@ -20,29 +32,25 @@ Serve per conservare i dati durante l'esecuzione di un programma (o l'elaborazio
 	\item
 [Memoria Permanente] ossia quei supporti che conservano i dati a lungo termine, anche dopo lo spegnimento del calcolatore. Sono, ad esempio, dischi fissi, floppy, Compact Disc, etc\dots
 \end{description}
-
-
 Le prime tre componenti elencate sono assolutamente \emph{necessarie} ai fini del funzionamento del calcolatore e comunicano tra loro per mezzo del \emph{bus}\index{bus}.
-Affinché le varie parti lavorino in modo sincrono, inoltre, in ogni macchina è presente il \emph{clock}\index{clock}, un apparecchio simile ad un metronomo che manda dei segnali ad ogni parte del computer.
-Il clock, quindi, stabilisce la frequenza di lavoro.
+Affinché le varie parti lavorino in modo sincrono, inoltre, in ogni macchina è presente il \emph{clock}\index{clock}, un apparecchio simile ad un metronomo che manda dei segnali ad ogni parte del computer e stabilisce la frequenza di lavoro.
 
 
 
-La \ac{cpu} contiene dei registri.
-In ognuno di essi si possono conservare dei dati, che la \ac{cpu} è in grado di leggere ed utilizzare.
-La \ac{ram}, in modo analogo, è organizzata in celle indicizzate da un numero intero non negativo.
-Tali numeri sono progressivi e vanno da $0$ a $n$.
-Affinché i programmi vengano eseguiti, è necessario memorizzare informazioni nella memoria di lavoro.
-Queste sono composte, in genere, sia dai dati da elaborare, sia dalle istruzioni tramite cui avverrà l'elaborazione.
+La \ac{cpu} contiene dei registri adibiti alla conservazione di dati che è in grado di leggere ed utilizzare.
+La \ac{ram}, in modo analogo, è organizzata in $n$ celle indicizzate da numeri interi non negativi e progressivi che partono da \num{0} e arrivano a $n-1$.
+Affinché i programmi vengano eseguiti è necessario immettere nella memoria di lavoro le informazioni che sono composte, in genere, sia dai dati da elaborare che dalle istruzioni tramite cui avverrà l'elaborazione.
 
-La \marginpar{Funzionamento della \ac{cpu}} macchina (più strettamente parlando, la \ac{cpu}) per funzionare esegue tre operazioni principali:
+La \marginpar{Funzionamento della \ac{cpu}} macchina (o meglio, più strettamente parlando, la \ac{cpu}) per funzionare esegue tre operazioni principali:
 \begin{description}[]
 	\item
-[Fetch\index{fetch}] reperisce nella memoria di lavoro la prossima istruzione da eseguire. Tra i registri della \ac{cpu}, infatti, ve n'è uno dedicato a contenere il numero della cella (chiamato anche \emph{indirizzo}) della \ac{ram} contenente l'istruzione successiva;
+[Fetch\index{fetch}] Reperisce nella memoria di lavoro la prossima istruzione da eseguire.
+Tra i registri della \ac{cpu}, infatti, ve n'è uno dedicato a contenere il numero della cella (chiamato anche \emph{indirizzo}\index{indirizzo}) della \ac{ram} contenente l'istruzione successiva;
 	\item
-[Decode\index{decode}] una volta trovata l'istruzione da eseguire è necessario che questa venga decodificata dalla \ac{cpu};
+[Decode\index{decode}] Una volta trovata l'istruzione da eseguire è necessario che questa venga decodificata dalla \ac{cpu};
 	\item
-[Execute\index{execute}] avvenuta la decodifica, la \ac{cpu} esegue l'istruzione. In generale, ciò comporta una modifica del contenuto dei registri. In particolare, cambierà almeno il contenuto del \emph{program counter}\index{program counter} (il registro della \ac{cpu} che contiene l'indirizzo dell'istruzione successiva).
+[Execute\index{execute}] Avvenuta la decodifica, la \ac{cpu} esegue l'istruzione.
+In generale, ciò comporta una modifica del contenuto dei registri: in particolare, cambierà almeno il contenuto del \emph{program counter}\index{program counter} (il registro della \ac{cpu} che contiene l'indirizzo dell'istruzione successiva).
 \end{description}
 
 	\section{Rappresentazione della memoria del calcolatore e tipi di dato semplici}
