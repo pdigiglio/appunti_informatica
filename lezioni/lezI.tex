@@ -1,37 +1,43 @@
 \chapter[Lezione I]{Lezione I\newline\small{\emph{24/03/2011}}}
 	\section{Introduzione informale all'informatica}
-L'\emph{informatica} è una scienza che permette di risolvere per via algoritmica problemi come i seguenti.\footnote{Possiamo assumere, per il momento che l'algoritmo sia un processo meccanico che produca dei risultati a partire da dei dati seguendo dei passaggi prestabiliti.}
+
+Assumiamo, per il momento che l'\emph{algoritmo}\index{algoritmo} sia un processo meccanico che produca dei risultati a partire da dei dati seguendo dei passaggi prestabiliti.
+L'\emph{informatica}\index{informatica} è una scienza che permette di risolvere per via algoritmica problemi come i seguenti.
 
 
-Si stabilisca quale percorso deve seguire un aereo per arrivare da un aeroporto ad un altro.
-Qualora ci fossero più percorsi, si trovi quello più breve.
-Tale problema si può risolvere schematizzando i percorsi e gli aeroporti.
-Può tornare utile rappresentare gli aeroporti per mezzo di punti e le eventuali rotte che li collegano con dei segmenti.
-Ora, non è più rilevante la struttura geografica dei luoghi o il percorso effettivamente seguito dal mezzo.
-Basta conoscere gli aeroporti, le rotte di collegamento e il loro rispettivo ``peso'' (ossia la distanza).
-Una rappresentazione come quella qui descritta si chiama \emph{grafo} (vedi il paragrafo~\vref{subsec:grafo});
-
-Si è qui operato un processo di \emph{astrazione}. Esso consiste nell'estrapolare dal problema reale tutti e soli i dati che servano a risolverlo, trascurando dettagli inutili e semplificando così la questione.
+Si\marginpar{Percorso più breve} stabilisca quale percorso deve seguire un aereo per arrivare da un aeroporto ad un altro e, qualora ne esista più di uno, si trovi quello più breve.
+Tale problema si può risolvere schematizzando i percorsi e gli aeroporti; operando, cioè, un processo di \emph{astrazione}\index{astrazione} che consiste nell'estrapolare dal problema reale tutti e soli i dati che servano a risolverlo, trascurando dettagli inutili e semplificando così la questione.
+Può dunque tornare utile rappresentare gli aeroporti per mezzo di punti e le eventuali rotte che li collegano con dei segmenti.
+Fatto ciò, non è più rilevante la struttura geografica dei luoghi o il percorso effettivamente seguito dal mezzo: basta conoscere gli aeroporti, le rotte di collegamento e il loro rispettivo \emph{peso}\index{peso} (ossia la distanza).
+Una rappresentazione come quella qui descritta si chiama \emph{grafo}\index{grafo} (vedi il paragrafo~\ref{subsec:grafo} a pagina~\pageref{subsec:grafo}).
 
 
-Un ladro entra in un magazzino ed ha a disposizione solo uno zaino che riesce a sostenere un peso finito con cui trasportare la refurtiva.
-Nel magazzino sono presenti oggetti di diverso valore e diverso peso.
-Il suo scopo è di massimizzare il suo guadagno cercando di portare via oggetti del maggior valore possibile.
-Tale questione si può esprimere in modo più formale come segue.
-Sia dato uno zaino che possa sopportare un determinato peso $W$.
-Siano dati inoltre $N$ oggetti, ognuno dei quali caratterizzato da un peso $w_i$ e un valore $c_i$ con $i\in\{1,\dots,N\}$.
+
+Un\marginpar{Problema del ladro} ladro entra in un magazzino ed ha a disposizione solo uno zaino che riesce a sostenere un peso finito con cui trasportare la refurtiva.
+Nel magazzino sono presenti oggetti di diverso valore e diverso peso ed il suo scopo è di massimizzare il proprio guadagno cercando di portare via oggetti del maggior valore possibile.
+Tale questione si può esprimere in modo più formale considerando uno zaino che possa sopportare un determinato peso $W$ e $N$ oggetti, ciascuno caratterizzato da un peso $w_i$ e un valore $c_i$ con $i\in\Set{1,\dots,N}$.
 Si scelga quali di questi oggetti mettere nello zaino per ottenere il maggiore valore senza eccedere nel peso sostenibile dallo zaino stesso \cite{wiki:zaino}.
 
-Una soluzione possibile consiste nello scegliere gli oggetti da portare via in base al loro valore unitario, cioè al rapporto:
-\[
-VU_i=\frac{c_i}{w_i}.
-\]
-Ovviamente, un oggetto avrà priorità tanto maggiore quanto più grande sarà il suo valore unitario.
+Una soluzione possibile consiste nello scegliere gli oggetti da portare via in base al loro valore unitario, cioè al rapporto $c_i/w_i$. 
+%\[
+%V_i=\frac{c_i}{w_i}.
+%\]
+Un oggetto avrà priorità tanto maggiore quanto più grande sarà il suo valore unitario.
 
 
-Si hanno \num{50} schedine numerate, indicizzate da numeri \emph{non} progressivi compresi in un range che va da \numrange{1}{e6}. Bisogna ridisporre tale schedine in ordine crescente. In particolare, ci sono dei vincoli. Supponiamo di avere a disposizione uno spazio che non permetta di vedere i numeri di tutte le schedine contemporaneamente. C'è, però, a abbastanza spazio per appoggiare contemporaneamente due mazzi.
+Si\marginpar{Problema dell'ordinamento} hanno \num{50} schedine numerate, indicizzate da numeri \emph{non} progressivi compresi in un range che va da \numrange{1}{e6} e bisogna ridisporle in ordine crescente.
+Si ha però a disposizione uno spazio che non permette di vedere i numeri di tutte le schedine contemporaneamente ma solo di appoggiare contemporaneamente due mazzi.
 
-Un procedimento risolutivo potrebbe essere il seguente. Si estrae una schedina $s_1$ dal mazzo non ordinato e la si appoggia accanto al mazzo stesso, in modo che il suo numero sia visibile. Se n'estrae una seconda $s_2$ e la si confronta con la prima. Se $s_1>s_2$, si pone $s_2$ sopra $s_1$. Altrimenti si ripone $s_2$ in fondo al mazzo da cui è stata estratta. Si ripete tale procedimento fino a quando il primo mazzo non finisce. In informatica, tale metodo risolutivo prende talvolta il nome di \algo{bubble sort}\index{boubble sort}\index{sort!boubble}.
+Un procedimento risolutivo potrebbe essere il seguente.
+Si estrae una schedina $s_1$ dal mazzo non ordinato e la si appoggia accanto al mazzo stesso, in modo che il suo numero sia visibile.
+Successivamente, se n'estrae una seconda $s_2$ e la si confronta con la prima:
+\begin{itemize}
+	\item
+Se $s_1 > s_2$, si pone $s_2$ sopra $s_1$;
+	\item
+Se $s_1 \le s_2$, si ripone $s_2$ in fondo al mazzo da cui è stata estratta.
+\end{itemize}
+Si ripete tale procedimento fino a quando il primo mazzo non finisce. In informatica, tale metodo risolutivo prende talvolta il nome di \algo{bubble sort}\index{boubble sort}\index{sort!boubble}.
 
 
 
@@ -42,11 +48,11 @@ L'efficienza di un algoritmo, come ci si potrebbe aspettare, è inversamente pro
 
 \begin{table}
 	\centering
-	\caption[Costo dell'algoritmo \algo{bubble sort}]{Costo computazionale di un algoritmo \algo{bubble sort} ($n\in\mathbb{N}\sm\Set{0}$).}
+	\caption[Costo dell'algoritmo \algo{bubble sort}.]{Costo computazionale di un algoritmo \algo{bubble sort} (con $n\in\N\sm\Set{0}$).}
 	\label{tab:bubble}
 	\begin{tabular}{>$c<$ >$c<$}
 		\toprule
-\emph{n. di carte}	&\emph{n. di confronti}	\\
+\text{Num.~di carte}	&\text{Num.~di confronti}	\\
 		\midrule
 50			&49				\\
 49			&48				\\
@@ -57,20 +63,21 @@ n			&n-1				\\
 	\end{tabular}
 \end{table}
 La \marginpar{bubble sort} tabella~\ref{tab:bubble} mostra il numero massimo di confronti da compiere (in riferimento alla terza tipologia di problema) tramite un algoritmo di \algo{bubble sort} in relazione al numero di carte che rimangono nel primo mazzo.
-In generale, supponendo di avere un mazzo non ordinato di $n$ carte, con $n\in\mathbb{N}$, si hanno $(n-1)+(n-2)+\dots+2+1$ confronti $c$, ossia:
-\[
+In generale, supponendo di avere un mazzo non ordinato di $n$ carte, con $n\in\mathbb{N}$, si hanno $(n-1)+(n-2)+\dots+2+1$ confronti $c$, ossia
+\begin{equation}
 c_\textup{bs}(n)=\sum_{i=1}^{n-1}i=\frac{(n-2)(n-1)}{2}
-\]
-dove, l'ultima uguaglianza è giustificata dall'algoritmo di Gauss per la somma dei primi $n$ numeri naturali. Pertanto, per $n\to+\infty$, si ha che:
-\[
+\end{equation}
+dove, l'ultima uguaglianza è giustificata dall'algoritmo di Gauss per la somma dei primi $n$ numeri naturali.
+Pertanto, per $n\to+\infty$, si ha che
+\begin{equation}
 c_\textup{bs}(n)
-= \sum_{i=1}^{n-1}i=\frac{(n-2)(n-1)}{2}
+%= \sum_{i=1}^{n-1}i=\frac{(n-2)(n-1)}{2}
 \overset{n\to\infty}{\thicksim}
-\frac{\ n^2}{2}\asymp n^{2}.
-\]
-Raddoppiando il numero di carte, dunque, il numero di confronti quadruplica.
+\frac{\ n^2}{2}\asymp n^{2},
+\end{equation}
+ossia raddoppiando il numero di carte il numero di confronti quadruplica.
 
-Esistono \marginpar{merge sort} molti altri metodi d'ordinamento, tra cui l'algoritmo \algo{merge sort}, inventato da John von Neumann nel 1945, che si basa un po' sull'antico detto romano ``divide et impera'' \parencite{wiki:it}.
+Esistono \marginpar{merge sort} molti altri metodi d'ordinamento, tra cui l'algoritmo \algo{merge sort}, inventato da John von Neumann nel 1945, che si basa un po' sull'antico detto romano <<divide et impera>> \parencite{wiki:it}.
 \begin{figure}
 	\centering
 %	\includegraphics[width=\columnwidth]{immagini/merge_sort}
@@ -88,19 +95,22 @@ Come mostrato in figura~\ref{fig:merge}, si dividono progressivamente i dati di 
 Se il numero di dati non è divisibile per due, non importa: si avrà almeno un mazzo da una schedina.
 Dopo aver suddiviso le schedine, si ordinano progressivamente partendo ``dal basso verso l'alto''.
 
-Per quanto riguarda il costo di tale algoritmo, si devono effettuare all'incirca $\log_2(n)$ suddivisioni.
-Ad ogni passaggio a ritroso, inoltre, bisogna compiere $n$ confronti.
-Il costo dell'algoritmo sarà, quindi, $c_\textup{ms}(n)\thicksim n\log_{2}(n)$. Per $n\to+\infty$, si ha che:
+Per quanto riguarda il costo di tale algoritmo, si devono effettuare all'incirca $\log_2(n)$ suddivisioni e ad ogni passaggio a ritroso bisogna compiere $n$ confronti.
+Il costo dell'algoritmo è $c_\textup{ms}(n)\simeq n\log_{2}(n)$ e per $n\to+\infty$ si ha
 \[
-c_\textup{bs}(n)\overset{n\to+\infty}{\thicksim} n^{2} \gg n\log_{2}(n) \overset{n\to+\infty}{\thicksim} c_\textup{ms}(n).
+c_\textup{bs}(n)\overset{n\to+\infty}{\thicksim} n^{2} \gg n\log_{2}(n) \overset{n\to+\infty}{\thicksim} c_\textup{ms}(n)
 \]
-Si riscontra, quindi, che l'algoritmo \algo{merge sort} è più efficiente dell'algoritmo \algo{bubble sort}.
+pertanto l'algoritmo \algo{merge sort} è più efficiente del \algo{bubble sort}.
 
 
 	\section{Programma}
-Il \emph{programma} è un oggetto che si può presentare sotto varie forme. Le più importanti sono tre:
+
+Il \emph{programma}\index{programma} è un oggetto che si può presentare sotto varie forme tra cui si distinguono particolarmente le seguenti tre:
 \begin{description}
-	\item[In corso d'esecuzione.] In questo caso, prende il nome di \emph{processo};
-	\item[File eseguibile.] Esso è essenzialmente un file (con estensione \ext{.exe} in \os{Windows}) contenente un insieme d'istruzioni comprensibili dall'unità di calcolo. Una volta eseguito, si traduce in un processo. Il linguaggio in cui è scritto tale file prende il nome di \emph{assembly} o \emph{linguaggio macchina}. Quest'ultimo nome lascia intuire che tale file non è fatto per essere letto ed interpretato dall'uomo;
-	\item[Codice sorgente.] Questo è un file di testo contenente istruzioni comprensibili anche all'uomo. \`E scritto in un \emph{linguaggio di programmazione} (vedi il paragrafo~\ref{subsec:programmazione} a pagina~\pageref{subsec:programmazione}). Per ottenere un file eseguibile dal codice sorgente, c'è bisogno di ``tradurre'' quest'ultimo tramite un processo che, per ragioni storiche, prende il nome di \emph{compilazione}.\footnote{Per maggiori dettagli, si rimanda a degli appunti sul sito del prof.~Bernardinello all'indirizzo \url{http://www.mc3.disco.unimib.it/lif/Dep/vigcc.pdf}}
+	\item[In corso d'esecuzione] In questo caso, prende il nome di \emph{processo}\index{processo};
+	\item[File eseguibile] \`E un file (con estensione \ext{.exe} in \os{Windows}) contenente un insieme d'istruzioni comprensibili dall'unità di calcolo.
+\`E scritto in un linguaggio che prende il nome di \lang{Assembly} o \lang{Linguaggio Macchina} e, come si intuisce, non è fatto per essere letto ed interpretato dall'uomo.
+Quando un file eseguibile viene lanciato si traduce in un processo;
+	\item[Codice sorgente] \`E un file di testo contenente istruzioni comprensibili anche all'uomo ed è scritto in un \emph{linguaggio di programmazione}.
+Per ottenere un file eseguibile dal codice sorgente c'è bisogno di ``tradurlo'' tramite un processo che, per ragioni storiche, prende il nome di \emph{compilazione}\index{compilazione}.\footnote{Per maggiori dettagli, si rimanda a degli appunti sul sito del prof.~Bernardinello all'indirizzo \url{http://www.mc3.disco.unimib.it/lif/Dep/vigcc.pdf}}
 \end{description}
