@@ -3,14 +3,15 @@
 	\label{sec:neu}
 
 
-
+	% for some reason I need it to obtain 'figura 2.1' in marginpar
+	\addtocounter{figure}{-1}
 
 La\marginpar{%
 %\begin{figure}
 %	\centering
 	\vskip0pt
 \includegraphics[width=\marginparwidth]{immagini/von_neu}
-	\captionof{figure}[John von Neumann]{John von Neumann (Budapest, 28 dicembre 1903 --- Washington, 8 febbraio 1957).}
+	\captionof{figure}{John von Neumann (Budapest, 28 dicembre 1903 --- Washington, 8 febbraio 1957).}
 	\label{fig:vn}
 %\end{figure}%
 } struttura di un calcolatore descritta di seguito, attribuita al matematico e informatico \emph{John von Neumann} (figura~\ref{fig:vn} a lato), è rimasta pressoché immutata nel corso del tempo, sin dagli anni '40.
@@ -55,15 +56,16 @@ In generale, ciò comporta una modifica del contenuto dei registri: in particola
 
 	\section{Rappresentazione della memoria del calcolatore e tipi di dato semplici}
 	\label{sec:mem}
-Può tornare utile immaginare la memoria di un computer come un foglio a quadretti (per gli attuali calcolatori, anche quelli presenti in ambienti domestici, il numero di ``quadretti'' è dell'ordine di \num{e9}). Ogni quadretto può contenere uno ed un solo ``dato semplice'' (ad esempio un carattere, un numero, o un qualsiasi altro \emph{simbolo}).
+Può tornare utile immaginare la memoria di un computer come un foglio a quadretti che rappresentano le celle della \ac{ram}.\footnote{Per gli attuali calcolatori, anche quelli presenti in ambienti domestici, il numero di ``quadretti'' è dell'ordine di \num{e9}.}
+Ogni quadretto può contenere uno ed un solo ``dato semplice'' come,  ad esempio, un carattere, un numero, o qualsiasi altro \emph{simbolo}.
 
-Ogni dato (qualsiasi) occupa una certa quantità di quadretti (o celle).
-Ognuna di queste celle è identificata da un numero progressivo (il suddetto \emph{indirizzo}).\footnote{Il calcolatore non è in grado di ``comprendere'' la numerazione decimale. Esso è in grado di codificare solo istruzioni che gli vengano passate in linguaggio binario.}
-Poiché spesso è abbastanza scomodo usare gli indirizzi per individuare la posizione dei dati, possiamo contrassegnare uno o più quadretti consecutivi con un nome simbolico.
-In\marginpar{Variabili} questo modo, identifichiamo dei ``blocchi'' di quadretti  chiamati \emph{variabili}\index{variabile}. Le variabili vengono classificate in \emph{tipi}\index{tipo}.
+Ogni dato, di qualsiasi tipo, occupa una certa quantità di celle, ciascuna delle quali è identificata da un numero progressivo: il suddetto \emph{indirizzo}. %\footnote{Il calcolatore non è in grado di ``comprendere'' la numerazione decimale. Esso è in grado di codificare solo istruzioni che gli vengano passate in linguaggio binario.}
+Spesso è abbastanza scomodo usare gli indirizzi per individuare la posizione dei dati, pertanto possiamo contrassegnare uno o più quadretti consecutivi con un nome simbolico.
+In\marginpar{Variabili} questo modo identifichiamo dei ``blocchi'' di quadretti  chiamati \emph{variabili}\index{variabile}. Le variabili vengono classificate in \emph{tipi}\index{tipo}.
 
-Il concetto di tipo, non è una caratteristica di tutti i \emph{linguaggi di programmazione}.
-In linguaggio \lang{C} è necessario specificare il tipo di una variabile ma lo stesso non vale, ad esempio, per linguaggi come il \lang{Python}.
+
+Il\marginpar{Tipi} concetto di tipo non è una caratteristica di tutti i linguaggi di programmazione.
+In linguaggio \lang{C} è \emph{necessario} specificare il tipo di una variabile ma lo stesso non vale, ad esempio, per linguaggi come il \lang{Python}.
 Ad ogni tipo di dato corrisponde una particolare quantità di memoria che il calcolatore \emph{alloca} (alcuni tipi richiedono più celle di altri).
 
 I \marginpar{Tipi primitivi} \emph{tipi primitivi}\index{tipo!primitivo} in linguaggio \lang{C} sono:
