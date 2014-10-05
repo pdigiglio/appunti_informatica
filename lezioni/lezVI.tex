@@ -126,7 +126,7 @@ struct rettangolo {
 \end{minipage}
 
 \end{code}
-Spesso \marginpar{Direttiva \lstinline!#define!} può risultare conveniente specificare una direttiva\index{direttiva} \lstinline!#define!\index{define@\texttt{#define}} all'inizio del codice sorgente come mostrato nel codice~\vref{cod:def}.\footnote{Le direttive \emph{non} sono istruzioni, quindi non bisogna concludere la riga con <<\lstinline!;!>>.}
+Spesso \marginpar{Direttiva \lstinline!#define!} può risultare conveniente specificare una direttiva\index{direttiva} \lstinline!#define!\index{define@\texttt{\#define}} all'inizio del codice sorgente come mostrato nel codice~\vref{cod:def}.\footnote{Le direttive \emph{non} sono istruzioni, quindi non bisogna concludere la riga con <<\lstinline!;!>>.}
 Dopo aver specificato questa direttiva, il compilatore sostituirà il valore \num{30} ogni qualvolta incontrerà il carattere <<\lstinline!L!>>.
 Il carattere deve essere una \emph{unità logica}, cioè, il compilatore non sostituirà il valore \num{30} a \lstinline!L! se esso è (ad esempio) all'interno di una parola.
 Tale direttiva renderà il programma molto più facile da modificare.
