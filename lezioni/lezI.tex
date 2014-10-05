@@ -96,11 +96,19 @@ Se il numero di dati non è divisibile per due, non importa: si avrà almeno un 
 Dopo aver suddiviso le schedine, si ordinano progressivamente partendo ``dal basso verso l'alto''.
 
 Per quanto riguarda il costo di tale algoritmo, si devono effettuare all'incirca $\log_2(n)$ suddivisioni e ad ogni passaggio a ritroso bisogna compiere $n$ confronti.
+\begin{figure}
+	\centering
+\input{immagini/costo_comp_cfr.pgf}
+	\caption{Confronto tra i costi computazionali $c_\textup{bs}$ e $c_\textup{ms}$.}
+	\label{fig:costo_cfr}
+\end{figure}
 Il costo dell'algoritmo è $c_\textup{ms}(n)\simeq n\log_{2}(n)$ e per $n\to+\infty$ si ha
-\[
-c_\textup{bs}(n)\overset{n\to+\infty}{\thicksim} n^{2} \gg n\log_{2}(n) \overset{n\to+\infty}{\thicksim} c_\textup{ms}(n)
-\]
-pertanto l'algoritmo \algo{merge sort} è più efficiente del \algo{bubble sort}.
+\begin{equation}
+c_\textup{bs}(n)\overset{n\to+\infty}{\thicksim} n^{2} \gg n\log_{2}(n) \overset{n\to+\infty}{\thicksim} c_\textup{ms}(n).
+\end{equation}
+La figura~\ref{fig:costo_cfr} mostra che già per $n \gtrsim \num{10}$ l'algoritmo \algo{merge sort} è più efficiente del \algo{bubble sort}.
+
+
 
 
 	\section{Programma}

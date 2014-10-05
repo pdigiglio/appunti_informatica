@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\begin{axis}[
+	domain = {0:15},
+	xlabel = {Numero di elementi da ordinare},
+	ylabel = {Sforzo computazionale}
+]
+\addplot+[mark=none] {(x-1)*(x-2)/2}; \addlegendentry{Boubble Sort}
+\addplot+[mark=none]  {x * log10(x) }; \addlegendentry{Merge Sort}
+\end{axis}
+\end{tikzpicture}
