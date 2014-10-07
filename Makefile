@@ -4,7 +4,9 @@ SHELL = bash
 document = Informatica
 bibliografia = bibliografia
 
-.PHONY: clean distclean dist biblioclean biblio indexclean index
+.PHONY: clean distclean dist biblioclean biblio indexclean index all
+# to avoid make remove it as an intermediate file
+.SECONDARY: $(document).aux
 
 # options to pass
 rm_options = --verbose --recursive --force
@@ -21,25 +23,25 @@ index_rm_files := $(foreach tmp, $(index_rm), $(shell find -type f -name '$(tmp)
 
 # clean up all
 clean: biblioclean indexclean
-	@ echo -e "\n[`tput bold``tput setab 1`clean`tput sgr0`] `tput bold`rm`tput sgr0` " \
+	@ echo -e "\n[`tput bold``tput setab 1`$@`tput sgr0`] `tput bold`rm`tput sgr0` " \
 		   "`tput setaf 3`$(rm_options)`tput sgr0` $(rm_targets)\n"
 	@ rm $(rm_options) $(rm_files)
 
 # clean up all + .pdf
 distclean: clean
-	@ echo -e "\n[`tput bold``tput setab 1`distclean`tput sgr0`] `tput bold`rm`tput sgr0` " \
+	@ echo -e "\n[`tput bold``tput setab 1`$@`tput sgr0`] `tput bold`rm`tput sgr0` " \
 		   "`tput setaf 3`$(rm_options)`tput sgr0` $(document).pdf\n"
 	@ rm $(rm_options) $(document).pdf
 
 # clean up bibliography files
 biblioclean:
-	@ echo -e "\n[`tput bold``tput setab 1`biblio-clean`tput sgr0`] `tput bold`rm`tput sgr0` " \
+	@ echo -e "\n[`tput bold``tput setab 1`$@`tput sgr0`] `tput bold`rm`tput sgr0` " \
 		   "`tput setaf 3`$(rm_options)`tput sgr0` $(biblio_rm)\n"
 	@ rm $(rm_options) $(biblio_rm_files)
 
 # clean up index files
 indexclean:
-	@ echo -e "\n[`tput bold``tput setab 1`index-clean`tput sgr0`] `tput bold`rm`tput sgr0` " \
+	@ echo -e "\n[`tput bold``tput setab 1`$@`tput sgr0`] `tput bold`rm`tput sgr0` " \
 		   "`tput setaf 3`$(rm_options)`tput sgr0` $(index_rm)\n"
 	@ rm $(rm_options) $(index_rm_files)
 
@@ -109,3 +111,5 @@ index: $(document).idx $(document).ind
 # ############################################################################
 
 # One time run
+all: index biblio
+	pdflatex $(document) 
