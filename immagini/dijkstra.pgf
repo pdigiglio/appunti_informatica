@@ -8,7 +8,15 @@
 	\coordinate (G) at (-2.5,0.5);
 
 	\foreach \a/\b/\d in {A/B/5, B/C/3, C/D/4, D/G/12, G/F/4, F/E/3, A/E/1, D/E/2, D/B/1}
-		\draw [line width=0.5pt, color=blue] (\a) -- (\b) node [blue, sloped,midway,above] {\num{\d}};
+		\draw [
+			line width=0.5pt,
+%			color=blue
+		] (\a) -- (\b) node [
+%			blue,
+			sloped,
+			midway,
+			above
+		] {\num{\d}};
 
 	\foreach \n in {A,B,C,D,E,F,G} {
 		\draw [] node [circle,draw,minimum size=1cm,top color=gray] at (\n) {\hypertarget{coordinate:\n}{\color{black}{$\n$}}}; 
