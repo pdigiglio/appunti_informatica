@@ -2,8 +2,8 @@
 	\section{Breve storia dell'informatica}
 L'\emph{informatica} è una disciplina che si fonda su due pilastri fondamentali:
 \begin{description}
-	\item[Teoria della computazione;] (Turing, Church, Post nel 1936) che si occupa di studiare il concetto di \emph{algoritmo} e tutto ciò che ne consegue;
-	\item[Teoria dell'informazione;] (Shannon nel 1949) che nasce essenzialmente dal problema di trasportare messaggi da un luogo ad un altro nel modo più sicuro ed efficiente possibile.
+	\item[Teoria della computazione] (Turing, Church, Post nel 1936) che si occupa di studiare il concetto di \emph{algoritmo} e tutto ciò che ne consegue;
+	\item[Teoria dell'informazione] (Shannon nel 1949) che nasce essenzialmente dal problema di trasportare messaggi da un luogo ad un altro nel modo più sicuro ed efficiente possibile.
 \end{description}
 
 		\subsection{Teoria della computazione}
@@ -14,16 +14,15 @@ Data la generalità di questa trattazione, si può assumere che significhi <<seg
 
 		\subsection{La macchina di Turing}
 		\label{subsec:mturing}
-Negli anni '30 esistevano già le calcolatrici, ma la tecnologia non rendeva ancora disponibile alcunché di più avanzato.
-C'erano,\marginpar{Computer e contabili} tuttavia i \emph{computer} che, in lingua inglese, erano i contabili.
+Già negli anni '30 esistevano le calcolatrici ma la tecnologia non aveva ancora prodotto niente di più avanzato.
+C'erano,\marginpar{Computer} tuttavia i \emph{computer}\index{computer} che, in lingua inglese, erano i \emph{contabili}.
 
 Alan Mathison Turing (vedi il paragrafo~\ref{subsec:turing} a pagina~\pageref{subsec:turing}) s'ispirò proprio al modo di lavorare del contabile per mettere a punto la sua idea si calcolatore.
-Il contabile, infatti, è chiamato ad eseguire dei calcoli applicando formule date a priori, una matita ed un foglio; non ha bisogno di usare la creatività o l'inventiva.
-Svolge solo dei calcoli e, di tanto in tanto, si serve del foglio e della matita per appuntare dei risultati intermedi.
-Il contabile ha inoltre a disposizione una quantità finita di segni differenti da poter usare: riesce a riconoscere ed interpretare solo un numero finito di simboli.
-Anche il foglio (a quadretti) di cui dispone ha una dimensione limitata.
-Inoltre, in ogni quadretto c'è lo spazio per uno ed un solo simbolo.
-Egli può anche trovarsi in un numero finito di quelli che Turing denominò <<stati mentali>>, ossia delle \emph{condizioni interne} che lo fanno reagire in modo diverso a degli stimoli provenienti dall'esterno.
+Questi esegue dei calcoli applicando formule date a priori, una matita ed un foglio a quadretti.
+Non gli sono richieste creatività o inventiva; svolge solo dei calcoli e, di tanto in tanto, si serve del foglio e della matita per appuntare dei risultati intermedi.
+Il contabile ha a disposizione una quantità finita di segni differenti da poter usare: riesce a riconoscere ed interpretare un numero finito di simboli.
+Anche il foglio di cui dispone ha una dimensione limitata e in ogni quadretto c'è spazio per un solo simbolo.
+Inoltre il numero delle \emph{condizioni interne}, o come Turing stesso li definì <<stati mentali>>, che gli permettono di reagire in modo diverso agli stimoli esterni in cui può trovarsi è finito.
 
 \begin{wrapfloat}{figure}{i}{0pt}
 	\centering
@@ -31,14 +30,14 @@ Egli può anche trovarsi in un numero finito di quelli che Turing denominò <<st
 	\caption{Macchina di Turing.}
 	\label{fig:tm}
 \end{wrapfloat}
-Partendo \marginpar{Macchina di Turing} da quanto detto finora, Turing immaginò la cosiddetta \emph{Macchina di Turing} (figura~\ref{fig:tm}).
+Prendendo \marginpar{Macchina di Turing} le mosse da questi presupposti, Turing immaginò la cosiddetta \emph{Macchina di Turing} stilizzata in figura~\ref{fig:tm}.
 Molto schematicamente, si tratta di una scatola che può trovarsi in un numero finito di stati interni differenti.
-Dalla scatola si protende un braccio che dà su un nastro scorrevole.
-Quest'ultimo contiene dei numeri, dei caratteri alfanumerici o niente. Tale nastro può essere allungato indefinitamente, pur restando di lunghezza finita.
+Dalla scatola si protende un braccio che dà su un nastro scorrevole il quale può contenere numeri, caratteri alfanumerici o caselle vuote.
+Il nastro può essere allungato indefinitamente, pur restando di lunghezza finita.
 Il braccio è in grado sia di leggere dal nastro che di scrivervi sopra.
 Il cuore dell'apparecchio è la \emph{tabella delle istruzioni}.
 
-Sia $S\coloneqq \Set{\sigma_1,\sigma_2,\dots,\sigma_n}$ l'insieme degli stati interni assumibili dalla macchina e $A\coloneqq\Set{\alpha_1,\alpha_2,\dots,\alpha_m}$, con $n,m\in\N$ l'insieme dei simboli che essa riesce a riconoscere.
+Sia\marginpar{Alfabeto e istruzioni} $S\coloneqq \Set{\sigma_1,\sigma_2,\dots,\sigma_n}$ l'insieme degli stati interni assumibili dalla macchina e $A\coloneqq\Set{\alpha_1,\alpha_2,\dots,\alpha_m}$, con $n,m\in\N$ l'insieme dei simboli che essa riesce a riconoscere.
 %\[
 %\left[
 %	\begin{aligned}
@@ -82,7 +81,7 @@ Si consideri un codice del tipo:
 \begin{lstlisting}
 i = 1;
 while( i > 0 )
-	i++;
+	i ++;
 \end{lstlisting}
 Esso genera un ciclo teoricamente infinito che, una volta avviato, non può arrestarsi se non interrotto dall'esterno.
 %\footnote{Vedi: ``black out'', oppure ``utente incavolato che sfascia il computer perché il suo programmino non funziona''\dots}
@@ -118,7 +117,7 @@ Sposta la testina a destra		&0	\\
 Sposta la testina a sinistra		&1	\\
 		\bottomrule
 	\end{tabular}
-}\quad
+}\qquad
 \subfloat[][{Stati interni.}\label{tab:stat}]{%}
 	\begin{tabular}{l S[parse-numbers=false]}
 		\toprule
@@ -175,25 +174,19 @@ Se si associa ad $e_{i}\in E$ un numero $z_i\in\R^+$, è naturale interpretare $
 Dato un grafo, è dunque lecito chiedersi quale sia il cammino \emph{minimo}, o di \emph{minimo costo}, tra due suoi vertici qualsiasi.
 L'\algo{algoritmo di Dijkstra} risponde a tale domanda.
 
-
-Si vuole calcolare il cammino più breve che collega il vertice~$A$ %\hyperlink{coordinate:A}{A}
-della figura~\ref{fig:dij} con tutti gli altri.
-Per fare ciò è conveniente registrare tutti i possibili percorsi (con le rispettive distanze) in una tabella come la~\ref{tab:dij}.
-Si trovano i nodi immediatamente vicini ad~$A$. %\hyperlink{coordinate:A}{$A$}.
-Si ha che $\overline{AB}=5$ e $\overline{AE}=1$.
-Per ora, queste sono le distanze minime.
-Partendo ora da~$B$%\hyperlink{coordinate:B}{$B$}
-, si ha che $\overline{AC}=\overline{AB}+\overline{BC}=8$ e $\overline{AD}=\overline{AB}+\overline{BC}=6$.
-Entrambi questi percorsi individuano, al momento, dei cammini minimi.
-Ripetendo l'operazione per tutti i vertici del grafo, si ottiene tabulata la distanza minima tra~$A$%\hyperlink{coordinate:A}{$A$}
- e qualsiasi altro nodo (ma anche tra due vertici qualsiasi $v_1,v_2\in\Set{A, B, C, D, E, F, G}$).
 \begin{figure}
 	\centering
-	\subfloat[][{\em Rappresentazione del grafo.}\label{fig:dij}]{
 %\includegraphics[width=\columnwidth]{immagini/dijkstra}
-	\input{immagini/dijkstra.pgf}
-}	\\
-	\subfloat[][{\em La tabella contiene alcune distanze partendo dal vertice A. Il cammino minimo è evidenziato.}\label{tab:dij}]{
+\input{immagini/dijkstra.pgf}
+	\caption{Rappresentazione grafica di un grafo.}
+	\label{fig:dij}
+\end{figure}
+Si vuole calcolare il cammino più breve che collega il vertice~$A$ %\hyperlink{coordinate:A}{A}
+della figura~\ref{fig:dij} con tutti gli altri.
+\begin{table}
+	\centering
+\caption{La tabella contiene alcune distanze partendo dal vertice $A$. Il cammino minimo è evidenziato.}
+\label{tab:dij}
 \begin{tabular}{l l l}
 	\toprule
 \emph{Vertice}	&\emph{Distanza}		&\emph{Percorso}		\\
@@ -206,21 +199,17 @@ $C$ 			&8; \textbf{7}	&$ABC; \mathbf{AEDC}$		\\
 \vdots 		&\vdots 		& \vdots 				\\
 	\bottomrule
 \end{tabular}
-}\quad
-	\subfloat[][\emph{Matrice $n\times n$. Si noti che sulla diagonale ci siano solo valori nulli.}\label{tab:mat}]{
-	\begin{tabular}{>$c<$ | >$c<$ >$c<$ >$c<$ >$c<$}
-		&v_1		&v_2		&\dots 	&v_N 		\\
-		\midrule
-v_1		&0		&4.5		&\dots 	&0		\\
-v_2		&3		&0		&\dots 	&5.7		\\
-\vdots 	&\vdots 	&\vdots 	&\ddots 	&\vdots 	\\
-v_ N		&8.9		&0		&\dots 	&0		\\
-	\end{tabular}
-}\\
-	\subfloat[][{\em Grafo con rappresentazione per lista adiacenze e rappresentazione matriciale.}\label{fig:adi}]{\includegraphics[width=\columnwidth]{immagini/lista_adiacenze}}
-	\caption{Algoritmo di Dijkstra}
-	
-\end{figure}
+\end{table}
+Per fare ciò è conveniente registrare tutti i possibili percorsi (con le rispettive distanze) in una tabella come la~\ref{tab:dij}.
+Si trovano i nodi immediatamente vicini ad~$A$. %\hyperlink{coordinate:A}{$A$}.
+Si ha che $\overline{AB}=5$ e $\overline{AE}=1$.
+Per ora, queste sono le distanze minime.
+Partendo ora da~$B$%\hyperlink{coordinate:B}{$B$}
+, si ha che $\overline{AC}=\overline{AB}+\overline{BC}=8$ e $\overline{AD}=\overline{AB}+\overline{BC}=6$.
+Entrambi questi percorsi individuano, al momento, dei cammini minimi.
+Ripetendo l'operazione per tutti i vertici del grafo, si ottiene tabulata la distanza minima tra~$A$%\hyperlink{coordinate:A}{$A$}
+ e qualsiasi altro nodo (ma anche tra due vertici qualsiasi $v_1,v_2\in\Set{A, B, C, D, E, F, G}$).
+
 
 Per \marginpar{Rappresentazioni in \lang{C}} tradurre tale algoritmo in linguaggio \lang{C}, c'è innanzitutto bisogno di trovare una rappresentazione per il grafo.
 Vi sono diverse soluzioni:
@@ -230,6 +219,20 @@ Si rappresentano i vertici con degli interi e il lati con un record che contenga
 	\item
 Si usa una matrice.
 
+\begin{table}
+	\centering
+\caption{Rappresentazione di un grado con una matrice quadrata $n$-dimensionale. I valori nulli sulla diagonale indicano che nessun arco collega un vertice con se stesso.}
+\label{tab:mat}
+
+\begin{tabular}{>$c<$ | S S S S}
+		&{$v_1$}		&{$v_2$}		&{$\dots$} 	&{$v_N$} 		\\
+		\midrule
+v_1		&0		&4.5		&{$\dots$} 	&0		\\
+v_2		&3		&0		&{} 	&5.7		\\
+\vdots 	&{\vdots} 	&{} 	&{$\ddots$} 	&{$\vdots$} 	\\
+v_ N		&8.9		&0		&{$\dots$} 	&0		\\
+	\end{tabular}
+\end{table}
 Avendo dei vertici $v_{i\in\{1,\dots,N\}}\in V$, si dichiara una matrice $N\times N$ come la tabella~\ref{tab:mat} e si stabilisce che:
 	\begin{itemize}
 		\item
@@ -246,6 +249,12 @@ Pertanto, la rappresentazione matriciale risulta piuttosto scomoda se il grafo �
 	\item
 Ci si serve di una \emph{lista adiacenze}.
 
+\begin{figure}[]
+	\centering
+\includegraphics[width=\columnwidth]{immagini/lista_adiacenze}
+	\caption[Lista adiacenze]{Grafo con rappresentazione per lista adiacenze e rappresentazione matriciale.}
+	\label{fig:adi}
+\end{figure}
 Essa, come mostra la figura~\ref{fig:adi}, consiste in più serie di record ognuna delle quali si riferisce ad un nodo di partenza differente.
 Ogni struttura contiene un campo che tenga traccia del nome del nodo collegato e un campo puntatore alla struttura successiva.
 Nel campo puntatore dell'ultimo record si pone il valore \lstinline!NULL!.
