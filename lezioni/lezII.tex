@@ -113,15 +113,20 @@ y = v / 10;
 \end{lstlisting}
 Se \lstinline!v! è di tipo \lstinline!int!, supponiamo che valga \num{58}, il risultato della divisione (e quindi il valore di \lstinline!y!) sarà un ancora un intero, cioè \num{5}.
 Se, invece, \lstinline!v! è di tipo \lstinline!float!, otterremo come risultato \num{5.8}.
+
+
 Esistono degli assegnamenti in cui la stessa variabile compare da entrambe le parti come, ad esempio
 \begin{lstlisting}
 x = x + 1;
 \end{lstlisting}
-Questo non fa altro che aggiornare il valore della variabile \lstinline!x!.
+Questa istruzione legge il valore di \lstinline!x!, calcola il risultato della somma e lo ri-assegna a \lstinline!x!.
+Supponiamo ora di avere una variabile \lstinline!float beta! con un certo valore che noi vogliamo triplicare.
+Si può usare l'istruzione
+\begin{lstlisting}
+beta = 3 * beta;
+\end{lstlisting}
+Malgrado \num{3} non sia di tipo \lstinline!float!, il risultato del prodotto (cioè \num{30.9}) lo sarà.
 
-Supponiamo ora di avere una variabile \lstinline!beta! di tipo \lstinline!float! contenente un certo valore che noi vogliamo triplicare.
-Possiamo, in questo caso, scrivere ``\lstinline!beta = 3 * beta;!''.
-Ciò è lecito: anche se \lstinline!3! non è di tipo \lstinline!float!, la quantità \lstinline!3 * beta! lo sarà. 
 
 Per \marginpar{Dichiarazione} comunicare al computer il tipo di variabile che intendiamo usare, dobbiamo effettuare la già citata operazione di \emph{dichiarazione}\index{dichiarazione}.
 In \lang{C}, essa assume la forma ``\lstinline!float gamma;!'', oppure:
