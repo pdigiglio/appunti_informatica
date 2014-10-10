@@ -249,10 +249,18 @@ Pertanto, la rappresentazione matriciale risulta piuttosto scomoda se il grafo �
 	\item
 Ci si serve di una \emph{lista adiacenze}.
 
-\begin{figure}[]
+
+\begin{figure}
 	\centering
-\includegraphics[width=\columnwidth]{immagini/lista_adiacenze}
-	\caption[Lista adiacenze]{Grafo con rappresentazione per lista adiacenze e rappresentazione matriciale.}
+\subfloat[][Gli archi del grafo non sono orientati pertanto la matrice è simmetrica e tutte le informazioni sono contenute nella parte sopra, o sotto, la diagonale (compresa).]{
+	\input{immagini/lista_adiacenze_1.pgf}
+}
+
+\subfloat[][Gli archi del grafo sono orientati pertanto la matrice \emph{non} è più simmetrica.
+Inoltre gli eelementi della diagonale non sono tutti nulli perché il nodo~$3$ è collegato a se stesso.]{
+	\input{immagini/lista_adiacenze_2.pgf}
+}
+	\caption[Lista adiacenze]{Grafo con rappresentazione per lista adiacenze e matriciale.}
 	\label{fig:adi}
 \end{figure}
 Essa, come mostra la figura~\ref{fig:adi}, consiste in più serie di record ognuna delle quali si riferisce ad un nodo di partenza differente.
