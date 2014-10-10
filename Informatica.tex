@@ -264,7 +264,7 @@
 %
 \usepackage[
 	final,
-	savemem
+%	savemem
 ]{listings}
 \usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
 \newcommand{\MyComment}[1]{{\color{darkgray!80}$\langle${\itshape\sffamily{{#1}}}$\rangle$}}
@@ -276,8 +276,10 @@
 %	identifierstyle=\color{NavyBlue},
 	commentstyle=\color{darkgray!80},%\color{green}\ttfamily,
 	stringstyle=\color{PineGreen},
-	emph={NULL},
 	emphstyle=\color{Maroon}\bfseries,
+	emph={NULL,EOF},
+	emphstyle={[2]\color{Brown!70!black}\bfseries},
+	emph={[2] EXIT_SUCCESS,EXIT_FAILURE},
 	numbers=left,% none
 	numberstyle=\scriptsize,%\tiny
 	stepnumber=5,
