@@ -197,6 +197,28 @@ L'esponente della base dev'essere il più piccolo possibile.
 \end{itemize}
 
 In memoria, un numero in virgola mobile è rappresentato secondo il seguente schema:
+\begin{tikzpicture}
+\matrix (m) [
+	matrix of nodes,
+	column sep=0cm,
+	row sep = 0pt
+] at (0,0) {
+\node (m11) [
+	pattern color=red!30,
+	pattern = crosshatch dots
+] {segno};
+&\node (m12) [
+	pattern color=yellow!80!red,
+	pattern = crosshatch
+] {esponente};
+&\node (m13) [
+	pattern color=brown!20,
+	pattern = grid
+] {mantissa};	\\
+};
+
+\draw (m11.south west) -- (m13.south east) --  (m13.north east) -- (m11.north west) -- cycle;
+\end{tikzpicture}
 \begin{center}
 \textit{
 	\begin{tabular}{|c|c|c|}
