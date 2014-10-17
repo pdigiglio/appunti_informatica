@@ -7,7 +7,7 @@
 
 % define a comment
 \newcommand{\MyComment}[1]{%
-{\color{darkgray!80}$\langle${\itshape\sffamily{{#1}}}$\rangle$}
+{\color{darkgray!80}$\langle${\itshape\sffamily{{#1}}}$\rangle$}%
 }
 
 % to have italian names
@@ -44,6 +44,7 @@
 %    escapeinside={/*}{*/}
 }
 
+\begin{comment}
 % To have colored numbers in listings
 \newtoggle{InString}{}% Keep track of if we are within a string
 \togglefalse{InString}% Assume not initally in string
@@ -64,6 +65,7 @@
     {8}{{{\ColorIfNotInString{8}}}}1
     {9}{{{\ColorIfNotInString{9}}}}1
 }
+\end{comment}
 
 \makeatletter
 \lst@Key{addtobasicstyle}\relax{%
