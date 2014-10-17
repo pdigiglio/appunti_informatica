@@ -12,10 +12,12 @@ Il numero di volte $n$ per cui si ripete l'operazione viene determinato da come 
 \end{itemize}	
 Nel linguaggio \lang{C}, non esiste una forma che equivalga alla locuzione ``ripeti l'operazione per $n$ volte'', ma bisogna ricorrere ad un'iterazione regolata da una determinata condizione.
 
-Un espediente piuttosto frequente è mostrato nel codice~\vref{cod:conv}.
-Si dichiara una variabile di tipo \lstinline!int! e si fa in modo che ad ogni iterazione tale variabile venga incrementata di un certo numero, ad esempio \num{1}.
-Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contatore}\index{contatore}. Si fissa la condizione per la continuazione dell'iterazione (o \emph{ciclo}\index{ciclo}) in modo tale che, quando il contatore raggiunge un dato valore, il ciclo si blocchi.
-\begin{lstlisting}[caption={{\em Tabella di conversione Euro/Lira.}}, label={cod:conv}]
+
+\begin{lstlisting}[
+	caption={{Tabella di conversione Euro/Lira.}},
+	label={cod:conv},
+	float
+]
 £!\MyComment{\dots}!£
 
 /* dichiaro la variabile (contatore) e la inizializzo */
@@ -29,6 +31,9 @@ while ( i < 10 ) {
 
 £!\MyComment{\dots}!£
 \end{lstlisting}
+Un espediente piuttosto frequente è mostrato nel codice~\vref{cod:conv}.
+Si dichiara una variabile di tipo \lstinline!int! e si fa in modo che ad ogni iterazione tale variabile venga incrementata di un certo numero, ad esempio \num{1}.
+Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contatore}\index{contatore}. Si fissa la condizione per la continuazione dell'iterazione (o \emph{ciclo}\index{ciclo}) in modo tale che, quando il contatore raggiunge un dato valore, il ciclo si blocchi.
 L'iterazione, nel codice esempio~\ref{cod:conv}, procederà finché la variabile \lstinline!i! non avrà assunto il valore \num{10} (quindi, il ciclo si ripeterà \num{10} volte).\footnote{Un errore molto frequente è impostare un ciclo di questo tipo dimenticandosi d'incrementare il contatore. Questo produrrebbe un ciclo infinito! Inoltre, il calcolatore non ha alcun modo di accorgersi di siffatti errori (si veda il paragrafo~\ref{subsec:ins}).}
 In questo esempio, \marginpar{Il ciclo \lstinline!while!}il ciclo è stato introdotto introdotto usando la locuzione:
 \begin{lstlisting}
