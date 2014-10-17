@@ -11,7 +11,7 @@ La\marginpar{%
 %	\centering
 	\vskip0pt
 \includegraphics[width=\marginparwidth]{immagini/von_neu}
-	\captionof{figure}{John von Neumann (Budapest, 28 dicembre 1903 --- Washington, 8 febbraio 1957).}
+	\captionof{figure}[John von Neumann]{John von Neumann (Budapest, 28 dicembre 1903 --- Washington, 8 febbraio 1957).}
 	\label{fig:vn}
 %\end{figure}%
 } struttura di un calcolatore descritta di seguito, attribuita al matematico e informatico \emph{John von Neumann} (figura~\ref{fig:vn} a lato), è rimasta pressoché immutata nel corso del tempo, sin dagli anni '40.
@@ -164,20 +164,50 @@ La \emph{sequenza} è determinata dall'ordine in cui vengono scritte le istruzio
 Per convenzione la ``lettura'' avviene dall'alto in basso e da sinistra verso destra così istruzioni scritte ``in alto'' verranno eseguite prima di istruzioni scritte ``in basso''.
 
 		\subsection{Scelta}
-In linguaggio \lang{C}, la scelta si riconosce dalla preposizione \lstinline!if!. Ad esempio:
+In linguaggio \lang{C}, la scelta si riconosce dalla preposizione \lstinline!if!, come nel codice
 
 \begin{lstlisting}
 if ( x < 0 )
 	x = -x;
 \end{lstlisting}
-Le parentesi tonde racchiudono la \emph{condizione}\index{condizione} che deve essere verificata affinché il corpo della scelta venga eseguito e sono sintatticamente obbligatorie.
-La condizione viene talvolta chiamata \emph{test}\index{test}.
+Le parentesi tonde racchiudono la \emph{condizione}\index{condizione}, talvolta chiamata \emph{test}\index{test}, che deve essere verificata affinché il corpo della scelta venga eseguito e sono sintatticamente obbligatorie.
 Se la condizione non è verificata, il corpo della scelta (in questo caso rappresentato dall'unica istruzione ``\lstinline!x = -x!'') non viene eseguito.
-\`E possibile che il corpo sia composto da più di una istruzione, come nel codice~\ref{code:corpo}.
-In questo caso, tali istruzioni vanno incluse tra parentesi graffe.
+\`E possibile che il corpo sia composto da più di un'istruzione, come nel codice~\ref{code:corpo} nel riquadro~\ref{riq:IfChoose}, nel qual caso le istruzioni vanno incluse tra parentesi graffe e formano un \emph{blocco}\index{blocco}.
 %Se ne vedranno degli esempi in seguito.
 
-Per \marginpar{Operatori relazionali} il test, si dispone dei seguenti operatori relazionali: \lstinline!<! (operatore minore), \lstinline!<=! (operatore minore o uguale), \lstinline!>! (operatore maggiore), \lstinline!>=! (operatore maggiore o uguale), \lstinline!==! (operatore uguale), \lstinline?!=? (operatore diverso\footnote{In generale, il simbolo \lstinline?!? nei test equivale ad una negazione. Quindi \lstinline?!=? starebbe a significare ``non uguale'', cioè diverso.}).
+\begin{table}
+\centering
+	\caption{Alcuni operatori nel linguaggio \lang{C}.}
+	\label{tab:op}
+\subfloat[][Operatori logici.\label{tab:lop}]{
+\begin{tabular}{>$l<$ F >$l<$ F}
+		\toprule
+\text{Condizione} &$\textrm{Operatore}$  &\textrm{Esempio\dots} &$\textrm{\dots{}in \lang{C}}$\\
+		\midrule
+C_1\land C_2	&\&\&		&a< x< b			&x > a  \&\& x < b\\
+C_1\lor C_2	&||			&x<a\lor x>b 		&x < a \|\| x > b\\
+\text{Non }C_1	&{!}			&x \neq b			&!(  x = b )\\
+		\bottomrule
+	\end{tabular}
+}\\
+\subfloat[][Operatori relazionali.\label{tab:lop}]{
+\begin{tabular}{FF}
+\toprule
+$\text{Operatore}$ &{a} \\
+\midrule
+<	&\\
+<=	&\\
+>	&\\
+>=	&\\
+==	&\\
+!=	&\\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+Nel test si possono usare gli operatori logici e relazionali elencati nella tabella~\ref{tab:op}.
+
+%Per \marginpar{Operatori relazionali} il test, si dispone dei seguenti operatori relazionali: \lstinline!<! (operatore minore), \lstinline!<=! (operatore minore o uguale), \lstinline!>! (operatore maggiore), \lstinline!>=! (operatore maggiore o uguale), \lstinline!==! (operatore uguale), \lstinline?!=? (operatore diverso\footnote{In generale, il simbolo \lstinline?!? nei test equivale ad una negazione. Quindi \lstinline?!=? starebbe a significare ``non uguale'', cioè diverso.}).
 
 
 \begin{code}
