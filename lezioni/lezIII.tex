@@ -21,7 +21,7 @@ Tale \marginpar{Contatore} variabile fungerà, effettivamente, da \emph{contator
 /* dichiaro la variabile (contatore) e la inizializzo */
 int i = 0; 
 while ( i < 10 ) {
-	printf("%d ... %f", i, i*1936.27);
+	printf("%d ... %f", i, i * 1936.27);
 
 	/* incremento il valore del contatore */
 	i = i + 1; 
@@ -132,13 +132,13 @@ Nel seguente codice esempio, dopo aver dichiarato un vettore di lunghezza \num{1
 int v[100], e;
 e = 0;
 while ( e <= 99 ) {
-	v[e] = e*e - 3*e;
+	v[e] = e * e - 3 * e;
 	e = e + 1;
 }
 \end{lstlisting}
 
 	\section{Funzioni}
-In matematica, una \emph{funzione} (o \emph{applicazione}) $f$ è una \emph{relaizone} definita da:
+In matematica, una \emph{funzione} (o \emph{applicazione}) $f$ è una \emph{relazione} definita da:
 \begin{itemize}
 	\item
 Un insieme $X$ detto \emph{Dominio} della funzione $f$;
@@ -160,13 +160,16 @@ All'interno di un programma, si possono definire delle parti di codice che esegu
 Per fare ciò, bisogna specificare un Dominio, un Codominio e la forma della funzione (la sequenza di istruzioni che la compongono).
 Successivamente, la funzione sarà disponibile per essere richiamata in altre parti del programma.
 
-Il codice~\ref{cod:absfunc} mostra la precedente funzione stesa in linguaggio \lang{C}.
-Si noti che, dopo averla dichiarata, la si può richiamare come a riga~\ref{richiamo_abs}.
-Si tenga inoltre presente che ogni programma in \lang{C} \emph{deve} contenere una funzione \lstinline!main()!.
-\begin{lstlisting}[caption={\em Definizione e chiamata della funzine \lstinline!abs()!.}, label={cod:absfunc}]
-/* codominio_nome della funzione_(dominio) */
+
+\begin{lstlisting}[
+	caption={Definizione e chiamata della funzine \lstinline!abs()!.},
+	label={cod:absfunc},
+	float
+]
+/* codominio nome_della_funzione ( dominio ) */
 double abs ( double x ) {
-	/* Il corpo di una funzione va sempre posto fra parentesi graffe */
+
+	/* corpo di una funzione va sempre fra parentesi graffe */
 	if ( x < 0 )
 		return -x;
 	else
@@ -175,14 +178,18 @@ double abs ( double x ) {
 
 int main ( int argc, char *argv[] ) {
 	double v, y;
-	scanf("%lf", &v);
+	scanf( "%lf", &v );
 
-	y = abs(v);£!\label{richiamo_abs}!£
-	printf("%lf", y);
+	y = abs( v );£!\label{richiamo_abs}!£
+	printf( "%lf", y );
 
-	exit(EXIT_SUCCESS);
+	exit( EXIT_SUCCESS );
 }
 \end{lstlisting}
+Il codice~\ref{cod:absfunc} mostra la precedente funzione stesa in linguaggio \lang{C}.
+Si noti che, dopo averla dichiarata, la si può richiamare come a riga~\ref{richiamo_abs}.
+Si tenga inoltre presente che ogni programma in \lang{C} \emph{deve} contenere una funzione \lstinline!main()!.
+
 
 Si considerino delle funzioni con due (o più) parametri formali, il \emph{massimo} tra due numeri $\max\colon\R\x\R\to\R$ tale che 
 \[
@@ -196,8 +203,11 @@ y,	& \text{se } x<y
 %\end{sistema}
 \]
 %Essa trova il massimo tra due numeri.
-Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in \lang{C}.
-\begin{lstlisting}[caption={\em Funzione \lstinline!max()!, con due argomenti.}, label={cod:MultiArgFunc}]
+\begin{lstlisting}[
+	caption={Funzione \lstinline!max()! con due argomenti.},
+	label={cod:MultiArgFunc},
+	float
+]
 double max ( double x, double y ) {
 	if ( x < y )
 		return y;
@@ -205,3 +215,4 @@ double max ( double x, double y ) {
 		return x;
 }
 \end{lstlisting}
+Il codice~\vref{cod:MultiArgFunc}, ne mostra la stesura in \lang{C}.
