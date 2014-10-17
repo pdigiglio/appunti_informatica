@@ -443,7 +443,7 @@
 \usepackage[
 %	printonlyused,%
 	smaller,%
-%	withpage,%
+	withpage,%
 %	footnote
 ]{acronym}
 % descrizioni degli acronimi giustificate
@@ -563,24 +563,29 @@
 
 
 \backmatter
+	\cleardoublepage
 	\listoffigures
 %	\addcontentsline{toc}{chapter}{\tocEntry{\listfigurename}}
 	\addcontentsline{toc}{chapter}{\listfigurename}
 
+	\cleardoublepage
 	\listoftables
 %	\addcontentsline{toc}{chapter}{\tocEntry{\listtablename}}
 	\addcontentsline{toc}{chapter}{\listtablename}
 
+	\cleardoublepage
 	\lstlistoflistings
 %	\addcontentsline{toc}{chapter}{\tocEntry{\lstlistlistingname}}
 	\addcontentsline{toc}{chapter}{\lstlistlistingname}
 
+	\cleardoublepage
 	\input{./acronimi}
 
-%\clearpage
-%\phantomsection
-\addcontentsline{toc}{section}{\indexname}
-\printindex
+	%\clearpage
+	\phantomsection
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{\indexname}
+	\printindex
 
 
 	\nocite{*}
