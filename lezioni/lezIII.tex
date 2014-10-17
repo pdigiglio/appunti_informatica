@@ -40,21 +40,6 @@ Essa inizializza un ciclo che  procede finché il \MyComment{test} espresso tra 
 
 Le condizioni possono anche essere concatenate, cioè è possibile specificare più test all'interno di una sola coppia di parentesi tonde. Il \lang{C} dispone degli \emph{operatori logici} elencati nella tabella~\ref{tab:lop}.
 
-\begin{table}[p]
-	\centering
-	\caption{Operatori logici nel linguaggio C}
-	\label{tab:lop}
-	\begin{tabular}{lcl}
-		\toprule
-Condizione &Operatore &Esempio \\
-		\midrule
-$C_1$ e $C_2$   &\lstinline!&&! &\lstinline!( x >= 0 && x <= 10 )! \\
-$C_1$ o $C_2$   &\lstinline!||!   &\lstinline!( x <= 0 || x >= 10 )! \\
-Non $C_1$	       &\lstinline?!?    &\lstinline?( !(  x > y ) )? cioè \lstinline?( x < y )?\\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
 
 Nel codice~\ref{cod:conv} è stato\marginpar{Commenti} introdotto l'uso dei \emph{commenti}\index{commento}.
 Un programma scritto in \lang{C} può presentare dei commenti, parti di codice che il compilatore non cerca d'interpretare.
