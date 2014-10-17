@@ -53,8 +53,6 @@
 %\renewcommand{\ttdefault}{fvm} % font di ClassicThesis
 %\usepackage[urw-garamond]{mathdesign}
 
-\addto\captionsitalian{\renewcommand{\lstlistingname}{Codice}}
-\addto\captionsitalian{\renewcommand{\lstlistlistingname}{Elenco dei codici}}
 \usepackage{caption}
 \captionsetup[table]{skip=\medskipamount, position=top}
 \captionsetup[figure]{position=bottom}
@@ -263,86 +261,9 @@
 % codici
 %==========
 %
-\usepackage[
-	final,
-%	savemem
-]{listings}
-\usepackage{verbatim} % 'verbatim' offre l'ambiente 'comment'
-\newcommand{\MyComment}[1]{{\color{darkgray!80}$\langle${\itshape\sffamily{{#1}}}$\rangle$}}
-\lstset{
-	language=C,%
-	keywordstyle={\color{NavyBlue}\bfseries},
-	basicstyle=\small\ttfamily,
-	backgroundcolor=\color{blue!7},
-%	identifierstyle=\color{NavyBlue},
-	commentstyle=\color{darkgray!80},%\color{green}\ttfamily,
-	stringstyle=\color{PineGreen},
-	emphstyle=\color{Maroon}\bfseries,
-	emph={NULL,EOF,true,false},
-	emphstyle={[2]\color{Brown!70!black}\bfseries},
-	emph={[2] EXIT_SUCCESS,EXIT_FAILURE},
-	numbers=left,% none
-	numberstyle=\scriptsize,%\tiny
-	stepnumber=5,
-	numbersep=8pt,
-	showstringspaces=false,
-	breaklines=true,
-	frameround=ftff,
-	frame=L,
-	belowcaptionskip=.75\baselineskip,
-	tabsize=4,
-	moredelim=[is][\em\sffamily]{|*}{*|},
-	escapeinside={£!}{!£},
-%	inputencoding=utf8,
-%	extendedchars=false,
-%	literate={à}{{\'a}}1 {é}{{\'e}}1,
-%    escapeinside={/*}{*/}
-}
-% To have colored numbers in listings
-\newtoggle{InString}{}% Keep track of if we are within a string
-\togglefalse{InString}% Assume not initally in string
-\newcommand*{\ColorIfNotInString}[1]{\iftoggle{InString}{#1}{\color{violet!70!yellow}#1}}%
-\newcommand*{\ProcessQuote}[1]{#1\iftoggle{InString}{\global\togglefalse{InString}}{\global\toggletrue{InString}}}%
-\lstset{literate=%
-    {"}{{{\ProcessQuote{"}}}}1% Disable coloring within double quotes
-    {'}{{{\ProcessQuote{'}}}}1% Disable coloring within single quote
-    {0}{{{\ColorIfNotInString{0}}}}1
-    {1}{{{\ColorIfNotInString{1}}}}1
-    {2}{{{\ColorIfNotInString{2}}}}1
-    {3}{{{\ColorIfNotInString{3}}}}1
-    {4}{{{\ColorIfNotInString{4}}}}1
-    {5}{{{\ColorIfNotInString{5}}}}1
-    {6}{{{\ColorIfNotInString{6}}}}1
-    {7}{{{\ColorIfNotInString{7}}}}1
-    {8}{{{\ColorIfNotInString{8}}}}1
-    {9}{{{\ColorIfNotInString{9}}}}1
-}
-\makeatletter
-\lst@Key{addtobasicstyle}\relax{%
-	\toks@=\expandafter{\lst@basicstyle #1}%
-	\edef\lst@basicstyle{\the\toks@}}
-\def\calc@current@size{%
-	\edef\current@size{%
-	\noexpand\fontsize{\f@size}{\f@baselineskip}%
-	\noexpand\selectfont}}
 
-\renewcommand\lstinline[1][]{%
-	\leavevmode\bgroup %
-		\calc@current@size
-		\def\lst@boxpos{b}\lsthk@PreSet
-		\lstset{flexiblecolumns,addtobasicstyle=\current@size,#1}%
-		\lsthk@TextStyle
-		\@ifnextchar\bgroup{\afterassignment\lst@InlineG
-		\let\@let@token}\lstinline@}
-\makeatother
-\usepackage{collcell}
-\usepackage{listings}
+\input{listings_setup.tex}
 
-\newcommand{\mymacroA}[1]{\textbf{#1}}
-\newcommand{\mymacroB}[1]{\lstinline[mathescape]?#1?}
-
-\newcolumntype{E}{>{\collectcell\mymacroA}l<{\endcollectcell}}
-\newcolumntype{F}{>{\collectcell\mymacroB}l<{\endcollectcell}}
 % algoritmi
 \usepackage[
 	slide,	% aggiunge spaziatura verticale per resa migliore
