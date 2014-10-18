@@ -25,10 +25,13 @@ Anche il foglio di cui dispone ha una dimensione limitata e in ogni quadretto c'
 Inoltre il numero delle \emph{condizioni interne}, o come Turing stesso li definì <<stati mentali>>, che gli permettono di reagire in modo diverso agli stimoli esterni in cui può trovarsi è finito.
 
 \begin{wrapfloat}{figure}{i}{0pt}
+%	\includegraphics[width=0.5\columnwidth]{immagini/turing}
+\begin{minipage}{.5\columnwidth}
 	\centering
-	\includegraphics[width=0.5\columnwidth]{immagini/turing}
+\input{immagini/turing.pgf}
 	\caption{Macchina di Turing.}
 	\label{fig:tm}
+\end{minipage}
 \end{wrapfloat}
 Prendendo \marginpar{Macchina di Turing} le mosse da questi presupposti, Turing immaginò la cosiddetta \emph{Macchina di Turing} stilizzata in figura~\ref{fig:tm}.
 Molto schematicamente, si tratta di una scatola che può trovarsi in un numero finito di stati interni differenti.
@@ -60,7 +63,7 @@ Allora si possono fissare gli insiemi dell'alfabeto $A$ e degli stati interni $S
 			\item
 Se \MyComment{la testina legge una cifra}, allora \MyComment{va a destra};
 			\item
-Se \MyComment{la testina legge una casella vuota} allora \MyComment{scrive nella casella la cifra \num[detect-all]{0}}.
+Se \MyComment{la testina legge una casella vuota} allora \MyComment{scrive la cifra \num[detect-all]{0} nella casella}.
 		\end{enumerate}
 \end{description}
 In pratica, tale funzione aggiunge uno zero in coda ad un numero binario, che corrisponde a raddoppiarlo.
@@ -221,7 +224,7 @@ Si usa una matrice.
 
 \begin{table}
 	\centering
-\caption{Rappresentazione di un grado con una matrice quadrata $n$-dimensionale. I valori nulli sulla diagonale indicano che nessun arco collega un vertice con se stesso.}
+\caption[Rappresentazione matriciale di un grafo.]{Rappresentazione di un grafo con una matrice quadrata $n$-dimensionale. I valori nulli sulla diagonale indicano che nessun arco collega un vertice con se stesso.}
 \label{tab:mat}
 
 \begin{tabular}{>$c<$ | S S S S}

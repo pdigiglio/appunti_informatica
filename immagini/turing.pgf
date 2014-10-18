@@ -1,0 +1,76 @@
+% Turing Machine
+% Author: Sebastian Sardina
+
+\usetikzlibrary{chains,fit,shapes}
+
+\begin{tikzpicture}
+%\tikzstyle{every path}=[very thick]
+
+\edef\sizetape{0.5cm}
+\tikzstyle{tmtape}=[
+	draw,
+	minimum size=\sizetape,
+%	fill pattern=dots
+]
+\tikzstyle{tmhead}=[
+	arrow box,
+	draw,
+	minimum size=.4cm,
+	arrow box
+	arrows={east:.25cm, west:0.25cm}
+]
+
+%% Draw TM tape
+\begin{scope}[
+	start chain=1 going right,
+	node distance=0mm
+]
+    \node [on chain=1,tmtape,draw=none] {$\dots$};
+    \node [on chain=1,tmtape] {};
+    \node [on chain=1,tmtape] (input) {\num{1}};
+    \node [on chain=1,tmtape] {\num{0}};
+    \node [on chain=1,tmtape] {\num{1}};
+    \node [on chain=1,tmtape] {\num{1}};
+    \node [on chain=1,tmtape] {\num{0}};
+    \node [on chain=1,tmtape] {\num{1}};
+    \node [on chain=1,tmtape] {};
+    \node [on chain=1,tmtape,draw=none] {$\dots$};
+%    \node [on chain=1,above,midway] {\textbf{Input/Output Tape}};
+\end{scope}
+
+%% Draw TM Finite Control
+\begin{scope}[
+	shift={(2.4cm,-4cm)},
+	start chain=circle placed {at=(-\tikzchaincount*60:1.3)}
+]
+\foreach \i in {\sigma_0,\sigma_1,\sigma_2,\sigma_3,\ddots,\sigma_n}
+	\node [on chain] {$\i$};
+
+% Arrow to current state
+\node (center) {};
+\draw[->] (center) -- (circle-2);
+
+\node[
+	rounded corners,
+	draw=black,
+	thick,
+	fit=(circle-1) (circle-2) (circle-3) (circle-4) (circle-5) (circle-6),
+%	label=below:\textbf{Finite Control}
+] (fsbox) {};
+\end{scope}
+
+%% Draw TM head below (input) tape cell
+\node [tmhead,yshift=-.3cm] at (input.south) (head) {$\sigma_1$};
+
+%% Link Finite Control with Head
+\path[->,draw] (fsbox.north) .. controls (4.,-1) and (0,-2) .. node[right] 
+			(headlinetext)
+ 			{} 
+			(head.south);
+%\node[xshift=3cm] at (headlinetext)  
+%			{\begin{tabular}{c} 
+%				\textbf{Reading and Writing Head} \\  
+%				\textbf{(moves in both directions)} 
+%			 \end{tabular}};
+
+\end{tikzpicture}
