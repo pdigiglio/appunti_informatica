@@ -17,7 +17,11 @@ Nel momento in cui la si richiama in qualche altra riga del codice, le si passan
 Il codice~\ref{cod:callfunc} è un esempio di chiamata della funzione \lstinline!flip()! (all'interno della funzione \lstinline!main()!).
 Qui, le variabili \lstinline!a!, \lstinline!b! e \lstinline!c! sono gli argomenti reali della chiamata della funzione \lstinline!flip()!.
 Si noti che essi sono stati dichiarati in modo da essere compatibili con i tipi richiesti dagli argomenti formali.
-\begin{lstlisting}[caption={\em Chiamata della funzione \lstinline!flip()!.}, label={cod:callfunc}]
+\begin{lstlisting}[
+	caption={Chiamata della funzione \lstinline!flip()!.},
+	label={cod:callfunc},
+	float
+]
 double flip (int x, double y, int z ) {
 
 	£!\MyComment{istruzioni}!£
@@ -105,11 +109,15 @@ L'istruzione\marginpar{La funzione \lstinline!getchar()!} ``\lstinline!x = getch
 La funzione \lstinline!getchar()! non ammette parametri e ha come unico risultato l'assegnamento del carattere letto alla variabile cui è associata (nella fattispecie, \lstinline!x!).
 L'\marginpar{La funzione \lstinline!putchar()!}istruzione ``\lstinline!putchar(x);!''\index{putchar()@\texttt{putchar()}}, invece, stampa sullo \emph{standard output}\index{standard output} (\lstinline!stdout!\index{stdout@\texttt{stdout}}, in genere il monitor) il valore della variabile \lstinline!x!.
 
-Il programma nel codice~\vref{cod:eco} ``fa l'eco'' di quanto riceve dallo standard input.
+Il programma nel codice~\ref{cod:eco} ``fa l'eco'' di quanto riceve dallo standard input.
 Esso appartiene alla famiglia dei \emph{filtri}, cioè programmi che leggono dei caratteri ed eseguono delle operazioni su di essi.
 Il valore \lstinline!EOF! è una sequenza di caratteri speciale (del linguaggio \lang{C}) che sta per \emph{End Of File}.
 Per i sistemi \os{UNIX}, la sequenza riconosciuta come \lstinline!EOF! è la combinazione di tasti \key{CTRL + D}. 
-\begin{lstlisting}[caption={\em Esempio di filtro.}, label={cod:eco}]
+\begin{lstlisting}[
+	caption={Esempio di filtro.},
+	label={cod:eco},
+	float
+]
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
