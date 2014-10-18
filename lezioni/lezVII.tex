@@ -91,7 +91,8 @@ Analogamente, la funzione \lstinline!pop! dà errore se il vettore \lstinline!va
 Infatti, se \lstinline!valori.indice == 0!, la funzione \lstinline!pop! dà errore (ancora di segmentazione).
 Vi si può rimediare semplicemente introducendo delle scelte.
 
-\begin{lstlisting}[caption={[{\em Costruzione di uno stack.}]{\em Costruzione di uno stack. In questo esempio s'è usato un record per raggruppare la pila e l'intero che punta al primo elemento vuoto.}}, label={cod:stack}]
+\begin{lstlisting}[
+	caption={[{Costruzione di uno stack.}]{Costruzione di uno stack. In questo esempio s'è usato un record per raggruppare la pila e l'intero che punta al primo elemento vuoto.}}, label={cod:stack},float]
 /* stack */
 struct pila {
 	char val[N];
@@ -132,7 +133,12 @@ La\marginpar{\lstinline!malloc()! e gli array} funzione \lstinline!malloc()! ass
 Nel codice~\ref{cod:malloc()}, alla riga~\ref{riga:14}, ad esempio, si chiede riservare lo spazio per \num{100} interi.
 Esso sarà contiguo e quindi adatto ad essere indicizzato tramite un vettore.
 La stretta relazione tra il nome di un array e i puntatori cui si è accennato in precedenza permette di effettuare degli assegnamenti come quelli nell'ultima riga.
-\begin{lstlisting}[caption={[\em Uso della funzione \lstinline!malloc()!.]{\em Uso della funzione \lstinline!malloc()!. Si  faccia particolare attenzione a non dimenticare d'inserire la scelta immediatamente dopo aver richiamato tale funzione.}}, label={cod:malloc()}]
+\begin{lstlisting}[
+	caption={[Uso della funzione \lstinline!malloc()!.]{Uso della funzione \lstinline!malloc()!.
+Si  faccia particolare attenzione a non dimenticare d'inserire la scelta immediatamente dopo aver richiamato tale funzione.}},
+	label={cod:malloc()},
+	float
+]
 struct nodo {
 	int val;
 	char c;
@@ -155,8 +161,8 @@ if ( pn == NULL )
 
 pn[10] = 1;
 \end{lstlisting}
-Qualora la funzione \lstinline!malloc()! non trovi abbastanza spazio contiguo da allocare, ritorna il valore \lstinline!NULL!, \marginpar{Valore NULL} valido come puntatore ma non come indirizzo.
-Allora, si fa seguire ad ogni istruzione \lstinline!malloc()! la scelta mostrata nel codice~\vref{cod:malloc()}.%\footnote{Il professor Bernardinello ha tenuto a specificare che la mancata introduzione della scelta dopo tale funzione verrà considerata errore.}
+Qualora la funzione \lstinline!malloc()! non trovi abbastanza spazio contiguo da allocare, ritorna il valore \lstinline!NULL!, \marginpar{Valore \lstinline!NULL!} valido come puntatore ma non come indirizzo.
+Allora, si fa seguire ad ogni istruzione \lstinline!malloc()! la scelta mostrata nel codice~\ref{cod:malloc()}.%\footnote{Il professor Bernardinello ha tenuto a specificare che la mancata introduzione della scelta dopo tale funzione verrà considerata errore.}
 
 	\section{Strutture dati}
 		\subsection{Liste Concatenate}
