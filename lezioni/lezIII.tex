@@ -52,7 +52,7 @@ Nella prima forma il commento finisce dopo il secondo asterisco-slash mentre nel
 Il frammento di codice~\ref{cod:conv} è una tabella di conversione tra Euro e Lire.
 Se opportunamente completato, stampa a schermo due colonne: a sinistra un numero intero da \numrange{0}{9} e a destra lo stesso numero moltiplicato per \num{1936.27}.
 \begin{table}
-	\caption{Possibili sintassi della funzione \lstinline[mathescape]!printf($\text{\MyComment{entry}}$)!.
+	\caption[Sintassi della funzione \lstinline!printf()!]{Possibili sintassi della funzione \lstinline[mathescape]!printf($\text{\MyComment{entry}}$)!.
 Ogni sotto-espressione introdotta dal carattere \lstinline!\%!
 indica il punto in cui sarà inserito il valore di una variabile.
 La sequenza tra virgolette è seguita dall'elenco delle variabili cui fa riferimento separate da virgole.
@@ -125,24 +125,30 @@ Opzione	&Funzione	\\
 \end{table}
 
 	\section{Strutture Dati}
-Una \emph{struttura dati}\index{struttura dati} è un'entità usata per organizzare un insieme di dati all'interno della memoria del computer (ed eventualmente per memorizzarli in una memoria di massa).\footnote{L'espressione ``struttura dati'' è grammaticalmente scorretta in italiano; la forma corretta sarebbe ``struttura dei dati''.
-Tuttavia, essa è una forma ereditata dall'inglese \emph{data structures}, quindi viene accettata anche nella prima forma.}
+Una \emph{struttura dati}\index{struttura dati} è un'entità usata per organizzare un insieme di dati all'interno della memoria del computer ed eventualmente per memorizzarli in un archivio di massa.\footnote{L'espressione <<struttura dati>>, ereditata dall'inglese \emph{data structures}, è accettata in italiano anche se grammaticalmente scorretta; la forma corretta sarebbe <<struttura dei dati>>.}
 Detto in parole povere, è una rappresentazione schematica dei dati su cui s'intende lavorare.
 La scelta delle strutture dati da utilizzare è strettamente legata a quella degli algoritmi.
 
 		\subsection{Vettori}
 		\label{subsec:array}
-Il \emph{vettore} (o array) è un oggetto formato da una sequenza di valori omogenei (ossia, dello stesso tipo), una variabile in cui tutti i valori occupano posizioni adiacenti.
+Il \emph{vettore}, o \emph{array}\index{array}, è un oggetto formato da una sequenza di valori omogenei (ossia, dello stesso tipo), una variabile in cui tutti i valori occupano posizioni adiacenti.
 Se si deve risolvere un problema che viene naturalmente rappresentato sotto forma vettoriale (o matriciale) questa struttura dati risulta estremamente utile.
-Per dichiarare un vettore di tipo \lstinline!double! e lunghezza tre, si usa la sintassi ``\lstinline!double p[3];!''.
 
-Si supponga di aver bisogno di rappresentare la posizione di un punto (rispetto all'origine di un sistema d'assi cartesiani orientato) nello spazio tridimensionale.
-Risulta comodo usare un vettore che contenga dei valori reali, come quello dichiarato poc'anzi, di nome \lstinline!p!, che comprende tre variabili.\footnote{La migliore approssimazione che ottenibile di un numero $x\in\mathbb{R}$, è una variabile di tipo \lstinline!double!.}
 
-Di fatto, tale dichiarazione corrisponde a quella di tre variabili: \lstinline!p[0]!, \lstinline!p[1]!, \lstinline!p[2]! (tutte di tipo \lstinline!double!).
-Esse occupano posizioni contigue in memoria e condividono una parte del nome, oltre ad essere indicizzate.
-Volendo, possono anche essere usate separatamente come delle normali variabili.
-L'averle dichiarate sotto forma di un vettore permette di manipolarle meglio per operazioni vettoriali.
+Per dichiarare un vettore di tipo \lstinline!double! e lunghezza tre, si usa la sintassi
+\begin{lstlisting}
+double p[3];
+\end{lstlisting}
+Di fatto questa dichiarazione corrisponde a quella di tre variabili, \lstinline!p[0]!, \lstinline!p[1]! e \lstinline!p[2]!, indicizzate da un intero non negativo che va da \numrange{0}{2} (cioè $3-1$).
+Le variabili sono tutte di tipo \lstinline!double! ed occupano posizioni contigue in memoria condividendo una parte del nome, che è un \emph{puntatore}\index{puntatore} (paragrafo~\ref{sec:pointers} a pagina~\pageref{sec:pointers}) alla prima variabile dell'array---in altre parole \lstinline!p! e \lstinline!&p[0]! contengono lo stesso indirizzo.
+Nulla vieta di utilizzare le tre \lstinline!p[!\MyComment{i}\lstinline!]! come normali variabili ma l'averle dichiarate sotto forma di array permette di manipolarle meglio per operazioni vettoriali.
+
+
+Si supponga di aver bisogno di rappresentare la posizione di un punto rispetto all'origine di un sistema di assi cartesiani nello spazio tridimensionale.
+La migliore approssimazione su un calcolatore di un numero reale è una variabile di tipo \lstinline!double! quindi la scelta naturale è usare un vettore composto da tre \lstinline!double! come quello di nome \lstinline!p! appena dichiarato.
+
+
+
 
 Nel seguente codice esempio, dopo aver dichiarato un vettore di lunghezza \num{100}, s'assegna alla sua $e$-esima coordinata il valore $e^2-3e$.
 \begin{lstlisting}
