@@ -49,8 +49,8 @@ indexclean:
 date = $(strip $(shell date "+%Y.%m.%d" ) )
 directory = $(shell pwd)
 dist: clean
-	cd ..; \
-		tar -cvaf appunti_informatica-$(date).tar.gz --exclude-vcs $(directory)/*
+	cd ..;\
+	tar -cvaf appunti_informatica-$(date).tar.gz --exclude-vcs informatica/*
 
 %.aux: %.tex Makefile
 	@ echo -e "\n >> Updating: `tput setaf 4`$@`tput sgr0`"
