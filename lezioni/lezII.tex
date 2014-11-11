@@ -85,26 +85,26 @@ La sintassi per un assegnamento in \lang{C} è
 \end{lstlisting}
 Si noti che ogni istruzione \emph{deve} terminare con il punto e virgola (che d'ora in poi verrà spesso omesso per motivi tipografici) come, ad esempio la scrittura
 \begin{lstlisting}
-variabile = 5303;
+Variabile = 5303;
 \end{lstlisting}
 Un'istruzione d'assegnamento è formata da tre parti:
 \begin{itemize}
 	\item
-Il \MyComment{nome} della variabile, in questo caso ``\lstinline!variabile!'';
+Il \MyComment{nome} della variabile, in questo caso ``\lstinline!Variabile!'';
 	\item
 Operatore di assegnamento ``\lstinline!=!'', da non confondere con l'operatore relazionale ``\lstinline!==!'';
 	\item
 Il \MyComment{valore} della variabile, ad esempio \num{5303}, che deve essere \emph{compatibile} con il suo tipo.\footnote{%Le variabili di tipo \lstinline!float! contengono un numero decimale; 
 %Si tenga presente che un assegnamento per una variabile di questo tipo dev'essere, ad esempio, \lstinline!f = 23.934;!.
-La virgola per gli assegnamenti a variabili \lstinline!float! è di tipo \emph{anglosassone}: il compilatore non riconoscerà un numero del tipo \lstinline!f = 23,934!.
+La virgola per gli assegnamenti a variabili \lstinline!float! è di tipo anglosassone, il \emph{punto}: il compilatore non riconoscerà un numero del tipo \lstinline!f = 23,934!.
 }
 \end{itemize}
 Sono ammessi assegnamenti anche del tipo
 \begin{lstlisting}
-variabile2 = variabile;
+AltraVariabile = Variabile;
 \end{lstlisting}
-a patto che le \lstinline!variabile! e \lstinline!variabile2! abbiano dei tipi compatibili tra di loro.
-Con questo assegnamento, anche la variabile \lstinline!variabile2! ora ha il valore \num{5303}.
+a patto che le \lstinline!Variabile! e \lstinline!AltraVariabile! abbiano dei tipi compatibili tra di loro.
+Con questo assegnamento, anche la variabile \lstinline!AltraVariabile! ora ha il valore \num{5303}.
 
 
 Gli assegnamenti possono contenere anche delle funzioni (matematiche) come, ad esempio
@@ -120,7 +120,7 @@ Esistono degli assegnamenti in cui la stessa variabile compare da entrambe le pa
 x = x + 1;
 \end{lstlisting}
 Questa istruzione legge il valore di \lstinline!x!, calcola il risultato della somma e lo ri-assegna a \lstinline!x!.
-Supponiamo ora di avere una variabile \lstinline!float beta! con un certo valore che noi vogliamo triplicare.
+Supponiamo ora di avere una variabile \lstinline!float beta! con un certo valore, per esempio \num{10.3}, che noi vogliamo triplicare.
 Si può usare l'istruzione
 \begin{lstlisting}
 beta = 3 * beta;
